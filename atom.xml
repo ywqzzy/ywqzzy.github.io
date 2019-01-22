@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ywqzzy.github.io/"/>
-  <updated>2019-01-22T14:09:13.491Z</updated>
+  <updated>2019-01-22T16:53:35.263Z</updated>
   <id>http://ywqzzy.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://ywqzzy.github.io/2019/01/22/test/"/>
     <id>http://ywqzzy.github.io/2019/01/22/test/</id>
     <published>2019-01-22T13:12:42.000Z</published>
-    <updated>2019-01-22T14:09:13.491Z</updated>
+    <updated>2019-01-22T16:53:35.263Z</updated>
     
     <content type="html"><![CDATA[<h3 id="IO模型"><a href="#IO模型" class="headerlink" title="IO模型"></a>IO模型</h3><p>Unix有五种IO模型，</p><ol><li>阻塞式I/O</li><li>非阻塞式I/O</li><li>I/0复用（select/poll）</li><li>信号驱动式（SIGIO）</li><li>异步I/O(AIO)</li></ol><h4 id="阻塞式I-O"><a href="#阻塞式I-O" class="headerlink" title="阻塞式I/O"></a>阻塞式I/O</h4><p>应用进程被阻塞，直到数据复制到应用进程缓冲区中才返回。</p><p>应该注意到，在阻塞的过程中，其它程序还可以执行，因此阻塞不意味着整个操作系统都被阻塞。因为其他程序还可以执行，所以不消耗 CPU 时间，这种模型的 CPU 利用率效率会比较高。</p><p>下图中，recvfrom 用于接收 Socket 传来的数据，并复制到应用进程的缓冲区 buf 中。这里把 recvfrom() 当成系统调用。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ssize_t</span> recvfrom(<span class="keyword">int</span> sockfd, <span class="keyword">void</span> *buf, <span class="keyword">size_t</span> len, <span class="keyword">int</span> flags, struct sockaddr *src_addr, <span class="keyword">socklen_t</span> *addrlen);</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -39,8 +39,6 @@
     </summary>
     
       <category term="Java" scheme="http://ywqzzy.github.io/categories/Java/"/>
-    
-      <category term="MQ" scheme="http://ywqzzy.github.io/categories/MQ/"/>
     
     
       <category term="IO" scheme="http://ywqzzy.github.io/tags/IO/"/>
