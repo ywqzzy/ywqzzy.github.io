@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>zzywq</title>
+  
+  <subtitle>严球球</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://ywqzzy.github.io/"/>
+  <updated>2019-01-22T14:09:13.491Z</updated>
+  <id>http://ywqzzy.github.io/</id>
+  
+  <author>
+    <name>ywq</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test</title>
+    <link href="http://ywqzzy.github.io/2019/01/22/test/"/>
+    <id>http://ywqzzy.github.io/2019/01/22/test/</id>
+    <published>2019-01-22T13:12:42.000Z</published>
+    <updated>2019-01-22T14:09:13.491Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="IO模型"><a href="#IO模型" class="headerlink" title="IO模型"></a>IO模型</h3><p>Unix有五种IO模型，</p><ol><li>阻塞式I/O</li><li>非阻塞式I/O</li><li>I/0复用（select/poll）</li><li>信号驱动式（SIGIO）</li><li>异步I/O(AIO)</li></ol><h4 id="阻塞式I-O"><a href="#阻塞式I-O" class="headerlink" title="阻塞式I/O"></a>阻塞式I/O</h4><p>应用进程被阻塞，直到数据复制到应用进程缓冲区中才返回。</p><p>应该注意到，在阻塞的过程中，其它程序还可以执行，因此阻塞不意味着整个操作系统都被阻塞。因为其他程序还可以执行，所以不消耗 CPU 时间，这种模型的 CPU 利用率效率会比较高。</p><p>下图中，recvfrom 用于接收 Socket 传来的数据，并复制到应用进程的缓冲区 buf 中。这里把 recvfrom() 当成系统调用。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ssize_t</span> recvfrom(<span class="keyword">int</span> sockfd, <span class="keyword">void</span> *buf, <span class="keyword">size_t</span> len, <span class="keyword">int</span> flags, struct sockaddr *src_addr, <span class="keyword">socklen_t</span> *addrlen);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;IO模型&quot;&gt;&lt;a href=&quot;#IO模型&quot; class=&quot;headerlink&quot; title=&quot;IO模型&quot;&gt;&lt;/a&gt;IO模型&lt;/h3&gt;&lt;p&gt;Unix有五种IO模型，&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;阻塞式I/O&lt;/li&gt;
+&lt;li&gt;非阻塞式I/O&lt;/li&gt;
+&lt;li&gt;I/0
+      
+    
+    </summary>
+    
+      <category term="Java" scheme="http://ywqzzy.github.io/categories/Java/"/>
+    
+      <category term="MQ" scheme="http://ywqzzy.github.io/categories/MQ/"/>
+    
+    
+      <category term="IO" scheme="http://ywqzzy.github.io/tags/IO/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hello world</title>
+    <link href="http://ywqzzy.github.io/2019/01/22/hello-world-1/"/>
+    <id>http://ywqzzy.github.io/2019/01/22/hello-world-1/</id>
+    <published>2019-01-22T12:15:57.000Z</published>
+    <updated>2019-01-22T12:15:57.893Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://ywqzzy.github.io/2019/01/22/hello-world/"/>
+    <id>http://ywqzzy.github.io/2019/01/22/hello-world/</id>
+    <published>2019-01-22T11:59:18.824Z</published>
+    <updated>2019-01-22T11:59:18.824Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
