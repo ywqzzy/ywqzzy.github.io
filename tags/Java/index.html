@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>categories | zzywq</title>
+  <title>Tag: Java | zzywq</title>
   <meta name="description" content="coding dream">
   <meta name="keywords" content="">
   <meta name="HandheldFriendly" content="True">
@@ -14,14 +14,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="coding dream">
 <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://ywqzzy.github.io/categories/index.html">
+<meta property="og:title" content="zzywq">
+<meta property="og:url" content="http://ywqzzy.github.io/tags/Java/index.html">
 <meta property="og:site_name" content="zzywq">
 <meta property="og:description" content="coding dream">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-22T16:52:01.514Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="zzywq">
 <meta name="twitter:description" content="coding dream">
     
   <link href="https://fonts.googleapis.com/css?family=Inconsolata|Titillium+Web" rel="stylesheet">
@@ -133,35 +132,66 @@
   <div class="l_body">
     <div class='container clearfix'>
       <div class='l_main'>
-        <article id="page-" class="post white-box article-type-page" itemscope="" itemprop="blogPost">
-	  <section class="meta">
-	  <h2 class="title">
-		<a href="/categories/index.html">
-		  categories
-	  </a>
-	</h2>
-	  <time>
-		1月 22, 2019
-	  </time>
-	  
-	  </section>
-	  
-		  <section class="toc-wrapper"></section>
-	  
-	  <section class="article typo">
-		<div class="article-entry" itemprop="articleBody">
-		  
-		</div>
-		
-	  </section>
-	  
-  </article>
+        
   <script>
-	  window.subData = {
-		  title: 'categories',
-		  tools: true
-	  }
+    window.subData= { title:'Tag : Java'}
   </script>
+
+<section class="post-list">
+	
+    <div class="post-wrapper">
+      <article class="post reveal">
+  <section class="meta">
+    
+    <h2 class="title">
+      <a href="/2019/01/22/test/">
+        test
+      </a>
+    </h2>
+    
+    <time>
+      1月 22, 2019
+    </time>
+		
+    
+    <div class="cats">
+        <a href="/categories/Java/">Java</a>
+    </div>
+
+  </section>
+  <section class="article typo">
+	  <h3 id="IO模型"><a href="#IO模型" class="headerlink" title="IO模型"></a>IO模型</h3><p>Unix有五种IO模型，</p>
+<ol>
+<li>阻塞式I/O</li>
+<li>非阻塞式I/O</li>
+<li>I/0复用（select/poll）</li>
+<li>信号驱动式（SIGIO）</li>
+<li>异步I/O(AIO)</li>
+</ol>
+<h4 id="阻塞式I-O"><a href="#阻塞式I-O" class="headerlink" title="阻塞式I/O"></a>阻塞式I/O</h4><p>应用进程被阻塞，直到数据复制到应用进程缓冲区中才返回。</p>
+<p>应该注意到，在阻塞的过程中，其它程序还可以执行，因此阻塞不意味着整个操作系统都被阻塞。因为其他程序还可以执行，所以不消耗 CPU 时间，这种模型的 CPU 利用率效率会比较高。</p>
+<p>下图中，recvfrom 用于接收 Socket 传来的数据，并复制到应用进程的缓冲区 buf 中。这里把 recvfrom() 当成系统调用。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ssize_t</span> recvfrom(<span class="keyword">int</span> sockfd, <span class="keyword">void</span> *buf, <span class="keyword">size_t</span> len, <span class="keyword">int</span> flags, struct sockaddr *src_addr, <span class="keyword">socklen_t</span> *addrlen);</span><br></pre></td></tr></table></figure>
+
+
+    
+    
+    
+	  <div class="full-width auto-padding tags">
+      
+        <a href="/tags/IO/">IO</a>
+      
+        <a href="/tags/Java/">Java</a>
+      
+	  </div>
+    
+  </section>
+</article>
+    </div>
+  
+</section>
+
+
       </div>
       <aside class='l_side'>
         
