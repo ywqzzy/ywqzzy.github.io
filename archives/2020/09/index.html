@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>zzywq</title>
+  <title>Archives: 2020/9 | zzywq</title>
   <meta name="description" content="coding dream">
   <meta name="keywords" content="">
   <meta name="HandheldFriendly" content="True">
@@ -15,7 +15,7 @@
   <meta name="description" content="coding dream">
 <meta property="og:type" content="website">
 <meta property="og:title" content="zzywq">
-<meta property="og:url" content="http://ywqzzy.github.io/index.html">
+<meta property="og:url" content="http://ywqzzy.github.io/archives/2020/09/index.html">
 <meta property="og:site_name" content="zzywq">
 <meta property="og:description" content="coding dream">
 <meta property="og:locale" content="zh-CN">
@@ -123,6 +123,11 @@
     <div class='container clearfix'>
       <div class='l_main'>
         
+	
+  <script>
+    window.subData= { title:'Year : 2020.9'}
+  </script>
+
 <section class="post-list">
 	
     <div class="post-wrapper">
@@ -193,169 +198,9 @@
 </article>
     </div>
   
-    <div class="post-wrapper">
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2019/04/27/语法分析/">
-        语法分析
-      </a>
-    </h2>
-    
-    <time>
-      4月 27, 2019
-    </time>
-		
-  </section>
-  <section class="article typo">
-	  
-
-    
-    
-    
-  </section>
-</article>
-    </div>
-  
-    <div class="post-wrapper">
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2019/04/27/词法分析/">
-        词法分析
-      </a>
-    </h2>
-    
-    <time>
-      4月 27, 2019
-    </time>
-		
-  </section>
-  <section class="article typo">
-	  <p><img src="\images\1556345446610.png" alt="1556345446610"></p>
-<p>标识符是一个大的集合。</p>
-<h4 id="记号的数据结构定义"><a href="#记号的数据结构定义" class="headerlink" title="记号的数据结构定义"></a>记号的数据结构定义</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> kind &#123;IF,LPAREN,ID,INTLIT,...&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">token</span>&#123;</span></span><br><span class="line">    <span class="keyword">enum</span> kind k;</span><br><span class="line">    <span class="keyword">char</span> *lexeme;<span class="comment">// 单词</span></span><br><span class="line">&#125;；</span><br><span class="line"><span class="comment">/*eg  if(x&gt;5) </span></span><br><span class="line"><span class="comment">===&gt;&gt;  </span></span><br><span class="line"><span class="comment">token&#123;k=IF,lexeme=0&#125;;</span></span><br><span class="line"><span class="comment">token&#123;k=LPAREN,lexeme=0&#125;；</span></span><br><span class="line"><span class="comment">token&#123;k=ID,lexeme="x"&#125;;</span></span><br><span class="line"><span class="comment">.....</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<p>词法分析器的任务，字符流到记号流。</p>
-<p>记号流是编译器内部定义的数据结构，编码所识别出的词法单元。</p>
-<h4 id="词法分析—手工构造法"><a href="#词法分析—手工构造法" class="headerlink" title="词法分析—手工构造法"></a>词法分析—手工构造法</h4><p>相对复杂，容易出错。</p>
-<p>词法分析器的生成器（自动化）：可快速原型、代码量少，但难控制细节。</p>
-<h5 id="转移图"><a href="#转移图" class="headerlink" title="转移图"></a>转移图</h5><p><img src="\images\1556345908254.png" alt="1556345908254"></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">token <span class="title">nextToken</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    c = getChar();</span><br><span class="line">    <span class="keyword">switch</span>(c) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'&lt;'</span>:</span><br><span class="line">            c= getChar();</span><br><span class="line">            <span class="keyword">switch</span>(c)&#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'='</span>: <span class="keyword">return</span> LE;</span><br><span class="line">                <span class="keyword">case</span>=<span class="string">'&gt;'</span>:<span class="keyword">return</span> NE;</span><br><span class="line">                <span class="keyword">default</span>: rollback();<span class="keyword">return</span> LT;    </span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'='</span>:<span class="keyword">return</span> EQ;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'&gt;'</span>: c= getChar();</span><br><span class="line">            <span class="keyword">switch</span>(c):&#123;</span><br><span class="line">                .....<span class="comment">//和上面类似</span></span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>标识符的转移图：</p>
-<p><img src="\images\1556346239830.png" alt="1556346239830"></p>
-<h5 id="识别关键字"><a href="#识别关键字" class="headerlink" title="识别关键字"></a>识别关键字</h5><p><img src="\images\1556346305746.png" alt="1556346305746"></p>
-<p>也可以弄关键字构成的哈希表，先统一按照关键符的转移图进行识别，进一步查表看是否是关键字。<strong>完美哈希</strong></p>
-<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><p><img src="\images\1556346585122.png" alt="1556346585122"></p>
-<p>kleene闭包。</p>
-<h5 id="例子：标识符"><a href="#例子：标识符" class="headerlink" title="例子：标识符"></a>例子：标识符</h5><p>c语言：以字母或下划线开头，后面跟多个或0个字母数字或下划线</p>
-<p>（a|b|c|…..z|A|B|C|….|Z|–<em>)(a|b|c|…..z|A|B|C|….|Z|</em>–|0|1|…|9|)*</p>
-<p><img src="\images\1556347030449.png" alt="1556347030449"></p>
-<h4 id="有限状态自动机"><a href="#有限状态自动机" class="headerlink" title="有限状态自动机"></a>有限状态自动机</h4><p><img src="\images\1556347210990.png" alt="1556347210990"></p>
-<p><img src="\images\1556347330767.png" alt="1556347330767"></p>
-<p><img src="\images\1556347508085.png" alt="1556347508085"></p>
-<p>非确定有限状态自动机（NFA）</p>
-<p>确定有限状态自动机（DFA)</p>
-<p>NFA难以判断字符串是否可接受。需要进行搜索。需要将NFA转化为等价的DFA。</p>
-<p><img src="\images\1556347919744.png" alt="1556347919744"></p>
-<h5 id="DFA的实现"><a href="#DFA的实现" class="headerlink" title="DFA的实现"></a>DFA的实现</h5><p>带有边和节点的有向图。</p>
-<p>边上面有信息</p>
-<p>节点上有信息</p>
-<h4 id="正则表达式到NFA（Thompson算法）"><a href="#正则表达式到NFA（Thompson算法）" class="headerlink" title="正则表达式到NFA（Thompson算法）"></a>正则表达式到NFA（Thompson算法）</h4><p>RE—&gt;NFA—&gt;DFA—&gt;词法分析器代码</p>
-<p><img src="\images\1556348118187.png" alt="1556348118187"></p>
-<p>对基本的RE直接构造</p>
-<p>对复合的RE递归构造</p>
-<h4 id="NFA转化为DFA（子集构造法）"><a href="#NFA转化为DFA（子集构造法）" class="headerlink" title="NFA转化为DFA（子集构造法）"></a>NFA转化为DFA（子集构造法）</h4><p> <img src="\images\1556352481806.png" alt="1556352481806"></p>
-<p>不动点算法：why能终止？</p>
-<p><img src="\images\1556352933809.png" alt="1556352933809"></p>
-<p><img src="\images\1556353096339.png" alt="1556353096339"></p>
-<p><img src="\images\1556364959944.png" alt="1556364959944"></p>
-<h4 id="DFA最小化"><a href="#DFA最小化" class="headerlink" title="DFA最小化"></a>DFA最小化</h4><h5 id="Hopcroft算法"><a href="#Hopcroft算法" class="headerlink" title="Hopcroft算法"></a>Hopcroft算法</h5><p><img src="\images\1556365643462.png" alt="1556365643462"></p>
-<p>什么叫做能切分？</p>
-<p>首先切分成非终结符和终结符两类</p>
-<h4 id="DFA的代码表示"><a href="#DFA的代码表示" class="headerlink" title="DFA的代码表示"></a>DFA的代码表示</h4><p>转移表</p>
-<p>哈希表</p>
-<p>跳转表</p>
-<ol>
-<li><p>转移表：还要有词法分析驱动代码。</p>
-<p><img src="\images\1556366207999.png" alt="1556366207999"></p>
-</li>
-</ol>
-<p>   <img src="\images\1556366321276.png" alt="1556366321276"></p>
-<p>​    最长匹配思想。</p>
-<ol start="2">
-<li>跳转表:</li>
-</ol>
-<p><img src="\images/1556369224478.png" alt="1556369224478"></p>
-<p><img src="\images/1556369247701.png" alt="1556369247701"></p>
-<p>跳转表不需要维护一个大的转移数组。</p>
-
-
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/编译原理/">编译原理</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
-    <div class="post-wrapper">
-      <article class="post reveal">
-  <section class="meta">
-    
-    <h2 class="title">
-      <a href="/2019/01/22/test/">
-        test
-      </a>
-    </h2>
-    
-    <time>
-      1月 22, 2019
-    </time>
-		
-    
-    <div class="cats">
-        <a href="/categories/Java/">Java</a>
-    </div>
-
-  </section>
-  <section class="article typo">
-	  <h3 id="IO模型"><a href="#IO模型" class="headerlink" title="IO模型"></a>IO模型</h3><p>Unix有五种IO模型，</p>
-<ol>
-<li>阻塞式I/O</li>
-<li>非阻塞式I/O</li>
-<li>I/0复用（select/poll）</li>
-<li>信号驱动式（SIGIO）</li>
-<li>异步I/O(AIO)</li>
-</ol>
-<h4 id="阻塞式I-O"><a href="#阻塞式I-O" class="headerlink" title="阻塞式I/O"></a>阻塞式I/O</h4><p>应用进程被阻塞，直到数据复制到应用进程缓冲区中才返回。</p>
-<p>应该注意到，在阻塞的过程中，其它程序还可以执行，因此阻塞不意味着整个操作系统都被阻塞。因为其他程序还可以执行，所以不消耗 CPU 时间，这种模型的 CPU 利用率效率会比较高。</p>
-<p>下图中，recvfrom 用于接收 Socket 传来的数据，并复制到应用进程的缓冲区 buf 中。这里把 recvfrom() 当成系统调用。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ssize_t</span> recvfrom(<span class="keyword">int</span> sockfd, <span class="keyword">void</span> *buf, <span class="keyword">size_t</span> len, <span class="keyword">int</span> flags, struct sockaddr *src_addr, <span class="keyword">socklen_t</span> *addrlen);</span><br></pre></td></tr></table></figure>
-
-
-    
-    
-    
-	  <div class="full-width auto-padding tags">
-      
-        <a href="/tags/IO/">IO</a>
-      
-        <a href="/tags/Java/">Java</a>
-      
-	  </div>
-    
-  </section>
-</article>
-    </div>
-  
 </section>
+
+
 
 
       </div>
