@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>cppcon2020 Back to basics: The Abstract Machine</title>
+      <link href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/"/>
+      <url>/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/</url>
+      
+        <content type="html"><![CDATA[<h3 id="什么是-C-Abstract-Machine"><a href="#什么是-C-Abstract-Machine" class="headerlink" title="什么是 C++ Abstract Machine"></a>什么是 C++ Abstract Machine</h3><p>“The C++ Abstract machine is a portable abstraction of your os, kernel and hardware. The abstract machine is the intermediary between your c++ program and the system that it is run on.”</p><p>C++ defines how programs work in terms of an abstract machine deliberately defined to be “close to the hardware”.</p><p>When we write c++ code, we are writing to the c++ abstract machine.</p><p><img src="image-20201009111642176-1602213499424.png" alt=""></p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> -c++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> -c++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>testt</title>
       <link href="/2020/09/15/%E5%9C%A8%E7%9F%A5%E4%B9%8E%E4%B8%8A%E5%88%A0%E9%99%A4%E6%8E%89%E7%9A%84%E4%BF%9D%E7%A0%94%E7%BB%8F%E9%AA%8C/"/>
       <url>/2020/09/15/%E5%9C%A8%E7%9F%A5%E4%B9%8E%E4%B8%8A%E5%88%A0%E9%99%A4%E6%8E%89%E7%9A%84%E4%BF%9D%E7%A0%94%E7%BB%8F%E9%AA%8C/</url>
