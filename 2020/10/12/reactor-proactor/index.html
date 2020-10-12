@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="zzywq">
 <meta property="og:description" content="标准定义两种I/O多路复用模式：Reactor 和 Proactor 一般地,I/O多路复用机制都依赖于一个事件多路分离器(Event Demultiplexer)。分离器对象可将来自事件源的I/O事件分离出来，并分发到对应的 read/write 事件处理器(Event Handler)。开发人员预先注册需要处理的事件及其事件处理器（或回调函数）；事件分离器负责将请求事件传递给事件处理器。 两个">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-12T09:01:01.256Z">
+<meta property="og:updated_time" content="2020-10-12T09:03:31.006Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="reactor &amp; proactor">
 <meta name="twitter:description" content="标准定义两种I/O多路复用模式：Reactor 和 Proactor 一般地,I/O多路复用机制都依赖于一个事件多路分离器(Event Demultiplexer)。分离器对象可将来自事件源的I/O事件分离出来，并分发到对应的 read/write 事件处理器(Event Handler)。开发人员预先注册需要处理的事件及其事件处理器（或回调函数）；事件分离器负责将请求事件传递给事件处理器。 两个">
@@ -385,7 +385,7 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#标准定义"><span class="toc-number">1.</span> <span class="toc-text">标准定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#在Reactor中实现读："><span class="toc-number">1.1.</span> <span class="toc-text">在Reactor中实现读：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在Proactor中实现读："><span class="toc-number">1.2.</span> <span class="toc-text">在Proactor中实现读：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通俗理解"><span class="toc-number">2.</span> <span class="toc-text">通俗理解</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number"></span> <span class="toc-text">参考资料</span></a>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#标准定义"><span class="toc-number">1.</span> <span class="toc-text">标准定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#在-Reactor-中实现读："><span class="toc-number">1.1.</span> <span class="toc-text">在 Reactor 中实现读：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#在-Proactor-中实现读："><span class="toc-number">1.2.</span> <span class="toc-text">在 Proactor 中实现读：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通俗理解"><span class="toc-number">2.</span> <span class="toc-text">通俗理解</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number"></span> <span class="toc-text">参考资料</span></a>
                 </li></div>
             
         
@@ -394,15 +394,15 @@
 <p>一般地,I/O多路复用机制都依赖于一个事件<strong>多路分离器(Event Demultiplexer)</strong>。分离器对象可将来自事件源的I/O事件分离出来，并分发到对应的 <strong>read/write 事件处理器(Event Handler)</strong>。开发人员预先注册需要处理的事件及其事件处理器（或回调函数）；事件分离器负责将请求事件传递给事件处理器。</p>
 <p><strong>两个与事件分离器有关的模式是Reactor和Proactor。Reactor 模式采用同步 IO，而 Proactor 采用异步 IO。</strong></p>
 <p><strong>在 Reactor 中，</strong>事件分离器负责等待文件描述符或 socket 为读写操作准备就绪，然后将就绪事件传递给对应的处理器，最后由处理器负责完成实际的读写工作。</p>
-<p><strong>而在 Proacto r模式中，</strong>处理器–或者兼任处理器的事件分离器，只负责发起异步读写操作。IO 操作本身由操作系统来完成。传递给操作系统的参数需要包括用户定义的数据缓冲区地址和数据大小，操作系统才能从中得到写出操作所需数据，或写入从 socket 读到的数据。事件分离器捕获 IO 操作完成事件，然后将事件传递给对应处理器。比如，在 windows 上，处理器发起一个异步 IO 操作，再由事件分离器等待 IOCompletion 事件。典型的异步模式实现，都建立在操作系统支持异步 API 的基础之上，我们将这种实现称为“系统级”异步或“真”异步，因为应用程序完全依赖操作系统执行真正的IO工作。</p>
+<p><strong>而在 Proactor 模式中，</strong>处理器–或者兼任处理器的事件分离器，只负责发起异步读写操作。IO 操作本身由操作系统来完成。传递给操作系统的参数需要包括用户定义的数据缓冲区地址和数据大小，操作系统才能从中得到写出操作所需数据，或写入从 socket 读到的数据。事件分离器捕获 IO 操作完成事件，然后将事件传递给对应处理器。比如，在 windows 上，处理器发起一个异步 IO 操作，再由事件分离器等待 IOCompletion 事件。典型的异步模式实现，都建立在操作系统支持异步 API 的基础之上，我们将这种实现称为“系统级”异步或“真”异步，因为应用程序完全依赖操作系统执行真正的IO工作。</p>
 <p>举个例子，将有助于理解 Reactor 与 Proactor 二者的差异，以读操作为例（类操作类似）。</p>
-<h4 id="在Reactor中实现读："><a href="#在Reactor中实现读：" class="headerlink" title="在Reactor中实现读："></a>在Reactor中实现读：</h4><ol>
+<h4 id="在-Reactor-中实现读："><a href="#在-Reactor-中实现读：" class="headerlink" title="在 Reactor 中实现读："></a>在 Reactor 中实现读：</h4><ol>
 <li>注册读就绪事件和相应的事件处理器</li>
 <li>事件分离器等待事件</li>
 <li>事件到来，激活分离器，分离器调用事件对应的处理器。</li>
 <li>事件处理器完成实际的读操作，处理读到的数据，注册新的事件，然后返还控制权。</li>
 </ol>
-<h4 id="在Proactor中实现读："><a href="#在Proactor中实现读：" class="headerlink" title="在Proactor中实现读："></a>在Proactor中实现读：</h4><ol>
+<h4 id="在-Proactor-中实现读："><a href="#在-Proactor-中实现读：" class="headerlink" title="在 Proactor 中实现读："></a>在 Proactor 中实现读：</h4><ol>
 <li>处理器发起异步读操作（注意：操作系统必须支持异步 IO）。在这种情况下，处理器无视IO就绪事件，它关注的是完成事件。</li>
 <li>事件分离器等待操作完成事件</li>
 <li>在分离器等待过程中，操作系统利用并行的内核线程执行实际的读操作，并将结果数据存入用户自定义缓冲区，最后通知事件分离器读操作完成。</li>
