@@ -9,18 +9,18 @@
         <meta name="keywords" content="io">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="Linux 系统中，所有的设备读写都可以看做文件的读写来操作，对文件的读写一般要经过内核态和用户态的切换，正因为有切换才导致了 IO 有同步和异步的说法。 通常来讲 IO 可以分成两种：  来自网络的 IO 来自文件或者设备的 IO  并且完成 IO 操作可以简单的表述为两个步骤：  发起 IO 请求 执行 IO 操作  如何区分是同步 IO 还是异步 IO 呢？ “执行 IO 操作”是否阻塞">
+    <meta name="description" content="Linux 系统中，所有的设备读写都可以看做文件的读写来操作，对文件的读写一般要经过内核态和用户态的切换， 正因为有切换才导致了 IO 有同步和异步的说法。 通常来讲 IO 可以分成两种：  来自网络的 IO 来自文件或者设备的 IO  并且完成 IO 操作可以简单的表述为两个步骤：  发起 IO 请求 执行 IO 操作  如何区分是同步 IO 还是异步 IO 呢？ “执行 IO 操作”是否阻塞">
 <meta name="keywords" content="io">
 <meta property="og:type" content="article">
 <meta property="og:title" content="同步 IO 和异步 IO">
 <meta property="og:url" content="http://ywqzzy.github.io/2020/10/12/同步-IO-和异步-IO/index.html">
 <meta property="og:site_name" content="zzywq">
-<meta property="og:description" content="Linux 系统中，所有的设备读写都可以看做文件的读写来操作，对文件的读写一般要经过内核态和用户态的切换，正因为有切换才导致了 IO 有同步和异步的说法。 通常来讲 IO 可以分成两种：  来自网络的 IO 来自文件或者设备的 IO  并且完成 IO 操作可以简单的表述为两个步骤：  发起 IO 请求 执行 IO 操作  如何区分是同步 IO 还是异步 IO 呢？ “执行 IO 操作”是否阻塞">
+<meta property="og:description" content="Linux 系统中，所有的设备读写都可以看做文件的读写来操作，对文件的读写一般要经过内核态和用户态的切换， 正因为有切换才导致了 IO 有同步和异步的说法。 通常来讲 IO 可以分成两种：  来自网络的 IO 来自文件或者设备的 IO  并且完成 IO 操作可以简单的表述为两个步骤：  发起 IO 请求 执行 IO 操作  如何区分是同步 IO 还是异步 IO 呢？ “执行 IO 操作”是否阻塞">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-12T09:10:31.085Z">
+<meta property="og:updated_time" content="2020-10-12T09:14:26.799Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="同步 IO 和异步 IO">
-<meta name="twitter:description" content="Linux 系统中，所有的设备读写都可以看做文件的读写来操作，对文件的读写一般要经过内核态和用户态的切换，正因为有切换才导致了 IO 有同步和异步的说法。 通常来讲 IO 可以分成两种：  来自网络的 IO 来自文件或者设备的 IO  并且完成 IO 操作可以简单的表述为两个步骤：  发起 IO 请求 执行 IO 操作  如何区分是同步 IO 还是异步 IO 呢？ “执行 IO 操作”是否阻塞">
+<meta name="twitter:description" content="Linux 系统中，所有的设备读写都可以看做文件的读写来操作，对文件的读写一般要经过内核态和用户态的切换， 正因为有切换才导致了 IO 有同步和异步的说法。 通常来讲 IO 可以分成两种：  来自网络的 IO 来自文件或者设备的 IO  并且完成 IO 操作可以简单的表述为两个步骤：  发起 IO 请求 执行 IO 操作  如何区分是同步 IO 还是异步 IO 呢？ “执行 IO 操作”是否阻塞">
     
 
     
@@ -390,7 +390,8 @@
             
         
         
-            <p>Linux 系统中，所有的设备读写都可以看做文件的读写来操作，对文件的读写一般要经过内核态和用户态的切换，<strong>正因为有切换才导致了 IO 有同步和异步的说法</strong>。</p>
+            <p>Linux 系统中，所有的设备读写都可以看做文件的读写来操作，对文件的读写一般要经过内核态和用户态的切换，</p>
+<p><strong>正因为有切换才导致了 IO 有同步和异步的说法</strong>。</p>
 <p>通常来讲 IO 可以分成两种：</p>
 <ul>
 <li>来自网络的 IO</li>
