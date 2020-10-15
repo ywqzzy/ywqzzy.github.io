@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ywqzzy.github.io/"/>
-  <updated>2020-10-12T09:14:26.799Z</updated>
+  <updated>2020-10-15T08:51:42.251Z</updated>
   <id>http://ywqzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,49 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Variadic Templates</title>
+    <link href="http://ywqzzy.github.io/2020/10/15/Variadic-Templates/"/>
+    <id>http://ywqzzy.github.io/2020/10/15/Variadic-Templates/</id>
+    <published>2020-10-15T08:23:42.000Z</published>
+    <updated>2020-10-15T08:51:42.251Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 处理无参数的情况</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printX</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 任意参数类型</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Types&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printX</span><span class="params">(<span class="keyword">const</span> T&amp; firstArg, <span class="keyword">const</span> Types&amp;... args)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; firstArg &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"left:"</span> &lt;&lt; <span class="keyword">sizeof</span>...(args) &lt;&lt; <span class="string">"params"</span> &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">    <span class="comment">// args 会被分为2部分 一部分是第一个参数 第二部分是args...</span></span><br><span class="line">    printX(args...);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ... 是所谓的 pack</span></span><br><span class="line"><span class="comment">// 用于 template parameters 就是 template parameters pack</span></span><br><span class="line"><span class="comment">// 用于 function parameter types 就是 function parameter types pack</span></span><br><span class="line"><span class="comment">// 用于 function parameters 就是 function parameters pack</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printf</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(*s) &#123;</span><br><span class="line">        <span class="keyword">if</span>(*s==<span class="string">'%'</span>&amp;&amp;*(++s)!=<span class="string">'%'</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="built_in">std</span>::runtime_error(<span class="string">"invalid format string"</span>);</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; *s++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//printf</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printf</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* s, T value, Args... args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(*s) &#123;</span><br><span class="line">        <span class="keyword">if</span>(*s==<span class="string">'%'</span>&amp;&amp;*(++s)!=<span class="string">'%'</span>) &#123;</span><br><span class="line">            <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; value;</span><br><span class="line">            <span class="built_in">printf</span>(++s, args...);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; *s++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">std</span>::runtime_error(<span class="string">"invalid format string"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maximum</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;<span class="keyword">return</span> n;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>...Args&gt;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maximum</span><span class="params">(<span class="keyword">int</span> n, Args... args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::max(n, maximum(args...));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    printX(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="string">"asa"</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; maximum(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><img src="\images/image-20201015164406400.png" alt="image-20201015164406400"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;
+      
+    
+    </summary>
+    
+      <category term="c++" scheme="http://ywqzzy.github.io/categories/c/"/>
+    
+    
+      <category term="c++" scheme="http://ywqzzy.github.io/tags/c/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>uniform initialization</title>
+    <link href="http://ywqzzy.github.io/2020/10/15/uniform-initialization/"/>
+    <id>http://ywqzzy.github.io/2020/10/15/uniform-initialization/</id>
+    <published>2020-10-15T08:07:12.000Z</published>
+    <updated>2020-10-15T08:12:34.640Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="c++" scheme="http://ywqzzy.github.io/categories/c/"/>
+    
+    
+      <category term="c++" scheme="http://ywqzzy.github.io/tags/c/"/>
+    
+  </entry>
   
   <entry>
     <title>同步 IO 和异步 IO</title>
