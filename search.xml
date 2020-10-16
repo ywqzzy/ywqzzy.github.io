@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Rvalue references</title>
+      <link href="/2020/10/16/Rvalue-references/"/>
+      <url>/2020/10/16/Rvalue-references/</url>
+      
+        <content type="html"><![CDATA[<p> Rvalue references are a new reference type introduced in C++0x that help solve the problem of unnecessary coping and enable perfect forwarding. When the right-hand side of  an assignment is an rvalue, then the left-hand side object can steal resources from the right-hand side object rather than performing a seperate allocation, thus enabling move semantics.</p><p>Lvalue: 可以出现于 operator = 左侧者</p><p>Rvalue: 只能出现于 operator  = 右侧者</p><p><img src="\images/image-20201016163813510.png" alt=""></p><p>只要在内存中有确定存储空间的都是左值。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">foo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">5</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> x = foo(); <span class="comment">// ok</span></span><br><span class="line"><span class="keyword">int</span> *p = &amp;foo(); <span class="comment">// error 对着右值 5 取其 reference 是不可以的。没有所谓的 Rvalue reference（before C++0x)</span></span><br><span class="line">foo() = <span class="number">7</span>; <span class="comment">// error</span></span><br></pre></td></tr></table></figure><p>当 Rvalue 出现于 operator=(copy assignment)的右侧，我们认为对其资源进行偷取/搬移（move) 而非拷贝（copy）是可以的。</p><p>那么：</p><ol><li>必须有语法让我们在调用端告诉编译器，这是个“Rvalue”</li><li>必须有语法让我们在被调用端写出一个专门处理 Rvalue 的所谓 move assignment 函数。</li></ol><p><img src="\images/image-20201016164558875.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> c++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> c++ c++11 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>lambda</title>
       <link href="/2020/10/16/lambda/"/>
       <url>/2020/10/16/lambda/</url>
@@ -328,33 +353,6 @@
         <tags>
             
             <tag> 编译原理 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>test</title>
-      <link href="/2019/01/22/test/"/>
-      <url>/2019/01/22/test/</url>
-      
-        <content type="html"><![CDATA[<h3 id="IO模型"><a href="#IO模型" class="headerlink" title="IO模型"></a>IO模型</h3><p>Unix有五种IO模型，</p><ol><li>阻塞式I/O</li><li>非阻塞式I/O</li><li>I/0复用（select/poll）</li><li>信号驱动式（SIGIO）</li><li>异步I/O(AIO)</li></ol><h4 id="阻塞式I-O"><a href="#阻塞式I-O" class="headerlink" title="阻塞式I/O"></a>阻塞式I/O</h4><p>应用进程被阻塞，直到数据复制到应用进程缓冲区中才返回。</p><p>应该注意到，在阻塞的过程中，其它程序还可以执行，因此阻塞不意味着整个操作系统都被阻塞。因为其他程序还可以执行，所以不消耗 CPU 时间，这种模型的 CPU 利用率效率会比较高。</p><p>下图中，recvfrom 用于接收 Socket 传来的数据，并复制到应用进程的缓冲区 buf 中。这里把 recvfrom() 当成系统调用。</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ssize_t</span> recvfrom(<span class="keyword">int</span> sockfd, <span class="keyword">void</span> *buf, <span class="keyword">size_t</span> len, <span class="keyword">int</span> flags, struct sockaddr *src_addr, <span class="keyword">socklen_t</span> *addrlen);</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> Java </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> IO </tag>
-            
-            <tag> Java </tag>
             
         </tags>
       
