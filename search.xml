@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Type Alias &amp; using</title>
+      <link href="/2020/10/16/Type-Alias/"/>
+      <url>/2020/10/16/Type-Alias/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Type-alias"><a href="#Type-alias" class="headerlink" title="Type alias"></a>Type alias</h3><p>Similar to typedef</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// type alias, identical to</span></span><br><span class="line"><span class="comment">// typedef void (*func)(int, int)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> func = <span class="keyword">void</span> (*)(<span class="keyword">int</span>, <span class="keyword">int</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">example</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">int</span>)</span> </span>&#123;&#125;</span><br><span class="line">func fn = example;</span><br><span class="line"></span><br><span class="line"><span class="comment">// alias template</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">CharT</span>&gt; <span class="title">using</span> <span class="title">mystring</span> = <span class="title">std</span>:</span>:basic_string&lt;CharT, <span class="built_in">std</span>::char_traits&lt;CharT&gt;&gt;;</span><br><span class="line">mystring&lt;<span class="keyword">char</span>&gt; str;</span><br></pre></td></tr></table></figure><p><string> 和 &lt;string_fwd.h&gt; 都有以下 typedef:</string></p><p>typedef basic_string<char> string;</char></p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// type alias can introduce a member typedef name</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Container</span> &#123;</span></span><br><span class="line">    <span class="keyword">using</span> value_type = T;   <span class="comment">// typedef T value_type;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Cntr&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fn2</span><span class="params">(<span class="keyword">const</span> Cntr&amp; c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">typename</span> Cntr::value_type n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="using"><a href="#using" class="headerlink" title="using"></a>using</h3><ol><li><p>using-directives for namespaces and using-declarations for namespace members;</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="built_in">std</span>::count;</span><br></pre></td></tr></table></figure></li><li><p>using-declarations for class members</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">  <span class="keyword">using</span> _Base::_M_allocate;</span><br><span class="line">  <span class="keyword">using</span> _Base::_M_deallocate;</span><br><span class="line">  <span class="keyword">using</span> _Base::_S_nword;</span><br><span class="line">  <span class="keyword">using</span> _Base::_M_get_Bit_allocator;</span><br></pre></td></tr></table></figure></li><li><p>type alias and alias template declaration</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> c++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> c++ c++11 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Range-based for statement</title>
       <link href="/2020/10/16/range-based-for-statement/"/>
       <url>/2020/10/16/range-based-for-statement/</url>
