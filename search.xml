@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>noexcept</title>
+      <link href="/2020/10/16/noexcept/"/>
+      <url>/2020/10/16/noexcept/</url>
+      
+        <content type="html"><![CDATA[<p><img src="\images/image-20201016113005483.png" alt=""></p><p><img src="\images/image-20201016113301024.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> c++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> c++ c++11 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Type Alias &amp; using</title>
       <link href="/2020/10/16/Type-Alias/"/>
       <url>/2020/10/16/Type-Alias/</url>
