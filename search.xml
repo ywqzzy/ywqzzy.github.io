@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>lambda</title>
+      <link href="/2020/10/16/lambda/"/>
+      <url>/2020/10/16/lambda/</url>
+      
+        <content type="html"><![CDATA[<p>C++11 introduced  lambdas, allowing the definition of inline functionality, which can be used as a parameter or  a local object. Lambdas change the way the C++ statndard library is used.</p><p>A lambda is a definition of functionality that can be defined inside statements and expressions. Thus, you can use a lambda as an inline function. The minimal lambda function has no parameters and simply does something.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[] &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"hello lambda"</span>&lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">[] &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt; <span class="string">"hello lambda"</span>&lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line"><span class="keyword">auto</span> l = [] &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span>&lt;&lt; <span class="string">"hello lambda"</span>&lt;&lt;<span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">l();</span><br></pre></td></tr></table></figure><p><img src="\images/image-20201016155359481.png" alt=""></p><p><img src="\images/image-20201016155639272.png" alt=""></p><p><img src="\images/image-20201016160037765.png" alt=""></p><p> <img src="\images/image-20201016160305216.png" alt=""></p><p><img src="\images/image-20201016161039247.png" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> c++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> c++ c++11 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>decltype</title>
       <link href="/2020/10/16/decltype/"/>
       <url>/2020/10/16/decltype/</url>
