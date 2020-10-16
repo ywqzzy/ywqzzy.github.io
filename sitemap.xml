@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ywqzzy.github.io/2020/10/16/range-based-for-statement/</loc>
+    
+    <lastmod>2020-10-16</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ywqzzy.github.io/2020/10/16/explicit%E5%85%B3%E9%94%AE%E5%AD%97/</loc>
     
     <lastmod>2020-10-16</lastmod>
@@ -116,13 +123,6 @@
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/tags/io-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2020-10-16</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://ywqzzy.github.io/tags/IO/</loc>
     <lastmod>2020-10-16</lastmod>
     <changefreq>daily</changefreq>
@@ -131,6 +131,13 @@
   
   <url>
     <loc>http://ywqzzy.github.io/tags/Java/</loc>
+    <lastmod>2020-10-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://ywqzzy.github.io/tags/io-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2020-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -167,14 +174,14 @@
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/categories/io/</loc>
+    <loc>http://ywqzzy.github.io/categories/Java/</loc>
     <lastmod>2020-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/categories/Java/</loc>
+    <loc>http://ywqzzy.github.io/categories/io/</loc>
     <lastmod>2020-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
