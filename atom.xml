@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ywqzzy.github.io/"/>
-  <updated>2020-10-16T03:34:03.812Z</updated>
+  <updated>2020-10-16T07:33:54.432Z</updated>
   <id>http://ywqzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>decltype</title>
+    <link href="http://ywqzzy.github.io/2020/10/16/decltype/"/>
+    <id>http://ywqzzy.github.io/2020/10/16/decltype/</id>
+    <published>2020-10-16T03:43:06.000Z</published>
+    <updated>2020-10-16T07:33:54.432Z</updated>
+    
+    <content type="html"><![CDATA[<p>Defines  a type equivalent to the type of an expression.</p><p>By using the decltype keyword, you can let the compiler find out the type of an expression, this is the realization of the often requested typepf feature.</p><p>One application of decltype is to declare return types; Another is to use it in metaprogramming or to pass the type of a lambda.</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. declare return types</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</span><br><span class="line"><span class="keyword">decltype</span>(x + y) add(T1 x, T2 y); <span class="comment">// 不行</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</span><br><span class="line">auto add(T1 x, T2 y) -&gt; decltype(x + y);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. meta programming</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test_decltype</span><span class="params">(T obj)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">float</span>&gt;::value_type elem1;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">float</span>&gt; coll;</span><br><span class="line">    <span class="keyword">decltype</span>(coll)::value_type elem2;</span><br><span class="line">    </span><br><span class="line">    typedef typename decltype(obj)::iterator iType; // =&gt; typedef typename T::iterator iType</span><br><span class="line">    <span class="comment">// test_decltype(complex&lt;int&gt;()) 编译失败</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">decltype</span>(obj) anotherObj(obj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. pass the type of lambda</span></span><br><span class="line"><span class="keyword">auto</span> cmp = [](<span class="keyword">const</span> Person&amp; p1, <span class="keyword">const</span> Person&amp; p2) &#123;</span><br><span class="line">    <span class="keyword">return</span> p1.lastname() &lt; p2.lastname() || (p1.lastname() == p2.lastname() &amp;&amp; p1.firstname() &lt; p2.firstname()); </span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">set</span>&lt;Person, <span class="keyword">decltype</span>(cmp)&gt; coll(cmp);</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Defines  a type equivalent to the type of an expression.&lt;/p&gt;
+&lt;p&gt;By using the decltype keyword, you can let the compiler find out the type
+      
+    
+    </summary>
+    
+      <category term="c++" scheme="http://ywqzzy.github.io/categories/c/"/>
+    
+    
+      <category term="c++ c++11" scheme="http://ywqzzy.github.io/tags/c-c-11/"/>
+    
+  </entry>
   
   <entry>
     <title>noexcept</title>

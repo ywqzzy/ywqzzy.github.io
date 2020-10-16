@@ -166,7 +166,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                13
+                14
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -231,7 +231,7 @@
                             &nbsp;
                             c++
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">cppcon2020 Back to basics: The Abstract Machine</a></li>  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/">cppcon2020 Back to basics: The structure of a Program</a></li>  <li class="file"><a href="/2020/10/15/uniform-initialization/">uniform initialization</a></li>  <li class="file"><a href="/2020/10/15/Variadic-Templates/">Variadic Templates</a></li>  <li class="file"><a href="/2020/10/16/explicit关键字/">explicit关键字</a></li>  <li class="file"><a href="/2020/10/16/Type-Alias/">Type Alias & using</a></li>  <li class="file"><a href="/2020/10/16/noexcept/">noexcept</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">cppcon2020 Back to basics: The Abstract Machine</a></li>  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/">cppcon2020 Back to basics: The structure of a Program</a></li>  <li class="file"><a href="/2020/10/15/uniform-initialization/">uniform initialization</a></li>  <li class="file"><a href="/2020/10/15/Variadic-Templates/">Variadic Templates</a></li>  <li class="file"><a href="/2020/10/16/explicit关键字/">explicit关键字</a></li>  <li class="file"><a href="/2020/10/16/Type-Alias/">Type Alias & using</a></li>  <li class="file"><a href="/2020/10/16/noexcept/">noexcept</a></li>  <li class="file"><a href="/2020/10/16/decltype/">decltype</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -323,6 +323,103 @@
 </aside>
             
             <section id="main">
+        <article id="post-decltype" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/c/">c++</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/c-c-11/">c++ c++11</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/10/16/decltype/">
+            <time datetime="2020-10-16T03:43:06.000Z" itemprop="datePublished">2020-10-16</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/decltype.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/decltype.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/decltype.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/10/16/decltype/">decltype</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+            
+        
+        
+            <p>Defines  a type equivalent to the type of an expression.</p>
+<p>By using the decltype keyword, you can let the compiler find out the type of an expression, this is the realization of the often requested typepf feature.</p>
+<p>One application of decltype is to declare return types; Another is to use it in metaprogramming or to pass the type of a lambda.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. declare return types</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</span><br><span class="line"><span class="keyword">decltype</span>(x + y) add(T1 x, T2 y); <span class="comment">// 不行</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</span><br><span class="line">auto add(T1 x, T2 y) -&gt; decltype(x + y);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. meta programming</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test_decltype</span><span class="params">(T obj)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">float</span>&gt;::value_type elem1;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">float</span>&gt; coll;</span><br><span class="line">    <span class="keyword">decltype</span>(coll)::value_type elem2;</span><br><span class="line">    </span><br><span class="line">    typedef typename decltype(obj)::iterator iType; // =&gt; typedef typename T::iterator iType</span><br><span class="line">    <span class="comment">// test_decltype(complex&lt;int&gt;()) 编译失败</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">decltype</span>(obj) anotherObj(obj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. pass the type of lambda</span></span><br><span class="line"><span class="keyword">auto</span> cmp = [](<span class="keyword">const</span> Person&amp; p1, <span class="keyword">const</span> Person&amp; p2) &#123;</span><br><span class="line">    <span class="keyword">return</span> p1.lastname() &lt; p2.lastname() || (p1.lastname() == p2.lastname() &amp;&amp; p1.firstname() &lt; p2.firstname()); </span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">set</span>&lt;Person, <span class="keyword">decltype</span>(cmp)&gt; coll(cmp);</span><br></pre></td></tr></table></figure>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-noexcept" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
@@ -1188,110 +1285,6 @@
             </p></blockquote></div>   
             <div class="article-more-link">
                 <a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/#more">查看更多</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-cppcon2020-Back-to-basics-The-Abstract-Machine" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/c/">c++</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c/">c++</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">
-            <time datetime="2020-10-09T02:53:25.000Z" itemprop="datePublished">2020-10-09</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/cppcon2020-Back-to-basics-The-Abstract-Machine.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/cppcon2020-Back-to-basics-The-Abstract-Machine.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/cppcon2020-Back-to-basics-The-Abstract-Machine.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">cppcon2020 Back to basics: The Abstract Machine</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p></p><h3 id="什么是-C-Abstract-Machine"><a href="#什么是-C-Abstract-Machine" class="headerlink" title="什么是 C++ Abstract Machine"></a>什么是 C++ Abstract Machine</h3><p>“The C++ Abstract machine is a portable abstraction of your operating system, kernel and hardware. The abstract machine is the intermediary between your c++ program and the system that it is run on.”</p>
-<p>C++ defines how programs work in terms of an abstract machine deliberately defined to be “close to the hardware”.</p>
-<p>When we write c++ code, we are writing to the c++ abstract machine.</p>
-<p><img src="\images\image-20201009111642176.png" alt=""></p>
-<h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><p>Memory</p>
-<p>
-                
-            
-        
-        
-            </p></div>   
-            <div class="article-more-link">
-                <a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/#more">查看更多</a>
             </div>
         
         <footer class="article-footer">

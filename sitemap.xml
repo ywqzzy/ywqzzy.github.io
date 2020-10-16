@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ywqzzy.github.io/2020/10/16/decltype/</loc>
+    
+    <lastmod>2020-10-16</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ywqzzy.github.io/2020/10/16/noexcept/</loc>
     
     <lastmod>2020-10-16</lastmod>
@@ -165,14 +172,14 @@
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/tags/%E4%BF%9D%E7%A0%94/</loc>
+    <loc>http://ywqzzy.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</loc>
     <lastmod>2020-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</loc>
+    <loc>http://ywqzzy.github.io/tags/%E4%BF%9D%E7%A0%94/</loc>
     <lastmod>2020-10-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
