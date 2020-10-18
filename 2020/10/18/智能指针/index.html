@@ -3,45 +3,24 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>词法分析 | zzywq</title>
+    <title>智能指针 | zzywq</title>
     
     
-        <meta name="keywords" content="编译原理">
+        <meta name="keywords" content="c++ c++11">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="标识符是一个大的集合。 记号的数据结构定义123456789101112enum kind &amp;#123;IF,LPAREN,ID,INTLIT,...&amp;#125;struct token&amp;#123;    enum kind k;    char *lexeme;// 单词&amp;#125;；/*eg  if(x&amp;gt;5) ===&amp;gt;&amp;gt;  token&amp;#123;k=IF,lexeme=0&amp;">
-<meta name="keywords" content="编译原理">
+    <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485template&amp;lt;class T&amp;gt;class SharedPoin">
+<meta name="keywords" content="c++ c++11">
 <meta property="og:type" content="article">
-<meta property="og:title" content="词法分析">
-<meta property="og:url" content="http://ywqzzy.github.io/2019/04/27/词法分析/index.html">
+<meta property="og:title" content="智能指针">
+<meta property="og:url" content="http://ywqzzy.github.io/2020/10/18/智能指针/index.html">
 <meta property="og:site_name" content="zzywq">
-<meta property="og:description" content="标识符是一个大的集合。 记号的数据结构定义123456789101112enum kind &amp;#123;IF,LPAREN,ID,INTLIT,...&amp;#125;struct token&amp;#123;    enum kind k;    char *lexeme;// 单词&amp;#125;；/*eg  if(x&amp;gt;5) ===&amp;gt;&amp;gt;  token&amp;#123;k=IF,lexeme=0&amp;">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485template&amp;lt;class T&amp;gt;class SharedPoin">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556345446610.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556345908254.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556346239830.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556346305746.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556346585122.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556347030449.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556347210990.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556347330767.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556347508085.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556347919744.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556348118187.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556352481806.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556352933809.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556353096339.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556364959944.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556365643462.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556366207999.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556366321276.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556369224478.png">
-<meta property="og:image" content="http://ywqzzy.github.io/images/1556369247701.png">
-<meta property="og:updated_time" content="2019-04-27T12:52:08.630Z">
+<meta property="og:updated_time" content="2020-10-18T14:12:06.220Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="词法分析">
-<meta name="twitter:description" content="标识符是一个大的集合。 记号的数据结构定义123456789101112enum kind &amp;#123;IF,LPAREN,ID,INTLIT,...&amp;#125;struct token&amp;#123;    enum kind k;    char *lexeme;// 单词&amp;#125;；/*eg  if(x&amp;gt;5) ===&amp;gt;&amp;gt;  token&amp;#123;k=IF,lexeme=0&amp;">
-<meta name="twitter:image" content="http://ywqzzy.github.io/images/1556345446610.png">
+<meta name="twitter:title" content="智能指针">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485template&amp;lt;class T&amp;gt;class SharedPoin">
     
 
     
@@ -239,13 +218,13 @@
         
         
          <ul class="unstyled" id="tree"> 
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             c++
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">cppcon2020 Back to basics: The Abstract Machine</a></li>  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/">cppcon2020 Back to basics: The structure of a Program</a></li>  <li class="file"><a href="/2020/10/15/uniform-initialization/">uniform initialization</a></li>  <li class="file"><a href="/2020/10/15/Variadic-Templates/">Variadic Templates</a></li>  <li class="file"><a href="/2020/10/16/explicit关键字/">explicit关键字</a></li>  <li class="file"><a href="/2020/10/16/Type-Alias/">Type Alias & using</a></li>  <li class="file"><a href="/2020/10/16/noexcept/">noexcept</a></li>  <li class="file"><a href="/2020/10/16/decltype/">decltype</a></li>  <li class="file"><a href="/2020/10/16/lambda/">lambda</a></li>  <li class="file"><a href="/2020/10/16/Rvalue-references/">Rvalue references</a></li>  <li class="file"><a href="/2020/10/16/写一个-move-aware-class/">写一个 Move aware class</a></li>  <li class="file"><a href="/2020/10/18/Singleton-c/">Singleton--C++</a></li>  <li class="file"><a href="/2020/10/18/智能指针/">智能指针</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">cppcon2020 Back to basics: The Abstract Machine</a></li>  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/">cppcon2020 Back to basics: The structure of a Program</a></li>  <li class="file"><a href="/2020/10/15/uniform-initialization/">uniform initialization</a></li>  <li class="file"><a href="/2020/10/15/Variadic-Templates/">Variadic Templates</a></li>  <li class="file"><a href="/2020/10/16/explicit关键字/">explicit关键字</a></li>  <li class="file"><a href="/2020/10/16/Type-Alias/">Type Alias & using</a></li>  <li class="file"><a href="/2020/10/16/noexcept/">noexcept</a></li>  <li class="file"><a href="/2020/10/16/decltype/">decltype</a></li>  <li class="file"><a href="/2020/10/16/lambda/">lambda</a></li>  <li class="file"><a href="/2020/10/16/Rvalue-references/">Rvalue references</a></li>  <li class="file"><a href="/2020/10/16/写一个-move-aware-class/">写一个 Move aware class</a></li>  <li class="file"><a href="/2020/10/18/Singleton-c/">Singleton--C++</a></li>  <li class="file active"><a href="/2020/10/18/智能指针/">智能指针</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -265,7 +244,7 @@
                         </a>
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/09/15/在知乎上删除掉的保研经验/">在知乎上删掉的保研经历</a></li>  </ul> 
                     </li> 
-                     <li class="file active"><a href="/2019/04/27/词法分析/">词法分析</a></li>  <li class="file"><a href="/2020/10/16/range-based-for-statement/">Range-based for statement</a></li>  </ul> 
+                     <li class="file"><a href="/2019/04/27/词法分析/">词法分析</a></li>  <li class="file"><a href="/2020/10/16/range-based-for-statement/">Range-based for statement</a></li>  </ul> 
     </div>
     <script>
         $(document).ready(function() {
@@ -336,7 +315,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-词法分析" class="article article-type-post" itemscope="" itemprop="blogPost">
+            <section id="main"><article id="post-智能指针" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -344,17 +323,22 @@
                 
                     <div class="article-meta">
                         
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/c/">c++</a>
+    </div>
+
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/编译原理/">编译原理</a>
+        <a class="tag-link" href="/tags/c-c-11/">c++ c++11</a>
     </div>
 
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2019/04/27/词法分析/">
-            <time datetime="2019-04-27T12:05:55.000Z" itemprop="datePublished">2019-04-27</time>
+        <a href="/2020/10/18/智能指针/">
+            <time datetime="2020-10-18T14:01:41.000Z" itemprop="datePublished">2020-10-18</time>
         </a>
     </div>
 
@@ -365,13 +349,13 @@
                         
                         
                             <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/词法分析.md"> Source </a>
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/智能指针.md"> Source </a>
                             </div>
                             <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/词法分析.md"> Edit </a>
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/智能指针.md"> Edit </a>
                             </div>
                             <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/词法分析.md"> History </a>
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/智能指针.md"> History </a>
                             </div>
                         
                     </div>
@@ -379,7 +363,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            词法分析
+            智能指针
         </h1>
     
 
@@ -390,64 +374,14 @@
         
         
             
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    
+                </div>
+            
         
         
-            <p><img src="\images\1556345446610.png" alt="1556345446610"></p>
-<p>标识符是一个大的集合。</p>
-<h4 id="记号的数据结构定义"><a href="#记号的数据结构定义" class="headerlink" title="记号的数据结构定义"></a>记号的数据结构定义</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> kind &#123;IF,LPAREN,ID,INTLIT,...&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">token</span>&#123;</span></span><br><span class="line">    <span class="keyword">enum</span> kind k;</span><br><span class="line">    <span class="keyword">char</span> *lexeme;<span class="comment">// 单词</span></span><br><span class="line">&#125;；</span><br><span class="line"><span class="comment">/*eg  if(x&gt;5) </span></span><br><span class="line"><span class="comment">===&gt;&gt;  </span></span><br><span class="line"><span class="comment">token&#123;k=IF,lexeme=0&#125;;</span></span><br><span class="line"><span class="comment">token&#123;k=LPAREN,lexeme=0&#125;；</span></span><br><span class="line"><span class="comment">token&#123;k=ID,lexeme="x"&#125;;</span></span><br><span class="line"><span class="comment">.....</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<p>词法分析器的任务，字符流到记号流。</p>
-<p>记号流是编译器内部定义的数据结构，编码所识别出的词法单元。</p>
-<h4 id="词法分析—手工构造法"><a href="#词法分析—手工构造法" class="headerlink" title="词法分析—手工构造法"></a>词法分析—手工构造法</h4><p>相对复杂，容易出错。</p>
-<p>词法分析器的生成器（自动化）：可快速原型、代码量少，但难控制细节。</p>
-<h5 id="转移图"><a href="#转移图" class="headerlink" title="转移图"></a>转移图</h5><p><img src="\images\1556345908254.png" alt="1556345908254"></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">token <span class="title">nextToken</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    c = getChar();</span><br><span class="line">    <span class="keyword">switch</span>(c) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'&lt;'</span>:</span><br><span class="line">            c= getChar();</span><br><span class="line">            <span class="keyword">switch</span>(c)&#123;</span><br><span class="line">                <span class="keyword">case</span> <span class="string">'='</span>: <span class="keyword">return</span> LE;</span><br><span class="line">                <span class="keyword">case</span>=<span class="string">'&gt;'</span>:<span class="keyword">return</span> NE;</span><br><span class="line">                <span class="keyword">default</span>: rollback();<span class="keyword">return</span> LT;    </span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'='</span>:<span class="keyword">return</span> EQ;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'&gt;'</span>: c= getChar();</span><br><span class="line">            <span class="keyword">switch</span>(c):&#123;</span><br><span class="line">                .....<span class="comment">//和上面类似</span></span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>标识符的转移图：</p>
-<p><img src="\images\1556346239830.png" alt="1556346239830"></p>
-<h5 id="识别关键字"><a href="#识别关键字" class="headerlink" title="识别关键字"></a>识别关键字</h5><p><img src="\images\1556346305746.png" alt="1556346305746"></p>
-<p>也可以弄关键字构成的哈希表，先统一按照关键符的转移图进行识别，进一步查表看是否是关键字。<strong>完美哈希</strong></p>
-<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h4><p><img src="\images\1556346585122.png" alt="1556346585122"></p>
-<p>kleene闭包。</p>
-<h5 id="例子：标识符"><a href="#例子：标识符" class="headerlink" title="例子：标识符"></a>例子：标识符</h5><p>c语言：以字母或下划线开头，后面跟多个或0个字母数字或下划线</p>
-<p>（a|b|c|…..z|A|B|C|….|Z|–<em>)(a|b|c|…..z|A|B|C|….|Z|</em>–|0|1|…|9|)*</p>
-<p><img src="\images\1556347030449.png" alt="1556347030449"></p>
-<h4 id="有限状态自动机"><a href="#有限状态自动机" class="headerlink" title="有限状态自动机"></a>有限状态自动机</h4><p><img src="\images\1556347210990.png" alt="1556347210990"></p>
-<p><img src="\images\1556347330767.png" alt="1556347330767"></p>
-<p><img src="\images\1556347508085.png" alt="1556347508085"></p>
-<p>非确定有限状态自动机（NFA）</p>
-<p>确定有限状态自动机（DFA)</p>
-<p>NFA难以判断字符串是否可接受。需要进行搜索。需要将NFA转化为等价的DFA。</p>
-<p><img src="\images\1556347919744.png" alt="1556347919744"></p>
-<h5 id="DFA的实现"><a href="#DFA的实现" class="headerlink" title="DFA的实现"></a>DFA的实现</h5><p>带有边和节点的有向图。</p>
-<p>边上面有信息</p>
-<p>节点上有信息</p>
-<h4 id="正则表达式到NFA（Thompson算法）"><a href="#正则表达式到NFA（Thompson算法）" class="headerlink" title="正则表达式到NFA（Thompson算法）"></a>正则表达式到NFA（Thompson算法）</h4><p>RE—&gt;NFA—&gt;DFA—&gt;词法分析器代码</p>
-<p><img src="\images\1556348118187.png" alt="1556348118187"></p>
-<p>对基本的RE直接构造</p>
-<p>对复合的RE递归构造</p>
-<h4 id="NFA转化为DFA（子集构造法）"><a href="#NFA转化为DFA（子集构造法）" class="headerlink" title="NFA转化为DFA（子集构造法）"></a>NFA转化为DFA（子集构造法）</h4><p> <img src="\images\1556352481806.png" alt="1556352481806"></p>
-<p>不动点算法：why能终止？</p>
-<p><img src="\images\1556352933809.png" alt="1556352933809"></p>
-<p><img src="\images\1556353096339.png" alt="1556353096339"></p>
-<p><img src="\images\1556364959944.png" alt="1556364959944"></p>
-<h4 id="DFA最小化"><a href="#DFA最小化" class="headerlink" title="DFA最小化"></a>DFA最小化</h4><h5 id="Hopcroft算法"><a href="#Hopcroft算法" class="headerlink" title="Hopcroft算法"></a>Hopcroft算法</h5><p><img src="\images\1556365643462.png" alt="1556365643462"></p>
-<p>什么叫做能切分？</p>
-<p>首先切分成非终结符和终结符两类</p>
-<h4 id="DFA的代码表示"><a href="#DFA的代码表示" class="headerlink" title="DFA的代码表示"></a>DFA的代码表示</h4><p>转移表</p>
-<p>哈希表</p>
-<p>跳转表</p>
-<ol>
-<li><p>转移表：还要有词法分析驱动代码。</p>
-<p><img src="\images\1556366207999.png" alt="1556366207999"></p>
-</li>
-</ol>
-<p>   <img src="\images\1556366321276.png" alt="1556366321276"></p>
-<p>​    最长匹配思想。</p>
-<ol start="2">
-<li>跳转表:</li>
-</ol>
-<p><img src="\images/1556369224478.png" alt="1556369224478"></p>
-<p><img src="\images/1556369247701.png" alt="1556369247701"></p>
-<p>跳转表不需要维护一个大的转移数组。</p>
+            <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">SharedPointer</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    SharedPointer():m_refCount(<span class="literal">nullptr</span>), m_pointer(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    SharedPointer(T* adoptTarget):m_refCount(<span class="literal">nullptr</span>), m_pointer(adoptTarget) &#123;</span><br><span class="line">        addReference();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    SharedPointer(<span class="keyword">const</span> SharedPointer&lt;T&gt;&amp; copy):m_refCount(copy.m_refCount), m_pointer(copy.m_pointer) &#123;</span><br><span class="line">        addReference();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">virtual</span> ~SharedPointer() &#123;</span><br><span class="line">        removeReference();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//赋值操作</span></span><br><span class="line">    <span class="comment">//当左值被赋值时，表明它不再指向所指的资源，故引用计数减一</span></span><br><span class="line">    <span class="comment">//之后，它指向了新的资源，所以对应这个资源的引用计数加一</span></span><br><span class="line">    SharedPointer&lt;T&gt;&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> SharedPointer&lt;T&gt;&amp; that) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> != &amp;that) &#123;</span><br><span class="line">            removeReference();</span><br><span class="line">            <span class="keyword">this</span>-&gt;m_pointer = that.m_pointer;</span><br><span class="line">            <span class="keyword">this</span>-&gt;m_refCount = that.m_refCount;</span><br><span class="line">            addReference();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//判断是否指向同一个资源</span></span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>==(<span class="keyword">const</span> SharedPointer&lt;T&gt;&amp; other) &#123;</span><br><span class="line">        <span class="keyword">return</span> m_pointer == other.m_pointer;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>!=(<span class="keyword">const</span> SharedPointer&lt;T&gt;&amp; other) &#123;</span><br><span class="line">        <span class="keyword">return</span> !<span class="keyword">operator</span>==(other);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//指针解引用</span></span><br><span class="line">    T&amp; <span class="keyword">operator</span>*() <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> *m_pointer;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//调用所知对象的公共成员</span></span><br><span class="line">    T* <span class="keyword">operator</span>-&gt;() <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> m_pointer;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//获取引用计数个数</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">GetReferenceCount</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (m_refCount) &#123;</span><br><span class="line">            <span class="keyword">return</span> *m_refCount;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> <span class="keyword">protected</span>:</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//当为nullpter时，创建引用计数资源，并初始化为1</span></span><br><span class="line">    <span class="comment">//否则，引用计数加1。</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addReference</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (m_refCount) &#123;</span><br><span class="line">            (*m_refCount)++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            m_refCount = <span class="keyword">new</span> <span class="keyword">int</span>(<span class="number">0</span>);</span><br><span class="line">            *m_refCount = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">removeReference</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(m_refCount) &#123;</span><br><span class="line">            (*m_refCount)--;</span><br><span class="line">            <span class="keyword">if</span>(*m_refCount == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">delete</span> m_refCount;</span><br><span class="line">                <span class="keyword">delete</span> m_pointer;</span><br><span class="line">                m_refCount = <span class="number">0</span>;</span><br><span class="line">                m_pointer = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> *m_refCount;</span><br><span class="line">    T *m_pointer;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
             </div>
         
@@ -460,15 +394,11 @@
     
 <nav id="article-nav">
     
-        <a href="/2020/09/15/在知乎上删除掉的保研经验/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    在知乎上删掉的保研经历
-                
-            </div>
-        </a>
     
+        <a href="/2020/10/18/Singleton-c/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Singleton--C++</div>
+        </a>
     
 </nav>
 
