@@ -166,7 +166,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                19
+                20
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -231,7 +231,7 @@
                             &nbsp;
                             c++
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">cppcon2020 Back to basics: The Abstract Machine</a></li>  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/">cppcon2020 Back to basics: The structure of a Program</a></li>  <li class="file"><a href="/2020/10/15/uniform-initialization/">uniform initialization</a></li>  <li class="file"><a href="/2020/10/15/Variadic-Templates/">Variadic Templates</a></li>  <li class="file"><a href="/2020/10/16/explicit关键字/">explicit关键字</a></li>  <li class="file"><a href="/2020/10/16/Type-Alias/">Type Alias & using</a></li>  <li class="file"><a href="/2020/10/16/noexcept/">noexcept</a></li>  <li class="file"><a href="/2020/10/16/decltype/">decltype</a></li>  <li class="file"><a href="/2020/10/16/lambda/">lambda</a></li>  <li class="file"><a href="/2020/10/16/Rvalue-references/">Rvalue references</a></li>  <li class="file"><a href="/2020/10/16/写一个-move-aware-class/">写一个 Move aware class</a></li>  <li class="file"><a href="/2020/10/18/Singleton-c/">Singleton--C++</a></li>  <li class="file"><a href="/2020/10/18/智能指针/">智能指针</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">cppcon2020 Back to basics: The Abstract Machine</a></li>  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/">cppcon2020 Back to basics: The structure of a Program</a></li>  <li class="file"><a href="/2020/10/15/uniform-initialization/">uniform initialization</a></li>  <li class="file"><a href="/2020/10/15/Variadic-Templates/">Variadic Templates</a></li>  <li class="file"><a href="/2020/10/16/explicit关键字/">explicit关键字</a></li>  <li class="file"><a href="/2020/10/16/Type-Alias/">Type Alias & using</a></li>  <li class="file"><a href="/2020/10/16/noexcept/">noexcept</a></li>  <li class="file"><a href="/2020/10/16/decltype/">decltype</a></li>  <li class="file"><a href="/2020/10/16/lambda/">lambda</a></li>  <li class="file"><a href="/2020/10/16/Rvalue-references/">Rvalue references</a></li>  <li class="file"><a href="/2020/10/16/写一个-move-aware-class/">写一个 Move aware class</a></li>  <li class="file"><a href="/2020/10/18/Singleton-c/">Singleton--C++</a></li>  <li class="file"><a href="/2020/10/18/智能指针/">智能指针</a></li>  <li class="file"><a href="/2020/10/18/pImpl/">pImpl</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -323,6 +323,93 @@
 </aside>
             
             <section id="main">
+        <article id="post-range-based-for-statement" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/10/16/range-based-for-statement/">
+            <time datetime="2020-10-16T02:17:09.000Z" itemprop="datePublished">2020-10-16</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/range-based-for-statement.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/range-based-for-statement.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/range-based-for-statement.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/10/16/range-based-for-statement/">Range-based for statement</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+            
+        
+        
+            <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">for( decl : coll) &#123;</span></span><br><span class="line"><span class="comment">    statement</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i: &#123;<span class="number">2</span>，<span class="number">3</span>，<span class="number">4</span>，<span class="number">5</span>，<span class="number">6</span>，<span class="number">76</span>，<span class="number">7</span>，<span class="number">8</span>，<span class="number">8</span>&#125;) &#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;i&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; vec;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span> elem: vec) &#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt; elem &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">auto</span>&amp; elem: vec) &#123;</span><br><span class="line">    elem *= <span class="number">3</span>;</span><br><span class="line">&#125;<span class="comment">// 关联式容器不能修改值</span></span><br></pre></td></tr></table></figure>
+<p><img src="\images/image-20201016102022386.png" alt=""></p>
+<p>No explicit type conversions are possible when elements are initialized as decl inside the for loop. Thus, the following does not compile:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">       <span class="function"><span class="keyword">explicit</span> <span class="title">C</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; s)</span></span>;</span><br><span class="line">    ....</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; vs;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">const</span> C&amp; elem: vs) &#123; <span class="comment">// error no conversion from string to C defined</span></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;elem&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-explicit关键字" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         

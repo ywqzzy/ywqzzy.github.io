@@ -3,24 +3,24 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>在知乎上删掉的保研经历 | zzywq</title>
+    <title>pImpl | zzywq</title>
     
     
-        <meta name="keywords" content="保研">
+        <meta name="keywords" content="c++">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="本科是帝都211，数字媒体技术专业（偏通信专业）。从大一下开始对编程产生了浓郁的兴趣，最开始的时候是自学c语言，当时快速学完了语法，以致于学校的c语言课都没怎么听过，考试轻松过。大一暑假接触前端，当时对于编程了解尚浅，所以更喜欢可视化的东西。跟着慕课网的课程看，也算是对前端有了初步的了解。大二课业繁重，加上大一成绩也不算特别好，就开始专心学习专业课（包括数电模电信号等课），最终得到了一个还不错的绩">
-<meta name="keywords" content="保研">
+    <meta name="description" content="pImpl（Private Implementation 或 Pointer to Implementation）是通过一个私有的成员指针，将指针所指向的类的内部实现数据进行隐藏。 优点：  降低模块的耦合。因为隐藏了类的实现，被隐藏的类相当于原类不可见，对隐藏的类进行修改，不需要重新编译原类。 降低编译依赖，提高编译速度。 接口与实现分离，提高接口的稳定性。  示例123456789101112">
+<meta name="keywords" content="c++">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在知乎上删掉的保研经历">
-<meta property="og:url" content="http://ywqzzy.github.io/2020/09/15/在知乎上删除掉的保研经验/index.html">
+<meta property="og:title" content="pImpl">
+<meta property="og:url" content="http://ywqzzy.github.io/2020/10/18/pImpl/index.html">
 <meta property="og:site_name" content="zzywq">
-<meta property="og:description" content="本科是帝都211，数字媒体技术专业（偏通信专业）。从大一下开始对编程产生了浓郁的兴趣，最开始的时候是自学c语言，当时快速学完了语法，以致于学校的c语言课都没怎么听过，考试轻松过。大一暑假接触前端，当时对于编程了解尚浅，所以更喜欢可视化的东西。跟着慕课网的课程看，也算是对前端有了初步的了解。大二课业繁重，加上大一成绩也不算特别好，就开始专心学习专业课（包括数电模电信号等课），最终得到了一个还不错的绩">
+<meta property="og:description" content="pImpl（Private Implementation 或 Pointer to Implementation）是通过一个私有的成员指针，将指针所指向的类的内部实现数据进行隐藏。 优点：  降低模块的耦合。因为隐藏了类的实现，被隐藏的类相当于原类不可见，对隐藏的类进行修改，不需要重新编译原类。 降低编译依赖，提高编译速度。 接口与实现分离，提高接口的稳定性。  示例123456789101112">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-15T09:14:46.590Z">
+<meta property="og:updated_time" content="2020-10-18T14:58:12.113Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在知乎上删掉的保研经历">
-<meta name="twitter:description" content="本科是帝都211，数字媒体技术专业（偏通信专业）。从大一下开始对编程产生了浓郁的兴趣，最开始的时候是自学c语言，当时快速学完了语法，以致于学校的c语言课都没怎么听过，考试轻松过。大一暑假接触前端，当时对于编程了解尚浅，所以更喜欢可视化的东西。跟着慕课网的课程看，也算是对前端有了初步的了解。大二课业繁重，加上大一成绩也不算特别好，就开始专心学习专业课（包括数电模电信号等课），最终得到了一个还不错的绩">
+<meta name="twitter:title" content="pImpl">
+<meta name="twitter:description" content="pImpl（Private Implementation 或 Pointer to Implementation）是通过一个私有的成员指针，将指针所指向的类的内部实现数据进行隐藏。 优点：  降低模块的耦合。因为隐藏了类的实现，被隐藏的类相当于原类不可见，对隐藏的类进行修改，不需要重新编译原类。 降低编译依赖，提高编译速度。 接口与实现分离，提高接口的稳定性。  示例123456789101112">
     
 
     
@@ -227,13 +227,13 @@
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/18/RAII/">RAII</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             c++
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">cppcon2020 Back to basics: The Abstract Machine</a></li>  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/">cppcon2020 Back to basics: The structure of a Program</a></li>  <li class="file"><a href="/2020/10/15/uniform-initialization/">uniform initialization</a></li>  <li class="file"><a href="/2020/10/15/Variadic-Templates/">Variadic Templates</a></li>  <li class="file"><a href="/2020/10/16/explicit关键字/">explicit关键字</a></li>  <li class="file"><a href="/2020/10/16/Type-Alias/">Type Alias & using</a></li>  <li class="file"><a href="/2020/10/16/noexcept/">noexcept</a></li>  <li class="file"><a href="/2020/10/16/decltype/">decltype</a></li>  <li class="file"><a href="/2020/10/16/lambda/">lambda</a></li>  <li class="file"><a href="/2020/10/16/Rvalue-references/">Rvalue references</a></li>  <li class="file"><a href="/2020/10/16/写一个-move-aware-class/">写一个 Move aware class</a></li>  <li class="file"><a href="/2020/10/18/Singleton-c/">Singleton--C++</a></li>  <li class="file"><a href="/2020/10/18/智能指针/">智能指针</a></li>  <li class="file"><a href="/2020/10/18/pImpl/">pImpl</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">cppcon2020 Back to basics: The Abstract Machine</a></li>  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/">cppcon2020 Back to basics: The structure of a Program</a></li>  <li class="file"><a href="/2020/10/15/uniform-initialization/">uniform initialization</a></li>  <li class="file"><a href="/2020/10/15/Variadic-Templates/">Variadic Templates</a></li>  <li class="file"><a href="/2020/10/16/explicit关键字/">explicit关键字</a></li>  <li class="file"><a href="/2020/10/16/Type-Alias/">Type Alias & using</a></li>  <li class="file"><a href="/2020/10/16/noexcept/">noexcept</a></li>  <li class="file"><a href="/2020/10/16/decltype/">decltype</a></li>  <li class="file"><a href="/2020/10/16/lambda/">lambda</a></li>  <li class="file"><a href="/2020/10/16/Rvalue-references/">Rvalue references</a></li>  <li class="file"><a href="/2020/10/16/写一个-move-aware-class/">写一个 Move aware class</a></li>  <li class="file"><a href="/2020/10/18/Singleton-c/">Singleton--C++</a></li>  <li class="file"><a href="/2020/10/18/智能指针/">智能指针</a></li>  <li class="file active"><a href="/2020/10/18/pImpl/">pImpl</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -245,13 +245,13 @@
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/12/reactor-proactor/">reactor & proactor</a></li>  <li class="file"><a href="/2020/10/12/同步-IO-和异步-IO/">同步 IO 和异步 IO</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory open">
+                    <li class="directory">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder-open"></i>
+                            <i class="fa fa-folder"></i>
                             &nbsp;
                             保研
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file active"><a href="/2020/09/15/在知乎上删除掉的保研经验/">在知乎上删掉的保研经历</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/09/15/在知乎上删除掉的保研经验/">在知乎上删掉的保研经历</a></li>  </ul> 
                     </li> 
                      <li class="file"><a href="/2019/04/27/词法分析/">词法分析</a></li>  <li class="file"><a href="/2020/10/16/range-based-for-statement/">Range-based for statement</a></li>  </ul> 
     </div>
@@ -324,7 +324,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-在知乎上删除掉的保研经验" class="article article-type-post" itemscope="" itemprop="blogPost">
+            <section id="main"><article id="post-pImpl" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -334,20 +334,20 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/保研/">保研</a>
+        <a class="article-category-link" href="/categories/c/">c++</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/保研/">保研</a>
+        <a class="tag-link" href="/tags/c/">c++</a>
     </div>
 
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2020/09/15/在知乎上删除掉的保研经验/">
-            <time datetime="2020-09-15T02:53:27.000Z" itemprop="datePublished">2020-09-15</time>
+        <a href="/2020/10/18/pImpl/">
+            <time datetime="2020-10-18T14:54:58.000Z" itemprop="datePublished">2020-10-18</time>
         </a>
     </div>
 
@@ -358,13 +358,13 @@
                         
                         
                             <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/在知乎上删除掉的保研经验.md"> Source </a>
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/pImpl.md"> Source </a>
                             </div>
                             <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/在知乎上删除掉的保研经验.md"> Edit </a>
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/pImpl.md"> Edit </a>
                             </div>
                             <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/在知乎上删除掉的保研经验.md"> History </a>
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/pImpl.md"> History </a>
                             </div>
                         
                     </div>
@@ -372,7 +372,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            在知乎上删掉的保研经历
+            pImpl
         </h1>
     
 
@@ -383,45 +383,26 @@
         
         
             
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#示例"><span class="toc-number">1.</span> <span class="toc-text">示例</span></a></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number"></span> <span class="toc-text">参考资料</span></a>
+                </li></div>
+            
         
         
-            <p>本科是帝都211，数字媒体技术专业（偏通信专业）。<br>从大一下开始对编程产生了浓郁的兴趣，最开始的时候是自学c语言，当时快速学完了语法，以致于学校的c语言课都没怎么听过，考试轻松过。<br>大一暑假接触前端，当时对于编程了解尚浅，所以更喜欢可视化的东西。跟着慕课网的课程看，也算是对前端有了初步的了解。<br>大二课业繁重，加上大一成绩也不算特别好，就开始专心学习专业课（包括数电模电信号等课），最终得到了一个还不错的绩点，但是这段时间内对于编程的学习也就断断续续了。寒假期间陪女朋友学车的时候在驾校的咖啡厅看完了整套的邓俊辉数据结构，算是入了门，但是具体的代码也没有实践过。大二下学期由于要和做大创，又对unity浅尝辄止，算是了解了点面向对象的思想。<br>之后参加了学校ACM集训，暑假在学校呆了一个月，每天刷题（虽然都是些简单题），倒也算是把基本的数据结构熟悉了，也锻炼了编程思维。同时又学了一些机器学习，看了《机器学习基石》系列教程，还有CS231n（当然仍然浅尝辄止）。大二下本想转专业去计科，后权衡再三，没有转。<br>大三上。<br>身边的大佬师哥拿到了很好的offer，交谈中其实很是振奋，觉得一直自学下去其实也是可行的，故决心放弃绩点专心刷计算机基础课，期间简略看完CSAPP,看了大半部SICP，刷了算法橙书，计算机网络（自顶向下），并且坚持ACM训练，6级考了577。有幸参加了两次ACM区域赛，均打铁（不过还是不甘）。<br>寒假决定找工作，匆忙间看了李航的《统计学习方法》，一刷了《王道数据结构》和《剑指offer》。又知道自己基础薄弱，开始看操作系统，这门课起初学起来十分吃力，前后换了很多教程和课本，最终靠孙志岗老师的教程初步了解了操作系统。期间还看了点java和javaweb，跟着教程完成了小的项目。可以说那段时间是慌乱和迷茫的，知道自己很差却只能拼了命地弥补。</p>
-<p>大三下继续ACM训练和计算机专业课的学习，先是看了东南徐立臻老师的《数据库》教程。又在一阵慌乱中继续着算法的训练。参加过春招（内推），打击过大，遂放弃（电话面试一问三不知，一点b-树都没有），还得感谢师哥模拟面试，虽然我最后砸的不行。决意考研，和女票一起考南大软件。在正式复习考研前，参加acm邀请赛，意外拿了银牌，算是一个很大的惊喜，可能是“杨超越附体”了。<br>考研专业课有四门（数据结构，操作系统，计算机网络和软件工程）。从5月底到9月中旬，就是充实的考研复习阶段了。期间专业课至少过了2遍，数据结构的算法题应该都刷了不止一遍，基本的题目应该是很熟悉了。南软的软件工程专业课让我收获颇丰，一是面向对象的思想，二是一个中型系统项目对自己的启发。软件工程这门课包括了uml和一些设计模式和面向对象的知识，课程设置独树一帜。</p>
-<p>￼</p>
-<p>考研复习期间还做过php和java的项目。php项目算是学了设计模式之后的一次练兵，算是自己第一次不跟着教程写项目，对于代码不断进行重构，成就感max。</p>
-<p>然后转机来了，机缘巧合，本不该进入保研圈的我因为之前得到的奖和相对较高的绩点幸运保研，真实的幸运，感激地一塌糊涂！！</p>
-<p>保研名单下来的迟，准备的少，还得感谢 @邱锐 大佬给的申请经验，成功推免至北邮网研院。</p>
-<p>#update</p>
-<p>更新下保研的过程吧。中秋去女票家的时候收到学校推免成功的消息后才开始投简历。之前一直准备考研，心里觉得只有拿到学校推免才能完全放下考研的复习全身心准备面试。</p>
-<p>陆续投了一堆江浙沪和南方的学校（家在南京），包括华师，同济，复旦，华东理工，南大，中科大，中南大学之类的。当时想着就是海投了。北京投了北邮之后也就没管了。从女票家回来之后第一天就去北邮面试，上午面试计算机学院，下午网研院，网研院当场收到offer（面试官：这题你是不是都做过了？我：嗯，复习考研这些题刷过了）而且他们超棒啊，直接劝我别直博，因为我数学差的要死。王道数据结构课后题我从寒假开始刷，直到面试的时候已经刷了3遍了QAQ。</p>
-<p>后来陆续收到科大，华师，中南的面试通知（貌似都稳了），再三考虑后全鸽了，对不起对不起对不起。</p>
-<p>可能是大学前三年压抑太久了（翘过无数必修课选修课，就为了学会自己怎么都学不会的算法）最后想让我顺一回吧。</p>
-<p>大学三年经历过各种迷茫困顿，总觉得无法消弭和科班大佬之间的差距，一直都在追赶，也一直在本专业的课程和计算机课程之间游离。所幸两者得兼，所幸不负韶华。</p>
-<p>￼￼</p>
-<p>一定得感谢体贴的女票一直的照顾和陪伴，你最终还是支持了我的决定。虽然你我将有短暂的分别，但是相信读完研后，我们都会是更好的自己了。</p>
-<p>具体的学习历程还有恋爱历程之后可以更。</p>
-<p>保研到北京还是心疼女票啊啊啊啊啊啊啊啊啊啊啊。</p>
-<p>update </p>
-<p>女票成功上岸南大软件。%%%%tql</p>
-<p>转眼就到毕业。</p>
-<p>最近才稍有些毕业的感觉。</p>
-<p>四年是日渐拥挤的书架，日均12000步的行走，零星几个肝掉的深夜，几十张车票，“北境不遗忘”，“我要成为海贼王”，“Run as one”….</p>
-<p>少了许多少年心事，不再说华丽辞藻含蓄故事。多了肚子、大腿上的肉，愈发坚定且直抒胸臆。</p>
-<p>前两天采访时候，问研究生规划我并未作答。并非毫无愿景。四年的际遇奇迹满满，三年后亦未可知，不设限，任我行。希望能够各自攀峰，山顶再会 </p>
-<p>毕业后要变成一个真正的男人，要控制情绪，处理好生活与工作，爱自己，爱他人，眼里有光。</p>
-<p>感谢不可能的和可能的。</p>
-<p>遇见你之前，幻想高考多对一道选择题，物理大题第一题没有算错，或许人生的轨迹就会大不相同。</p>
-<p>遇见你之后，无法形容自己有多幸运。在人生的这条马氏链上，我似乎找到了Best policy，援引The big bang theroy剧内插曲的歌词。</p>
-<p>I couldn’t have imagined </p>
-<p>How good my life would get </p>
-<p>From the moment that I met you</p>
-<p>过去的遗憾也不能算是遗憾了，现在拥有的就是现在了。</p>
-<p>穿过人潮汹涌灯火阑珊，</p>
-<p>没有想过回头。</p>
-<p>再 update 日期2020/9/15</p>
-<p>经过一段阵痛期，之后再寒假后陪女票找实习，npy太强了，先后拿下跟谁学，美团，字节，阿里的实习offer，实习后更加知道了追求的东西和出路。</p>
-<p>之前的一些幼稚想法也变得成熟起来。</p>
-<p>前路坦荡，可别走歪了。</p>
+            <p>pImpl（Private Implementation 或 Pointer to Implementation）是通过一个私有的成员指针，将指针所指向的类的内部实现数据进行隐藏。</p>
+<p>优点：</p>
+<ol>
+<li>降低模块的耦合。因为隐藏了类的实现，被隐藏的类相当于原类不可见，对隐藏的类进行修改，不需要重新编译原类。</li>
+<li>降低编译依赖，提高编译速度。</li>
+<li>接口与实现分离，提高接口的稳定性。</li>
+</ol>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> __LINE_H__</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> __LINE_H__</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"><span class="comment">//设计模式: PIMPL</span></span><br><span class="line"><span class="comment">//1. 实现信息隐藏</span></span><br><span class="line"><span class="comment">//2. 减小编译依赖, 可以用最小的代价平滑的升级库文件，</span></span><br><span class="line"><span class="comment">//3. 接口与实现进行解耦</span></span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Line</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    Line(<span class="keyword">int</span>,<span class="keyword">int</span>,<span class="keyword">int</span>,<span class="keyword">int</span>);</span><br><span class="line">    ~Line();</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">printLine</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">LineImpl</span>;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    LineImpl * _pimpl;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Line</span>:</span>:LineImpl</span><br><span class="line">&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Point</span></span></span><br><span class="line"><span class="class">    &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        Point(<span class="keyword">int</span> ix = <span class="number">0</span>, <span class="keyword">int</span> iy = <span class="number">0</span>)</span><br><span class="line">        : _ix(ix)</span><br><span class="line">        , _iy(iy)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"Point(int=0, int=0)"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"("</span> &lt;&lt; _ix</span><br><span class="line">                 &lt;&lt; <span class="string">","</span> &lt;&lt; _iy</span><br><span class="line">                 &lt;&lt; <span class="string">")"</span>;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="keyword">int</span> _ix;</span><br><span class="line">        <span class="keyword">int</span> _iy;</span><br><span class="line">    &#125;;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    LineImpl(<span class="keyword">int</span> x1, <span class="keyword">int</span> y1, <span class="keyword">int</span> x2, <span class="keyword">int</span> y2)</span><br><span class="line">    : _p1(x1, y1)</span><br><span class="line">    , _p2(x2, y2)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"LineImpl(int,int,int,int)"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    ~LineImpl() &#123;   <span class="built_in">cout</span> &lt;&lt; <span class="string">"~LineImpl()"</span> &lt;&lt; <span class="built_in">endl</span>;  &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">printLine</span><span class="params">()</span> <span class="keyword">const</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    Point _p1;</span><br><span class="line">    Point _p2;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">void</span> Line::LineImpl::printLine() <span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line">    _p1.print();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">" --&gt; "</span>;</span><br><span class="line">    _p2.print();</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">Line::Line(<span class="keyword">int</span> x1, <span class="keyword">int</span> y1, <span class="keyword">int</span> x2, <span class="keyword">int</span> y2)</span><br><span class="line">: _pimpl(<span class="keyword">new</span> LineImpl(x1, y1, x2, y2))</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Line(int,int,int,int)"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">Line::~Line()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">delete</span> _pimpl;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"~Line()"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">void</span> Line::printLine() <span class="keyword">const</span></span><br><span class="line">&#123;</span><br><span class="line">    _pimpl-&gt;printLine();</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a href="https://www.cnblogs.com/cthon/p/9196258.html" target="_blank" rel="noopener">cnblogs</a></li>
+</ul>
+</blockquote>
 
             </div>
         
@@ -434,19 +415,10 @@
     
 <nav id="article-nav">
     
-        <a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">上一篇</strong>
-            <div class="article-nav-title">
-                
-                    cppcon2020 Back to basics: The Abstract Machine
-                
-            </div>
-        </a>
     
-    
-        <a href="/2019/04/27/词法分析/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2020/10/18/RAII/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">词法分析</div>
+            <div class="article-nav-title">RAII</div>
         </a>
     
 </nav>

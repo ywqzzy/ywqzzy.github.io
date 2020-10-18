@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ywqzzy.github.io/2020/10/18/pImpl/</loc>
+    
+    <lastmod>2020-10-18</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ywqzzy.github.io/2020/10/18/RAII/</loc>
     
     <lastmod>2020-10-18</lastmod>
@@ -165,14 +172,14 @@
 
   
   <url>
-    <loc>http://ywqzzy.github.io/tags/C/</loc>
+    <loc>http://ywqzzy.github.io/tags/c-c-11/</loc>
     <lastmod>2020-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/tags/c-c-11/</loc>
+    <loc>http://ywqzzy.github.io/tags/C/</loc>
     <lastmod>2020-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -216,14 +223,14 @@
 
   
   <url>
-    <loc>http://ywqzzy.github.io/categories/C/</loc>
+    <loc>http://ywqzzy.github.io/categories/c/</loc>
     <lastmod>2020-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/categories/c/</loc>
+    <loc>http://ywqzzy.github.io/categories/C/</loc>
     <lastmod>2020-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
