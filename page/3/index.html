@@ -3,22 +3,21 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>About | zzywq</title>
+    <title>zzywq</title>
     
     
-        <meta name="keywords" content="About">
+        <meta name="keywords" content="zzywq">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="coding dream">
 <meta property="og:type" content="website">
-<meta property="og:title" content="About">
-<meta property="og:url" content="http://ywqzzy.github.io/about/index.html">
+<meta property="og:title" content="zzywq">
+<meta property="og:url" content="http://ywqzzy.github.io/page/3/index.html">
 <meta property="og:site_name" content="zzywq">
 <meta property="og:description" content="coding dream">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-09-15T06:00:21.517Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About">
+<meta name="twitter:title" content="zzywq">
 <meta name="twitter:description" content="coding dream">
     
 
@@ -323,16 +322,51 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="page-" class="article article-type-page" itemscope="" itemprop="blogPost">
+            <section id="main">
+        <article id="post-词法分析" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
         
             <header class="article-header">
                 
+                    <div class="article-meta">
+                        
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/编译原理/">编译原理</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2019/04/27/词法分析/">
+            <time datetime="2019-04-27T12:05:55.000Z" itemprop="datePublished">2019-04-27</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/词法分析.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/词法分析.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/词法分析.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
                 
     
-        <h1 class="article-title" itemprop="name">
-            About
+        <h1 itemprop="name">
+            <a class="article-title" href="/2019/04/27/词法分析/">词法分析</a>
         </h1>
     
 
@@ -343,9 +377,38 @@
         
         
             
-        
-        
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p></p><p><img src="\images\1556345446610.png" alt="1556345446610"></p>
+<p>标识符是一个大的集合。</p>
+<h4 id="记号的数据结构定义"><a href="#记号的数据结构定义" class="headerlink" title="记号的数据结构定义"></a>记号的数据结构定义</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> kind &#123;IF,LPAREN,ID,INTLIT,...&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">token</span>&#123;</span></span><br><span class="line">    <span class="keyword">enum</span> kind k;</span><br><span class="line">    <span class="keyword">char</span> *lexeme;<span class="comment">// 单词</span></span><br><span class="line">&#125;；</span><br><span class="line"><span class="comment">/*eg  if(x&gt;5) </span></span><br><span class="line"><span class="comment">===&gt;&gt;  </span></span><br><span class="line"><span class="comment">token&#123;k=IF,lexeme=0&#125;;</span></span><br><span class="line"><span class="comment">token&#123;k=LPAREN,lexeme=0&#125;；</span></span><br><span class="line"><span class="comment">token&#123;k=ID,lexeme="x"&#125;;</span></span><br><span class="line"><span class="comment">.....</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>词法分析器的任务，字符流到记号流。</p>
+<p>记号流是编译器内部定义的数据结构，编码所识别出的词法单元。</p>
+<p>
+                
             
+        
+        
+            </p></div>   
+            <div class="article-more-link">
+                <a href="/2019/04/27/词法分析/#more">查看更多</a>
             </div>
         
         <footer class="article-footer">
@@ -354,21 +417,15 @@
 </article>
 
 
-    
 
 
 
 
     
+        <nav id="page-nav">
+        <a class="extend prev" rel="prev" href="/page/2/">&laquo; 上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+        </nav>
     
-
-
-
-
-<!-- baidu url auto push script -->
-<script type="text/javascript">
-    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
-</script>     
 </section>
         </div>
         <footer id="footer">
