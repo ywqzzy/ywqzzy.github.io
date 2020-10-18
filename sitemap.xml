@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ywqzzy.github.io/2020/10/18/RAII/</loc>
+    
+    <lastmod>2020-10-18</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ywqzzy.github.io/2020/10/18/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</loc>
     
     <lastmod>2020-10-18</lastmod>
@@ -158,6 +165,13 @@
 
   
   <url>
+    <loc>http://ywqzzy.github.io/tags/C/</loc>
+    <lastmod>2020-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://ywqzzy.github.io/tags/c-c-11/</loc>
     <lastmod>2020-10-18</lastmod>
     <changefreq>daily</changefreq>
@@ -179,14 +193,14 @@
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/tags/io/</loc>
+    <loc>http://ywqzzy.github.io/tags/%E4%BF%9D%E7%A0%94/</loc>
     <lastmod>2020-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/tags/%E4%BF%9D%E7%A0%94/</loc>
+    <loc>http://ywqzzy.github.io/tags/io/</loc>
     <lastmod>2020-10-18</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -200,6 +214,13 @@
   </url>
   
 
+  
+  <url>
+    <loc>http://ywqzzy.github.io/categories/C/</loc>
+    <lastmod>2020-10-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
   
   <url>
     <loc>http://ywqzzy.github.io/categories/c/</loc>
