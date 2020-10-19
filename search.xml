@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Noncopyable</title>
+      <link href="/2020/10/19/Noncopyable/"/>
+      <url>/2020/10/19/Noncopyable/</url>
+      
+        <content type="html"><![CDATA[<p>在 Muduo 中，有一个 noncopyable 类，继承了该类的派生类不能被拷贝，只能被移动。涉及拷贝的函数有两个：拷贝构造函数和拷贝复制操作符。将这两个方法声明为不可访问或者删除，就可以达到不可拷贝的效果。</p><h2 id="将函数声明为-private"><a href="#将函数声明为-private" class="headerlink" title="将函数声明为 private"></a>将函数声明为 private</h2><p>将拷贝构造函数和拷贝复制操作符声明为 private，能阻止编译器创建这两个函数，同时阻止用户调用他们，从而达到阻止拷贝的效果。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">noncopyable</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">  noncopyable() &#123;&#125;</span><br><span class="line">  ~noncopyable() &#123;&#125;</span><br><span class="line"><span class="keyword">private</span>:<span class="comment">// emphasize the following members are private</span></span><br><span class="line">  noncopyable( <span class="keyword">const</span> noncopyable&amp; );</span><br><span class="line">  noncopyable&amp; <span class="keyword">operator</span>=( <span class="keyword">const</span> noncopyable&amp; );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>使用方法如下：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">foo</span>:</span> <span class="keyword">private</span> noncopyable&#123;&#125;;</span><br></pre></td></tr></table></figure><p>一定要使用 private 来继承，防止 member 函数和 friend 函数访问。</p><h2 id="c-11-使用-delete关键字"><a href="#c-11-使用-delete关键字" class="headerlink" title="c++11 使用 delete关键字"></a>c++11 使用 delete关键字</h2><p>代码如下：</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">noncopyable</span> &#123;</span></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">noncopyable() = <span class="keyword">default</span>;</span><br><span class="line">~noncopyable() = <span class="keyword">default</span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">noncopyable(<span class="keyword">const</span> noncopyable&amp;) = <span class="keyword">delete</span>;</span><br><span class="line"><span class="keyword">const</span> noncopyable&amp; <span class="keyword">operator</span>=( <span class="keyword">const</span> noncopyable&amp; ) = <span class="keyword">delete</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p>把构造函数和析构函数设置为 protected 权限，这样子类可以调用，外面的其他类不能调用。</p><p>使用 delete 关键字禁止编译器自动产生 copy 构造函数，和copy assignment ctor。</p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote><ul><li><a href="https://github.com/chenshuo/muduo" target="_blank" rel="noopener">muduo</a></li><li><a href="https://segmentfault.com/a/1190000020400025" target="_blank" rel="noopener">segmentfault</a></li></ul></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> c++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> c++ c++11 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>对象池</title>
       <link href="/2020/10/18/%E5%AF%B9%E8%B1%A1%E6%B1%A0/"/>
       <url>/2020/10/18/%E5%AF%B9%E8%B1%A1%E6%B1%A0/</url>
