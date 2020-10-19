@@ -166,7 +166,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                24
+                27
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -222,7 +222,7 @@
                             &nbsp;
                             c++
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">cppcon2020 Back to basics: The Abstract Machine</a></li>  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/">cppcon2020 Back to basics: The structure of a Program</a></li>  <li class="file"><a href="/2020/10/15/uniform-initialization/">uniform initialization</a></li>  <li class="file"><a href="/2020/10/15/Variadic-Templates/">Variadic Templates</a></li>  <li class="file"><a href="/2020/10/16/explicit关键字/">explicit关键字</a></li>  <li class="file"><a href="/2020/10/16/Type-Alias/">Type Alias & using</a></li>  <li class="file"><a href="/2020/10/16/noexcept/">noexcept</a></li>  <li class="file"><a href="/2020/10/16/decltype/">decltype</a></li>  <li class="file"><a href="/2020/10/16/lambda/">lambda</a></li>  <li class="file"><a href="/2020/10/16/Rvalue-references/">Rvalue references</a></li>  <li class="file"><a href="/2020/10/16/写一个-move-aware-class/">写一个 Move aware class</a></li>  <li class="file"><a href="/2020/10/18/Singleton-c/">Singleton--C++</a></li>  <li class="file"><a href="/2020/10/18/智能指针/">智能指针</a></li>  <li class="file"><a href="/2020/10/18/RAII/">RAII</a></li>  <li class="file"><a href="/2020/10/18/pImpl/">pImpl</a></li>  <li class="file"><a href="/2020/10/18/对象池/">对象池</a></li>  <li class="file"><a href="/2020/10/19/Noncopyable/">Noncopyable</a></li>  <li class="file"><a href="/2020/10/19/实现string类/">实现string类</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">cppcon2020 Back to basics: The Abstract Machine</a></li>  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/">cppcon2020 Back to basics: The structure of a Program</a></li>  <li class="file"><a href="/2020/10/15/uniform-initialization/">uniform initialization</a></li>  <li class="file"><a href="/2020/10/15/Variadic-Templates/">Variadic Templates</a></li>  <li class="file"><a href="/2020/10/16/explicit关键字/">explicit关键字</a></li>  <li class="file"><a href="/2020/10/16/Type-Alias/">Type Alias & using</a></li>  <li class="file"><a href="/2020/10/16/noexcept/">noexcept</a></li>  <li class="file"><a href="/2020/10/16/decltype/">decltype</a></li>  <li class="file"><a href="/2020/10/16/lambda/">lambda</a></li>  <li class="file"><a href="/2020/10/16/Rvalue-references/">Rvalue references</a></li>  <li class="file"><a href="/2020/10/16/写一个-move-aware-class/">写一个 Move aware class</a></li>  <li class="file"><a href="/2020/10/18/Singleton-c/">Singleton--C++</a></li>  <li class="file"><a href="/2020/10/18/智能指针/">智能指针</a></li>  <li class="file"><a href="/2020/10/18/RAII/">RAII</a></li>  <li class="file"><a href="/2020/10/18/pImpl/">pImpl</a></li>  <li class="file"><a href="/2020/10/18/对象池/">对象池</a></li>  <li class="file"><a href="/2020/10/19/Noncopyable/">Noncopyable</a></li>  <li class="file"><a href="/2020/10/19/实现string类/">实现string类</a></li>  <li class="file"><a href="/2020/10/19/c-11计时器/">C++11 计时器</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -251,7 +251,7 @@
                         </a>
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/09/15/在知乎上删除掉的保研经验/">在知乎上删掉的保研经历</a></li>  </ul> 
                     </li> 
-                     <li class="file"><a href="/2019/04/27/词法分析/">词法分析</a></li>  <li class="file"><a href="/2020/10/16/range-based-for-statement/">Range-based for statement</a></li>  </ul> 
+                     <li class="file"><a href="/2019/04/27/词法分析/">词法分析</a></li>  <li class="file"><a href="/2020/10/16/range-based-for-statement/">Range-based for statement</a></li>  <li class="file"><a href="/2020/10/19/实现简单的固定线程数的线程池/">实现简单的固定线程数的线程池</a></li>  <li class="file"><a href="/2020/10/19/实现时间轮/">实现时间轮</a></li>  </ul> 
     </div>
     <script>
         $(document).ready(function() {
@@ -323,6 +323,298 @@
 </aside>
             
             <section id="main">
+        <article id="post-实现时间轮" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/10/19/实现时间轮/">
+            <time datetime="2020-10-19T08:42:47.000Z" itemprop="datePublished">2020-10-19</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/实现时间轮.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/实现时间轮.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/实现时间轮.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/10/19/实现时间轮/">实现时间轮</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p></p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+<p>
+                
+            
+        
+        
+            </p></blockquote></div>   
+            <div class="article-more-link">
+                <a href="/2020/10/19/实现时间轮/#more">查看更多</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-c-11计时器" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/c/">c++</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/c-c-11/">c++ c++11</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/10/19/c-11计时器/">
+            <time datetime="2020-10-19T08:29:17.000Z" itemprop="datePublished">2020-10-19</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/c-11计时器.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/c-11计时器.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/c-11计时器.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/10/19/c-11计时器/">C++11 计时器</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p></p><h2 id="chrono"><a href="#chrono" class="headerlink" title="chrono"></a>chrono</h2><p>这里主要介绍时间点和时钟两个点：</p>
+<p>​        一般计时器就是从某个时间点开始，然后到某个时间点之间的计数，就是我们一般称之为耗时；</p>
+<p><strong>时间点：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">Clock</span>, <span class="title">class</span> <span class="title">Duration</span> = <span class="title">typename</span> <span class="title">Clock</span>:</span>:duration&gt;</span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">time_point</span>;</span></span><br></pre></td></tr></table></figure>
+<p>std::chrono::time_point 表示一个具体时间</p>
+<p>
+                
+            
+        
+        
+            </p></div>   
+            <div class="article-more-link">
+                <a href="/2020/10/19/c-11计时器/#more">查看更多</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-实现简单的固定线程数的线程池" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+                        
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/10/19/实现简单的固定线程数的线程池/">
+            <time datetime="2020-10-19T08:20:58.000Z" itemprop="datePublished">2020-10-19</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/实现简单的固定线程数的线程池.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/实现简单的固定线程数的线程池.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/实现简单的固定线程数的线程池.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/10/19/实现简单的固定线程数的线程池/">实现简单的固定线程数的线程池</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">作者：Graphene</span><br><span class="line">链接：https:<span class="comment">//www.zhihu.com/question/27908489/answer/355105668</span></span><br><span class="line">来源：知乎</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mutex&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;condition_variable&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;functional&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;thread&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">fixed_thread_pool</span> &#123;</span></span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">explicit</span> <span class="title">fixed_thread_pool</span><span class="params">(<span class="keyword">size_t</span> thread_count)</span></span></span><br><span class="line">      : data_(std::make_shared&lt;data&gt;()) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; thread_count; ++i) &#123;</span><br><span class="line">      <span class="built_in">std</span>::thread([data = data_] &#123;</span><br><span class="line">        <span class="built_in">std</span>::unique_lock&lt;<span class="built_in">std</span>::mutex&gt; lk(data-&gt;mtx_);</span><br><span class="line">        <span class="keyword">for</span> (;;) &#123;</span><br><span class="line">          <span class="keyword">if</span> (!data-&gt;tasks_.empty()) &#123;</span><br><span class="line">            <span class="keyword">auto</span> current = <span class="built_in">std</span>::move(data-&gt;tasks_.front());</span><br><span class="line">            data-&gt;tasks_.pop();</span><br><span class="line">            lk.unlock();</span><br><span class="line">            current();</span><br><span class="line">            lk.lock();</span><br><span class="line">          &#125; <span class="keyword">else</span> <span class="keyword">if</span> (data-&gt;is_shutdown_) &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            data-&gt;cond_.wait(lk);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;).detach();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  fixed_thread_pool() = <span class="keyword">default</span>;</span><br><span class="line">  fixed_thread_pool(fixed_thread_pool&amp;&amp;) = <span class="keyword">default</span>;</span><br><span class="line"></span><br><span class="line">  ~fixed_thread_pool() &#123;</span><br><span class="line">    <span class="keyword">if</span> ((<span class="keyword">bool</span>) data_) &#123;</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="built_in">std</span>::lock_guard&lt;<span class="built_in">std</span>::mutex&gt; lk(data_-&gt;mtx_);</span><br><span class="line">        data_-&gt;is_shutdown_ = <span class="literal">true</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      data_-&gt;cond_.notify_all();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">F</span>&gt;</span></span><br><span class="line"><span class="class">  <span class="title">void</span> <span class="title">execute</span>(<span class="title">F</span>&amp;&amp; <span class="title">task</span>) &#123;</span></span><br><span class="line">    &#123;</span><br><span class="line">      <span class="built_in">std</span>::lock_guard&lt;<span class="built_in">std</span>::mutex&gt; lk(data_-&gt;mtx_);</span><br><span class="line">      data_-&gt;tasks_.emplace(<span class="built_in">std</span>::forward&lt;F&gt;(task));</span><br><span class="line">    &#125;</span><br><span class="line">    data_-&gt;cond_.notify_one();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">data</span> &#123;</span></span><br><span class="line">    <span class="built_in">std</span>::mutex mtx_;</span><br><span class="line">    <span class="built_in">std</span>::condition_variable cond_;</span><br><span class="line">    <span class="keyword">bool</span> is_shutdown_ = <span class="literal">false</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">queue</span>&lt;<span class="built_in">std</span>::function&lt;<span class="keyword">void</span>()&gt;&gt; tasks_;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">shared_ptr</span>&lt;data&gt; data_;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+</p><p>非常僵硬的看不懂了，之后再来回味。。。。</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a href="https://www.zhihu.com/question/27908489/answer/355105668" target="_blank" rel="noopener">Graphene</a></li>
+<p>
+                
+            
+        
+        
+            </p></ul></blockquote></div>   
+            <div class="article-more-link">
+                <a href="/2020/10/19/实现简单的固定线程数的线程池/#more">查看更多</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-实现简单的线程安全Queue" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
@@ -1019,299 +1311,6 @@
         
             <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">SharedPointer</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    SharedPointer():m_refCount(<span class="literal">nullptr</span>), m_pointer(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    SharedPointer(T* adoptTarget):m_refCount(<span class="literal">nullptr</span>), m_pointer(adoptTarget) &#123;</span><br><span class="line">        addReference();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    SharedPointer(<span class="keyword">const</span> SharedPointer&lt;T&gt;&amp; copy):m_refCount(copy.m_refCount), m_pointer(copy.m_pointer) &#123;</span><br><span class="line">        addReference();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">virtual</span> ~SharedPointer() &#123;</span><br><span class="line">        removeReference();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//赋值操作</span></span><br><span class="line">    <span class="comment">//当左值被赋值时，表明它不再指向所指的资源，故引用计数减一</span></span><br><span class="line">    <span class="comment">//之后，它指向了新的资源，所以对应这个资源的引用计数加一</span></span><br><span class="line">    SharedPointer&lt;T&gt;&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> SharedPointer&lt;T&gt;&amp; that) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> != &amp;that) &#123;</span><br><span class="line">            removeReference();</span><br><span class="line">            <span class="keyword">this</span>-&gt;m_pointer = that.m_pointer;</span><br><span class="line">            <span class="keyword">this</span>-&gt;m_refCount = that.m_refCount;</span><br><span class="line">            addReference();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//判断是否指向同一个资源</span></span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>==(<span class="keyword">const</span> SharedPointer&lt;T&gt;&amp; other) &#123;</span><br><span class="line">        <span class="keyword">return</span> m_pointer == other.m_pointer;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>!=(<span class="keyword">const</span> SharedPointer&lt;T&gt;&amp; other) &#123;</span><br><span class="line">        <span class="keyword">return</span> !<span class="keyword">operator</span>==(other);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//指针解引用</span></span><br><span class="line">    T&amp; <span class="keyword">operator</span>*() <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> *m_pointer;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//调用所知对象的公共成员</span></span><br><span class="line">    T* <span class="keyword">operator</span>-&gt;() <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> m_pointer;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//获取引用计数个数</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">GetReferenceCount</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (m_refCount) &#123;</span><br><span class="line">            <span class="keyword">return</span> *m_refCount;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> <span class="keyword">protected</span>:</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//当为nullpter时，创建引用计数资源，并初始化为1</span></span><br><span class="line">    <span class="comment">//否则，引用计数加1。</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addReference</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (m_refCount) &#123;</span><br><span class="line">            (*m_refCount)++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            m_refCount = <span class="keyword">new</span> <span class="keyword">int</span>(<span class="number">0</span>);</span><br><span class="line">            *m_refCount = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">removeReference</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(m_refCount) &#123;</span><br><span class="line">            (*m_refCount)--;</span><br><span class="line">            <span class="keyword">if</span>(*m_refCount == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">delete</span> m_refCount;</span><br><span class="line">                <span class="keyword">delete</span> m_pointer;</span><br><span class="line">                m_refCount = <span class="number">0</span>;</span><br><span class="line">                m_pointer = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> *m_refCount;</span><br><span class="line">    T *m_pointer;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-Singleton-c" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/c/">c++</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c-c-11/">c++ c++11</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/18/Singleton-c/">
-            <time datetime="2020-10-18T12:49:12.000Z" itemprop="datePublished">2020-10-18</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/Singleton-c.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/Singleton-c.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/Singleton-c.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2020/10/18/Singleton-c/">Singleton--C++</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p></p><h3 id="懒汉版"><a href="#懒汉版" class="headerlink" title="懒汉版"></a>懒汉版</h3><h4 id="最简版"><a href="#最简版" class="headerlink" title="最简版"></a>最简版</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">static</span> Singleton* instance;</span><br><span class="line">    Singleton() &#123;&#125;;</span><br><span class="line">    ~Singleton() &#123;&#125;;</span><br><span class="line">    Singleton(<span class="keyword">const</span> Singleton&amp;);</span><br><span class="line">    Singleton&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> Singleton&amp;);</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">static</span> Singleton* <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(instance == <span class="literal">NULL</span>) instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Singleton* Singleton::instance = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
-<p>存在内存泄漏的问题，解决方案：</p>
-<ol>
-<li>使用智能指针</li>
-<li>使用静态的嵌套类对象</li>
-<p>
-                
-            
-        
-        
-            </p></ol></div>   
-            <div class="article-more-link">
-                <a href="/2020/10/18/Singleton-c/#more">查看更多</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-写一个-move-aware-class" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/c/">c++</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c-c-11/">c++ c++11</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/16/写一个-move-aware-class/">
-            <time datetime="2020-10-16T09:19:55.000Z" itemprop="datePublished">2020-10-16</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/写一个-move-aware-class.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/写一个-move-aware-class.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/写一个-move-aware-class.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2020/10/16/写一个-move-aware-class/">写一个 Move aware class</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-            
-        
-        
-            <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyString</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">size_t</span> DCtor;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">size_t</span> Ctor;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">size_t</span> CCtor;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">size_t</span> CAsgn;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">size_t</span> MCtor;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">size_t</span> Dtor;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">char</span>* _data;</span><br><span class="line">    <span class="keyword">size_t</span> _len;</span><br><span class="line">    <span class="keyword">void</span> _init_data(<span class="keyword">const</span> <span class="keyword">char</span> *s) &#123;</span><br><span class="line">        _data = <span class="keyword">new</span> <span class="keyword">char</span>[_len + <span class="number">1</span>];</span><br><span class="line">        <span class="built_in">memcpy</span>(_data, s, _len);</span><br><span class="line">        _data[_len] = <span class="string">'\0'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// default ctor</span></span><br><span class="line">    MyString(): _data(<span class="literal">NULL</span>), _len(<span class="number">0</span>) &#123;</span><br><span class="line">        ++DCtor;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ctor</span></span><br><span class="line">    MyString(<span class="keyword">const</span> <span class="keyword">char</span>* p): _len(<span class="built_in">strlen</span>(p)) &#123;</span><br><span class="line">        ++Ctor;</span><br><span class="line">        _init_data(p);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// copy ctor</span></span><br><span class="line">    MyString(<span class="keyword">const</span> Mystring&amp; str):_len(str._len) &#123;</span><br><span class="line">        ++CCtor;</span><br><span class="line">        _init_data(str._data);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// move ctor</span></span><br><span class="line">    MyString(MyString&amp;&amp; str) <span class="keyword">noexcept</span></span><br><span class="line">        :_data(str._data), _len(str._len) &#123;</span><br><span class="line">        ++MCtor;</span><br><span class="line">        str._len = <span class="number">0</span>;</span><br><span class="line">        str._data = <span class="literal">NULL</span>;<span class="comment">// IMPORTANT</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// copy assignment</span></span><br><span class="line">    MyString&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> MyString&amp; str) &#123;</span><br><span class="line">        ++CAsgn;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span> != &amp;str) &#123;  <span class="comment">// 自我赋值检查</span></span><br><span class="line">            <span class="keyword">if</span>(_data) <span class="keyword">delete</span> _data;</span><br><span class="line">            _len = str._len;</span><br><span class="line">            _init_data(str._data);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// move assignment</span></span><br><span class="line">    MyString&amp; <span class="keyword">operator</span>=(MyString&amp;&amp; str) <span class="keyword">noexcept</span>&#123;</span><br><span class="line">        ++MAsgn;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span> != &amp;str) &#123;  <span class="comment">// 自我赋值检查</span></span><br><span class="line">            <span class="keyword">if</span>(_data) <span class="keyword">delete</span> _data;</span><br><span class="line">            _len = str._len;</span><br><span class="line">            _data = str._data;</span><br><span class="line">            str._len = <span class="number">0</span>;</span><br><span class="line">            str._data = <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// dtor</span></span><br><span class="line">    <span class="keyword">virtual</span> ~MyString() &#123;  </span><br><span class="line">        ++Dtor;</span><br><span class="line">        <span class="keyword">if</span>(_data) <span class="keyword">delete</span> _data;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// operator&lt;</span></span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> MyString&amp; rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">string</span>(<span class="keyword">this</span>-&gt;data) &lt; <span class="built_in">string</span>(rhs._data);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// operator==</span></span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>==(<span class="keyword">const</span> MyString&amp; rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">string</span>(<span class="keyword">this</span>-&gt;data) == <span class="built_in">string</span>(rhs._data); </span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="function"><span class="keyword">char</span>* <span class="title">get</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> _data; &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">size_t</span> MyString::DCtor = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">size_t</span> MyString::Ctor = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">size_t</span> MyString::CCtor = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">size_t</span> MyString::CAsgn = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">size_t</span> MyString::MCtor = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">size_t</span> MyString::Dtor = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">size_t</span> MyString::MAsgn = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">namespace</span> <span class="built_in">std</span> &#123;</span><br><span class="line"><span class="keyword">template</span>&lt;&gt;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">hash</span>&lt;MyString&gt; &#123;</span> <span class="comment">// for unordered containers</span></span><br><span class="line">    <span class="keyword">size_t</span> <span class="keyword">operator</span>() (<span class="keyword">const</span> MyString&amp; s) <span class="keyword">const</span> <span class="keyword">noexcept</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> hash&lt;<span class="built_in">string</span>&gt;()(<span class="built_in">string</span>(s.get()));</span><br><span class="line">        <span class="comment">// 借用现成的 hash&lt;string&gt;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-Rvalue-references" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/c/">c++</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c-c-11/">c++ c++11</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/16/Rvalue-references/">
-            <time datetime="2020-10-16T08:30:54.000Z" itemprop="datePublished">2020-10-16</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/Rvalue-references.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/Rvalue-references.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/Rvalue-references.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2020/10/16/Rvalue-references/">Rvalue references</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p></p><h3 id="Rvalue-references"><a href="#Rvalue-references" class="headerlink" title="Rvalue-references"></a>Rvalue-references</h3><p>Rvalue references are a new reference type introduced in C++0x that help solve the problem of unnecessary coping and enable perfect forwarding. When the right-hand side of  an assignment is an rvalue, then the left-hand side object can steal resources from the right-hand side object rather than performing a seperate allocation, thus enabling move semantics.</p>
-<p>Lvalue: 可以出现于 operator = 左侧者</p>
-<p>Rvalue: 只能出现于 operator  = 右侧者</p>
-<p><img src="\images/image-20201016163813510.png" alt=""></p>
-<p>只要在内存中有确定存储空间的都是左值。</p>
-<p>
-                
-            
-        
-        
-            </p></div>   
-            <div class="article-more-link">
-                <a href="/2020/10/16/Rvalue-references/#more">查看更多</a>
             </div>
         
         <footer class="article-footer">

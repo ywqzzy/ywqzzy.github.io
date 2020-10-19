@@ -3,26 +3,24 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>Variadic Templates | zzywq</title>
+    <title>C++11 计时器 | zzywq</title>
     
     
-        <meta name="keywords" content="c++">
+        <meta name="keywords" content="c++ c++11">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354#include &amp;lt;iostream&amp;gt;// 处理无参数的情况void printX() &amp;#123;    std::cout &amp;lt;&amp;lt; std::endl;&amp;#125;// 任意参">
-<meta name="keywords" content="c++">
+    <meta name="description" content="chrono这里主要介绍时间点和时钟两个点： ​        一般计时器就是从某个时间点开始，然后到某个时间点之间的计数，就是我们一般称之为耗时； 时间点： 12template &amp;lt;class Clock, class Duration = typename Clock::duration&amp;gt;  class time_point; std::chrono::time_point 表示一">
+<meta name="keywords" content="c++ c++11">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Variadic Templates">
-<meta property="og:url" content="http://ywqzzy.github.io/2020/10/15/Variadic-Templates/index.html">
+<meta property="og:title" content="C++11 计时器">
+<meta property="og:url" content="http://ywqzzy.github.io/2020/10/19/c-11计时器/index.html">
 <meta property="og:site_name" content="zzywq">
-<meta property="og:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354#include &amp;lt;iostream&amp;gt;// 处理无参数的情况void printX() &amp;#123;    std::cout &amp;lt;&amp;lt; std::endl;&amp;#125;// 任意参">
+<meta property="og:description" content="chrono这里主要介绍时间点和时钟两个点： ​        一般计时器就是从某个时间点开始，然后到某个时间点之间的计数，就是我们一般称之为耗时； 时间点： 12template &amp;lt;class Clock, class Duration = typename Clock::duration&amp;gt;  class time_point; std::chrono::time_point 表示一">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ywqzzy.github.io/images/image-20201015164406400.png">
-<meta property="og:updated_time" content="2020-10-15T09:08:23.145Z">
+<meta property="og:updated_time" content="2020-10-19T08:44:37.740Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Variadic Templates">
-<meta name="twitter:description" content="123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354#include &amp;lt;iostream&amp;gt;// 处理无参数的情况void printX() &amp;#123;    std::cout &amp;lt;&amp;lt; std::endl;&amp;#125;// 任意参">
-<meta name="twitter:image" content="http://ywqzzy.github.io/images/image-20201015164406400.png">
+<meta name="twitter:title" content="C++11 计时器">
+<meta name="twitter:description" content="chrono这里主要介绍时间点和时钟两个点： ​        一般计时器就是从某个时间点开始，然后到某个时间点之间的计数，就是我们一般称之为耗时； 时间点： 12template &amp;lt;class Clock, class Duration = typename Clock::duration&amp;gt;  class time_point; std::chrono::time_point 表示一">
     
 
     
@@ -226,7 +224,7 @@
                             &nbsp;
                             c++
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">cppcon2020 Back to basics: The Abstract Machine</a></li>  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/">cppcon2020 Back to basics: The structure of a Program</a></li>  <li class="file"><a href="/2020/10/15/uniform-initialization/">uniform initialization</a></li>  <li class="file active"><a href="/2020/10/15/Variadic-Templates/">Variadic Templates</a></li>  <li class="file"><a href="/2020/10/16/explicit关键字/">explicit关键字</a></li>  <li class="file"><a href="/2020/10/16/Type-Alias/">Type Alias & using</a></li>  <li class="file"><a href="/2020/10/16/noexcept/">noexcept</a></li>  <li class="file"><a href="/2020/10/16/decltype/">decltype</a></li>  <li class="file"><a href="/2020/10/16/lambda/">lambda</a></li>  <li class="file"><a href="/2020/10/16/Rvalue-references/">Rvalue references</a></li>  <li class="file"><a href="/2020/10/16/写一个-move-aware-class/">写一个 Move aware class</a></li>  <li class="file"><a href="/2020/10/18/Singleton-c/">Singleton--C++</a></li>  <li class="file"><a href="/2020/10/18/智能指针/">智能指针</a></li>  <li class="file"><a href="/2020/10/18/RAII/">RAII</a></li>  <li class="file"><a href="/2020/10/18/pImpl/">pImpl</a></li>  <li class="file"><a href="/2020/10/18/对象池/">对象池</a></li>  <li class="file"><a href="/2020/10/19/Noncopyable/">Noncopyable</a></li>  <li class="file"><a href="/2020/10/19/实现string类/">实现string类</a></li>  <li class="file"><a href="/2020/10/19/c-11计时器/">C++11 计时器</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">cppcon2020 Back to basics: The Abstract Machine</a></li>  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/">cppcon2020 Back to basics: The structure of a Program</a></li>  <li class="file"><a href="/2020/10/15/uniform-initialization/">uniform initialization</a></li>  <li class="file"><a href="/2020/10/15/Variadic-Templates/">Variadic Templates</a></li>  <li class="file"><a href="/2020/10/16/explicit关键字/">explicit关键字</a></li>  <li class="file"><a href="/2020/10/16/Type-Alias/">Type Alias & using</a></li>  <li class="file"><a href="/2020/10/16/noexcept/">noexcept</a></li>  <li class="file"><a href="/2020/10/16/decltype/">decltype</a></li>  <li class="file"><a href="/2020/10/16/lambda/">lambda</a></li>  <li class="file"><a href="/2020/10/16/Rvalue-references/">Rvalue references</a></li>  <li class="file"><a href="/2020/10/16/写一个-move-aware-class/">写一个 Move aware class</a></li>  <li class="file"><a href="/2020/10/18/Singleton-c/">Singleton--C++</a></li>  <li class="file"><a href="/2020/10/18/智能指针/">智能指针</a></li>  <li class="file"><a href="/2020/10/18/RAII/">RAII</a></li>  <li class="file"><a href="/2020/10/18/pImpl/">pImpl</a></li>  <li class="file"><a href="/2020/10/18/对象池/">对象池</a></li>  <li class="file"><a href="/2020/10/19/Noncopyable/">Noncopyable</a></li>  <li class="file"><a href="/2020/10/19/实现string类/">实现string类</a></li>  <li class="file active"><a href="/2020/10/19/c-11计时器/">C++11 计时器</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -326,7 +324,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-Variadic-Templates" class="article article-type-post" itemscope="" itemprop="blogPost">
+            <section id="main"><article id="post-c-11计时器" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -342,14 +340,14 @@
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c/">c++</a>
+        <a class="tag-link" href="/tags/c-c-11/">c++ c++11</a>
     </div>
 
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2020/10/15/Variadic-Templates/">
-            <time datetime="2020-10-15T08:23:42.000Z" itemprop="datePublished">2020-10-15</time>
+        <a href="/2020/10/19/c-11计时器/">
+            <time datetime="2020-10-19T08:29:17.000Z" itemprop="datePublished">2020-10-19</time>
         </a>
     </div>
 
@@ -360,13 +358,13 @@
                         
                         
                             <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/Variadic-Templates.md"> Source </a>
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/c-11计时器.md"> Source </a>
                             </div>
                             <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/Variadic-Templates.md"> Edit </a>
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/c-11计时器.md"> Edit </a>
                             </div>
                             <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/Variadic-Templates.md"> History </a>
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/c-11计时器.md"> History </a>
                             </div>
                         
                     </div>
@@ -374,7 +372,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            Variadic Templates
+            C++11 计时器
         </h1>
     
 
@@ -387,13 +385,31 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#chrono"><span class="toc-number">1.</span> <span class="toc-text">chrono</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现高精度计时器"><span class="toc-number">2.</span> <span class="toc-text">实现高精度计时器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#测试"><span class="toc-number">3.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">4.</span> <span class="toc-text">参考资料</span></a></li></ol>
                 </div>
             
         
         
-            <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 处理无参数的情况</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printX</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 任意参数类型</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Types&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printX</span><span class="params">(<span class="keyword">const</span> T&amp; firstArg, <span class="keyword">const</span> Types&amp;... args)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; firstArg &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"left:"</span> &lt;&lt; <span class="keyword">sizeof</span>...(args) &lt;&lt; <span class="string">"params"</span> &lt;&lt; <span class="string">" "</span>;</span><br><span class="line">    <span class="comment">// args 会被分为2部分 一部分是第一个参数 第二部分是args...</span></span><br><span class="line">    printX(args...);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ... 是所谓的 pack</span></span><br><span class="line"><span class="comment">// 用于 template parameters 就是 template parameters pack</span></span><br><span class="line"><span class="comment">// 用于 function parameter types 就是 function parameter types pack</span></span><br><span class="line"><span class="comment">// 用于 function parameters 就是 function parameters pack</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printf</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *s)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(*s) &#123;</span><br><span class="line">        <span class="keyword">if</span>(*s==<span class="string">'%'</span>&amp;&amp;*(++s)!=<span class="string">'%'</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="built_in">std</span>::runtime_error(<span class="string">"invalid format string"</span>);</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; *s++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//printf</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span>... Args&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printf</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* s, T value, Args... args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(*s) &#123;</span><br><span class="line">        <span class="keyword">if</span>(*s==<span class="string">'%'</span>&amp;&amp;*(++s)!=<span class="string">'%'</span>) &#123;</span><br><span class="line">            <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; value;</span><br><span class="line">            <span class="built_in">printf</span>(++s, args...);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; *s++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">std</span>::runtime_error(<span class="string">"invalid format string"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maximum</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;<span class="keyword">return</span> n;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span>...Args&gt;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">maximum</span><span class="params">(<span class="keyword">int</span> n, Args... args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">std</span>::max(n, maximum(args...));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    printX(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="string">"asa"</span>);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; maximum(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>) &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="\images/image-20201015164406400.png" alt=""></p>
+            <h2 id="chrono"><a href="#chrono" class="headerlink" title="chrono"></a>chrono</h2><p>这里主要介绍时间点和时钟两个点：</p>
+<p>​        一般计时器就是从某个时间点开始，然后到某个时间点之间的计数，就是我们一般称之为耗时；</p>
+<p><strong>时间点：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">Clock</span>, <span class="title">class</span> <span class="title">Duration</span> = <span class="title">typename</span> <span class="title">Clock</span>:</span>:duration&gt;</span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">time_point</span>;</span></span><br></pre></td></tr></table></figure>
+<p>std::chrono::time_point 表示一个具体时间</p>
+<p>第一个模板参数Clock用来指定所要使用的时钟,在标准库中有三种时钟，分别为：</p>
+<ul>
+<li>system_clock：当前系统范围(即对各进程都一致)的一个实时的日历时钟(wallclock)</li>
+<li>steady_clock：当前系统实现的一个维定时钟，该时钟的每个时间嘀嗒单位是均匀的(即长度相等)。</li>
+<li>high_resolution_clock：当前系统实现的一个高分辨率时钟。</li>
+</ul>
+<p>第二个模板函数参数用来表示时间的计量单位(特化的std::chrono::duration&lt;&gt; )</p>
+<p>时间点都有一个时间戳，即时间原点。chrono库中采用的是Unix的时间戳1970年1月1日 00:00。所以time_point也就是距离时间戳(epoch)的时间长度（duration)</p>
+<h2 id="实现高精度计时器"><a href="#实现高精度计时器" class="headerlink" title="实现高精度计时器"></a>实现高精度计时器</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> _TimerClock_hpp_</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _TimerClock_hpp_</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;chrono&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>::chrono;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TimerClock</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"> TimerClock()</span><br><span class="line"> &#123;</span><br><span class="line">  update();</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> ~TimerClock()</span><br><span class="line"> &#123;</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">()</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">  _start = high_resolution_clock::now();</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="comment">//获取秒</span></span><br><span class="line"> <span class="function"><span class="keyword">double</span> <span class="title">getTimerSecond</span><span class="params">()</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> getTimerMicroSec() * <span class="number">0.000001</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="comment">//获取毫秒</span></span><br><span class="line"> <span class="function"><span class="keyword">double</span> <span class="title">getTimerMilliSec</span><span class="params">()</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> getTimerMicroSec()*<span class="number">0.001</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="comment">//获取微妙</span></span><br><span class="line"> <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">getTimerMicroSec</span><span class="params">()</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">  <span class="comment">//当前时钟减去开始时钟的count</span></span><br><span class="line">  <span class="keyword">return</span> duration_cast&lt;microseconds&gt;(high_resolution_clock::now() - _start).count();</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line"> time_point&lt;high_resolution_clock&gt;_start;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"TimerClock.hpp"</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> TimerClock TC;</span><br><span class="line"> <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line"> TC.update();</span><br><span class="line"> <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &gt; <span class="number">100000</span>; i++)</span><br><span class="line"> &#123;</span><br><span class="line">  sum++;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="built_in">cout</span> &lt;&lt; <span class="string">"cost time:"</span> &lt;&lt; TC.getTimerMilliSec() &lt;&lt;<span class="string">"ms"</span>&lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"> <span class="built_in">cout</span> &lt;&lt; <span class="string">"cost time:"</span> &lt;&lt; TC.getTimerMicroSec() &lt;&lt; <span class="string">"us"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/137626056" target="_blank" rel="noopener">飞翔的猪</a></li>
+</ul>
+</blockquote>
 
             </div>
         
@@ -406,19 +422,19 @@
     
 <nav id="article-nav">
     
-        <a href="/2020/10/16/explicit关键字/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2020/10/19/实现时间轮/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">上一篇</strong>
             <div class="article-nav-title">
                 
-                    explicit关键字
+                    实现时间轮
                 
             </div>
         </a>
     
     
-        <a href="/2020/10/15/uniform-initialization/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2020/10/19/实现简单的固定线程数的线程池/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">uniform initialization</div>
+            <div class="article-nav-title">实现简单的固定线程数的线程池</div>
         </a>
     
 </nav>
