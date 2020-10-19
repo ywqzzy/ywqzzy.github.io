@@ -6,18 +6,18 @@
     <title>RAII | zzywq</title>
     
     
-        <meta name="keywords" content="C++">
+        <meta name="keywords" content="c++">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="什么是RAIIRAII（Resource Acquisition Is Initialization）是由 c++ 之父 Bjarne Stroustrup 提出的，中文翻译为资源获取即初始化，他说：使用局部对象来管理资源的技术称为资源获取即初始化；这里的资源主要是指操作系统中有限的东西如内存、网络套接字等等，局部对象是指存储在栈的对象，它的生命周期是由操作系统来管理的，无需人工介入； RAII的">
-<meta name="keywords" content="C++">
+<meta name="keywords" content="c++">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RAII">
 <meta property="og:url" content="http://ywqzzy.github.io/2020/10/18/RAII/index.html">
 <meta property="og:site_name" content="zzywq">
 <meta property="og:description" content="什么是RAIIRAII（Resource Acquisition Is Initialization）是由 c++ 之父 Bjarne Stroustrup 提出的，中文翻译为资源获取即初始化，他说：使用局部对象来管理资源的技术称为资源获取即初始化；这里的资源主要是指操作系统中有限的东西如内存、网络套接字等等，局部对象是指存储在栈的对象，它的生命周期是由操作系统来管理的，无需人工介入； RAII的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-18T14:42:24.829Z">
+<meta property="og:updated_time" content="2020-10-19T07:57:06.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RAII">
 <meta name="twitter:description" content="什么是RAIIRAII（Resource Acquisition Is Initialization）是由 c++ 之父 Bjarne Stroustrup 提出的，中文翻译为资源获取即初始化，他说：使用局部对象来管理资源的技术称为资源获取即初始化；这里的资源主要是指操作系统中有限的东西如内存、网络套接字等等，局部对象是指存储在栈的对象，它的生命周期是由操作系统来管理的，无需人工介入； RAII的">
@@ -172,7 +172,7 @@
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                7
+                6
                 <span>标签</span>
             </div>
         </div>
@@ -222,18 +222,9 @@
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder-open"></i>
                             &nbsp;
-                            C++
-                        </a>
-                         <ul class="unstyled" id="tree">  <li class="file active"><a href="/2020/10/18/RAII/">RAII</a></li>  </ul> 
-                    </li> 
-                    
-                    <li class="directory">
-                        <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
-                            &nbsp;
                             c++
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">cppcon2020 Back to basics: The Abstract Machine</a></li>  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/">cppcon2020 Back to basics: The structure of a Program</a></li>  <li class="file"><a href="/2020/10/15/uniform-initialization/">uniform initialization</a></li>  <li class="file"><a href="/2020/10/15/Variadic-Templates/">Variadic Templates</a></li>  <li class="file"><a href="/2020/10/16/explicit关键字/">explicit关键字</a></li>  <li class="file"><a href="/2020/10/16/Type-Alias/">Type Alias & using</a></li>  <li class="file"><a href="/2020/10/16/noexcept/">noexcept</a></li>  <li class="file"><a href="/2020/10/16/decltype/">decltype</a></li>  <li class="file"><a href="/2020/10/16/lambda/">lambda</a></li>  <li class="file"><a href="/2020/10/16/Rvalue-references/">Rvalue references</a></li>  <li class="file"><a href="/2020/10/16/写一个-move-aware-class/">写一个 Move aware class</a></li>  <li class="file"><a href="/2020/10/18/Singleton-c/">Singleton--C++</a></li>  <li class="file"><a href="/2020/10/18/智能指针/">智能指针</a></li>  <li class="file"><a href="/2020/10/18/pImpl/">pImpl</a></li>  <li class="file"><a href="/2020/10/18/对象池/">对象池</a></li>  <li class="file"><a href="/2020/10/19/Noncopyable/">Noncopyable</a></li>  <li class="file"><a href="/2020/10/19/实现string类/">实现string类</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">cppcon2020 Back to basics: The Abstract Machine</a></li>  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/">cppcon2020 Back to basics: The structure of a Program</a></li>  <li class="file"><a href="/2020/10/15/uniform-initialization/">uniform initialization</a></li>  <li class="file"><a href="/2020/10/15/Variadic-Templates/">Variadic Templates</a></li>  <li class="file"><a href="/2020/10/16/explicit关键字/">explicit关键字</a></li>  <li class="file"><a href="/2020/10/16/Type-Alias/">Type Alias & using</a></li>  <li class="file"><a href="/2020/10/16/noexcept/">noexcept</a></li>  <li class="file"><a href="/2020/10/16/decltype/">decltype</a></li>  <li class="file"><a href="/2020/10/16/lambda/">lambda</a></li>  <li class="file"><a href="/2020/10/16/Rvalue-references/">Rvalue references</a></li>  <li class="file"><a href="/2020/10/16/写一个-move-aware-class/">写一个 Move aware class</a></li>  <li class="file"><a href="/2020/10/18/Singleton-c/">Singleton--C++</a></li>  <li class="file"><a href="/2020/10/18/智能指针/">智能指针</a></li>  <li class="file active"><a href="/2020/10/18/RAII/">RAII</a></li>  <li class="file"><a href="/2020/10/18/pImpl/">pImpl</a></li>  <li class="file"><a href="/2020/10/18/对象池/">对象池</a></li>  <li class="file"><a href="/2020/10/19/Noncopyable/">Noncopyable</a></li>  <li class="file"><a href="/2020/10/19/实现string类/">实现string类</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -334,13 +325,13 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/C/">C++</a>
+        <a class="article-category-link" href="/categories/c/">c++</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/C/">C++</a>
+        <a class="tag-link" href="/tags/c/">c++</a>
     </div>
 
                         
