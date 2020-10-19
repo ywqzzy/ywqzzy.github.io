@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://ywqzzy.github.io/"/>
-  <updated>2020-10-19T07:41:50.082Z</updated>
+  <updated>2020-10-19T08:16:57.970Z</updated>
   <id>http://ywqzzy.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>实现简单的线程安全Queue</title>
+    <link href="http://ywqzzy.github.io/2020/10/19/%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E7%9A%84%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8Queue/"/>
+    <id>http://ywqzzy.github.io/2020/10/19/实现简单的线程安全Queue/</id>
+    <published>2020-10-19T08:15:01.000Z</published>
+    <updated>2020-10-19T08:16:57.970Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;mutex&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Thread safe implementation of a Queue using an std::queue</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SafeQueue</span> &#123;</span></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">  <span class="built_in">std</span>::<span class="built_in">queue</span>&lt;T&gt; m_queue;</span><br><span class="line">  <span class="built_in">std</span>::mutex m_mutex;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  SafeQueue() &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  SafeQueue(SafeQueue&amp; other) &#123;</span><br><span class="line">    <span class="comment">//<span class="doctag">TODO:</span></span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  ~SafeQueue() &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">empty</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::unique_lock&lt;<span class="built_in">std</span>::mutex&gt; lock(m_mutex);</span><br><span class="line">    <span class="keyword">return</span> m_queue.empty();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">size</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::unique_lock&lt;<span class="built_in">std</span>::mutex&gt; lock(m_mutex);</span><br><span class="line">    <span class="keyword">return</span> m_queue.size();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">enqueue</span><span class="params">(T&amp; t)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::unique_lock&lt;<span class="built_in">std</span>::mutex&gt; lock(m_mutex);</span><br><span class="line">    m_queue.push(t);</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">dequeue</span><span class="params">(T&amp; t)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">std</span>::unique_lock&lt;<span class="built_in">std</span>::mutex&gt; lock(m_mutex);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (m_queue.empty()) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    t = <span class="built_in">std</span>::move(m_queue.front());</span><br><span class="line">    </span><br><span class="line">    m_queue.pop();</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote><ul><li><a href="https://github.com/mtrebi/thread-pool/blob/master/include/SafeQueue.h" target="_blank" rel="noopener">SafeQueue</a></li></ul></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;highlight c++&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;
+      
+    
+    </summary>
+    
+      <category term="c++ 多线程" scheme="http://ywqzzy.github.io/categories/c-%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+    
+      <category term="c++ 多线程" scheme="http://ywqzzy.github.io/tags/c-%E5%A4%9A%E7%BA%BF%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>实现string类</title>
@@ -497,34 +522,6 @@
     
     
       <category term="io 网络编程" scheme="http://ywqzzy.github.io/tags/io-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>cppcon2020 Back to basics: The structure of a Program</title>
-    <link href="http://ywqzzy.github.io/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/"/>
-    <id>http://ywqzzy.github.io/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/</id>
-    <published>2020-10-09T07:15:54.000Z</published>
-    <updated>2020-10-09T08:00:42.352Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote><ul><li><a href=""></a></li><li><a href=""></a></li></ul></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;参考资料&quot;&gt;&lt;a href=&quot;#参考资料&quot; class=&quot;headerlink&quot; title=&quot;参考资料&quot;&gt;&lt;/a&gt;参考资料&lt;/h2&gt;&lt;blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&lt;/l
-      
-    
-    </summary>
-    
-      <category term="c++" scheme="http://ywqzzy.github.io/categories/c/"/>
-    
-    
-      <category term="c++" scheme="http://ywqzzy.github.io/tags/c/"/>
     
   </entry>
   
