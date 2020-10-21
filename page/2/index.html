@@ -166,7 +166,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                30
+                31
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -231,7 +231,7 @@
                             &nbsp;
                             c++ 多线程
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/19/实现简单的线程安全Queue/">实现简单的线程安全Queue</a></li>  <li class="file"><a href="/2020/10/19/实现blockingqueue/">实现blockingqueue</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/19/实现简单的线程安全Queue/">实现简单的线程安全Queue</a></li>  <li class="file"><a href="/2020/10/19/实现blockingqueue/">实现blockingqueue</a></li>  <li class="file"><a href="/2020/10/21/muduo-Blocking-queue/">muduo Blocking queue</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -323,6 +323,110 @@
 </aside>
             
             <section id="main">
+        <article id="post-对象池" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/c/">c++</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/c/">c++</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/10/18/对象池/">
+            <time datetime="2020-10-18T15:11:05.000Z" itemprop="datePublished">2020-10-18</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/对象池.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/对象池.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/对象池.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/10/18/对象池/">对象池</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p></p><p>对象池对于创建开销比较大的对象来说很有意义，为了避免重复创建开销比较大的对象，我们可以通过对象池来优化。对象池的思路比较简单，事先创建好一批对象，放到一个集合中，以后每当程序需要新的对象时候，都从对象池里获取，每当程序用完该对象后，都把该对象归还给对象池。这样会避免重复的对象创建，提高程序性能。</p>
+<h3 id="简单实现"><a href="#简单实现" class="headerlink" title="简单实现"></a>简单实现</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;list&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Object&gt;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ObjectPool</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"> </span><br><span class="line">    ObjectPool(<span class="keyword">size_t</span> unSize) :</span><br><span class="line">        m_unSize(unSize)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> unIdx = <span class="number">0</span>; unIdx &lt; m_unSize; ++ unIdx) &#123;</span><br><span class="line">            m_oPool.push_back(<span class="keyword">new</span> Object());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    ~ObjectPool()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">typename</span> <span class="built_in">std</span>::<span class="built_in">list</span>&lt;Object *&gt;::iterator oIt = m_oPool.begin();</span><br><span class="line">        <span class="keyword">while</span> (oIt != m_oPool.end())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">delete</span> (*oIt);</span><br><span class="line">            ++ oIt;</span><br><span class="line">        &#125;</span><br><span class="line">        m_unSize = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function">Object * <span class="title">GetObject</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        Object * pObj = <span class="literal">NULL</span>;</span><br><span class="line">        <span class="keyword">if</span> (<span class="number">0</span> == m_unSize)</span><br><span class="line">        &#123;</span><br><span class="line">            pObj = <span class="keyword">new</span> Object();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            pObj = m_oPool.front();</span><br><span class="line">            m_oPool.pop_front();</span><br><span class="line">            -- m_unSize;</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">return</span> pObj;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ReturnObject</span><span class="params">(Object * pObj)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        m_oPool.push_back(pObj);</span><br><span class="line">        ++ m_unSize;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">size_t</span> m_unSize;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">list</span>&lt;object *&gt; m_oPool;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>不足点如下：</p>
+<ol>
+<li>对象池ObjectPool<t>只能容纳特定类型的对象，不能容纳所有类型的对象，可以支持重载的和参数不同的构造函数；</t></li>
+<p>
+                
+            
+        
+        
+            </p></ol></div>   
+            <div class="article-more-link">
+                <a href="/2020/10/18/对象池/#more">查看更多</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-pImpl" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
@@ -1199,112 +1303,8 @@
 
 
     
-        <article id="post-Type-Alias" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/c/">c++</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c-c-11/">c++ c++11</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/16/Type-Alias/">
-            <time datetime="2020-10-16T03:03:03.000Z" itemprop="datePublished">2020-10-16</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/Type-Alias.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/Type-Alias.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/Type-Alias.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2020/10/16/Type-Alias/">Type Alias &amp; using</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p></p><h3 id="Type-alias"><a href="#Type-alias" class="headerlink" title="Type alias"></a>Type alias</h3><p>Similar to typedef</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// type alias, identical to</span></span><br><span class="line"><span class="comment">// typedef void (*func)(int, int)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> func = <span class="keyword">void</span> (*)(<span class="keyword">int</span>, <span class="keyword">int</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">example</span><span class="params">(<span class="keyword">int</span>, <span class="keyword">int</span>)</span> </span>&#123;&#125;</span><br><span class="line">func fn = example;</span><br><span class="line"></span><br><span class="line"><span class="comment">// alias template</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">CharT</span>&gt; <span class="title">using</span> <span class="title">mystring</span> = <span class="title">std</span>:</span>:basic_string&lt;CharT, <span class="built_in">std</span>::char_traits&lt;CharT&gt;&gt;;</span><br><span class="line">mystring&lt;<span class="keyword">char</span>&gt; str;</span><br></pre></td></tr></table></figure>
-<p><string> 和 &lt;string_fwd.h&gt; 都有以下 typedef:</string></p>
-<p>typedef basic_string<char> string;</char></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// type alias can introduce a member typedef name</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Container</span> &#123;</span></span><br><span class="line">    <span class="keyword">using</span> value_type = T;   <span class="comment">// typedef T value_type;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> Cntr&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fn2</span><span class="params">(<span class="keyword">const</span> Cntr&amp; c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">typename</span> Cntr::value_type n;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>
-                
-            
-        
-        
-            </p></div>   
-            <div class="article-more-link">
-                <a href="/2020/10/16/Type-Alias/#more">查看更多</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
         <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
+        <a class="extend prev" rel="prev" href="/">&laquo; 上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">下一页 &raquo;</a>
         </nav>
     
 </section>
