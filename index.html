@@ -166,7 +166,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                31
+                32
                 <span>文章</span>
             </div>
             <div class="article-info-block">
@@ -231,7 +231,7 @@
                             &nbsp;
                             c++ 多线程
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/19/实现简单的线程安全Queue/">实现简单的线程安全Queue</a></li>  <li class="file"><a href="/2020/10/19/实现blockingqueue/">实现blockingqueue</a></li>  <li class="file"><a href="/2020/10/21/muduo-Blocking-queue/">muduo Blocking queue</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/19/实现简单的线程安全Queue/">实现简单的线程安全Queue</a></li>  <li class="file"><a href="/2020/10/19/实现blockingqueue/">实现blockingqueue</a></li>  <li class="file"><a href="/2020/10/21/muduo-Blocking-queue/">muduo Blocking queue</a></li>  <li class="file"><a href="/2020/10/21/muduo-CountdownLatch/">muduo CountdownLatch</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -323,6 +323,110 @@
 </aside>
             
             <section id="main">
+        <article id="post-muduo-CountdownLatch" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/c-多线程/">c++ 多线程</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/c-多线程/">c++ 多线程</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/10/21/muduo-CountdownLatch/">
+            <time datetime="2020-10-21T12:49:42.000Z" itemprop="datePublished">2020-10-21</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/muduo-CountdownLatch.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/muduo-CountdownLatch.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/muduo-CountdownLatch.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/10/21/muduo-CountdownLatch/">muduo CountdownLatch</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p></p><h2 id="CountDownLatch"><a href="#CountDownLatch" class="headerlink" title="CountDownLatch"></a>CountDownLatch</h2><p>用途如下：</p>
+<ol>
+<li>主线程发起多个子线程，等这些子线程各自都完成一定的任务之后，主线程才继续执行。通常用于主线程等待多个子线程完成初始化。</li>
+<li>主线程发起多个子线程，子线程都等待主线程，主线程完成其他一些任务之后通知所有子线程开始执行。通常用于多个子线程等待主线程发出起跑命令。</li>
+</ol>
+<p>
+                
+            
+        
+        
+            </p></div>   
+            <div class="article-more-link">
+                <a href="/2020/10/21/muduo-CountdownLatch/#more">查看更多</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-muduo-Blocking-queue" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
@@ -1226,110 +1330,6 @@
             </p></ol></div>   
             <div class="article-more-link">
                 <a href="/2020/10/19/实现string类/#more">查看更多</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-Noncopyable" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/c/">c++</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c-c-11/">c++ c++11</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/19/Noncopyable/">
-            <time datetime="2020-10-19T07:04:25.000Z" itemprop="datePublished">2020-10-19</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/Noncopyable.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/Noncopyable.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/Noncopyable.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2020/10/19/Noncopyable/">Noncopyable</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p></p><p>在 Muduo 中，有一个 noncopyable 类，继承了该类的派生类不能被拷贝，只能被移动。涉及拷贝的函数有两个：拷贝构造函数和拷贝复制操作符。将这两个方法声明为不可访问或者删除，就可以达到不可拷贝的效果。</p>
-<h2 id="将函数声明为-private"><a href="#将函数声明为-private" class="headerlink" title="将函数声明为 private"></a>将函数声明为 private</h2><p>将拷贝构造函数和拷贝复制操作符声明为 private，能阻止编译器创建这两个函数，同时阻止用户调用他们，从而达到阻止拷贝的效果。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">noncopyable</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">  noncopyable() &#123;&#125;</span><br><span class="line">  ~noncopyable() &#123;&#125;</span><br><span class="line"><span class="keyword">private</span>:<span class="comment">// emphasize the following members are private</span></span><br><span class="line">  noncopyable( <span class="keyword">const</span> noncopyable&amp; );</span><br><span class="line">  noncopyable&amp; <span class="keyword">operator</span>=( <span class="keyword">const</span> noncopyable&amp; );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>使用方法如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">foo</span>:</span> <span class="keyword">private</span> noncopyable&#123;&#125;;</span><br></pre></td></tr></table></figure>
-<p>
-                
-            
-        
-        
-            </p></div>   
-            <div class="article-more-link">
-                <a href="/2020/10/19/Noncopyable/#more">查看更多</a>
             </div>
         
         <footer class="article-footer">

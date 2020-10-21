@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ywqzzy.github.io/2020/10/21/muduo-CountdownLatch/</loc>
+    
+    <lastmod>2020-10-21</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ywqzzy.github.io/2020/10/21/muduo-Blocking-queue/</loc>
     
     <lastmod>2020-10-21</lastmod>
