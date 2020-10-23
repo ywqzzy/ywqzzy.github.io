@@ -166,11 +166,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                32
+                35
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                9
+                10
                 <span>标签</span>
             </div>
         </div>
@@ -247,11 +247,20 @@
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
                             &nbsp;
+                            muduo
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/21/muduo封装MutexLock-MutexLockGuard-Condition/">muduo封装MutexLock MutexLockGuard Condition</a></li>  <li class="file"><a href="/2020/10/22/muduo-BoundedBlockingQueue/">muduo BoundedBlockingQueue</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
                             保研
                         </a>
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/09/15/在知乎上删除掉的保研经验/">在知乎上删掉的保研经历</a></li>  </ul> 
                     </li> 
-                     <li class="file"><a href="/2019/04/27/词法分析/">词法分析</a></li>  <li class="file"><a href="/2020/10/16/range-based-for-statement/">Range-based for statement</a></li>  <li class="file"><a href="/2020/10/19/实现简单的固定线程数的线程池/">实现简单的固定线程数的线程池</a></li>  <li class="file"><a href="/2020/10/19/实现时间轮/">实现时间轮</a></li>  </ul> 
+                     <li class="file"><a href="/2019/04/27/词法分析/">词法分析</a></li>  <li class="file"><a href="/2020/10/16/range-based-for-statement/">Range-based for statement</a></li>  <li class="file"><a href="/2020/10/19/实现简单的固定线程数的线程池/">实现简单的固定线程数的线程池</a></li>  <li class="file"><a href="/2020/10/19/实现时间轮/">实现时间轮</a></li>  <li class="file"><a href="/2020/10/23/muduo-Thread/">muduo Thread</a></li>  </ul> 
     </div>
     <script>
         $(document).ready(function() {
@@ -323,6 +332,318 @@
 </aside>
             
             <section id="main">
+        <article id="post-reactor-proactor" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/io/">io</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/io-网络编程/">io 网络编程</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/10/12/reactor-proactor/">
+            <time datetime="2020-10-12T08:56:09.000Z" itemprop="datePublished">2020-10-12</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/reactor-proactor.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/reactor-proactor.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/reactor-proactor.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/10/12/reactor-proactor/">reactor &amp; proactor</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p></p><h3 id="标准定义"><a href="#标准定义" class="headerlink" title="标准定义"></a>标准定义</h3><p>两种I/O多路复用模式：Reactor 和 Proactor</p>
+<p>一般地,I/O多路复用机制都依赖于一个事件<strong>多路分离器(Event Demultiplexer)</strong>。分离器对象可将来自事件源的I/O事件分离出来，并分发到对应的 <strong>read/write 事件处理器(Event Handler)</strong>。开发人员预先注册需要处理的事件及其事件处理器（或回调函数）；事件分离器负责将请求事件传递给事件处理器。</p>
+<p><strong>两个与事件分离器有关的模式是Reactor和Proactor。Reactor 模式采用同步 IO，而 Proactor 采用异步 IO。</strong></p>
+<p><strong>在 Reactor 中，</strong>事件分离器负责等待文件描述符或 socket 为读写操作准备就绪，然后将就绪事件传递给对应的处理器，最后由处理器负责完成实际的读写工作。</p>
+<p><strong>而在 Proactor 模式中，</strong>处理器–或者兼任处理器的事件分离器，只负责发起异步读写操作。IO 操作本身由操作系统来完成。传递给操作系统的参数需要包括用户定义的数据缓冲区地址和数据大小，操作系统才能从中得到写出操作所需数据，或写入从 socket 读到的数据。事件分离器捕获 IO 操作完成事件，然后将事件传递给对应处理器。比如，在 windows 上，处理器发起一个异步 IO 操作，再由事件分离器等待 IOCompletion 事件。典型的异步模式实现，都建立在操作系统支持异步 API 的基础之上，我们将这种实现称为“系统级”异步或“真”异步，因为应用程序完全依赖操作系统执行真正的IO工作。</p>
+<p>
+                
+            
+        
+        
+            </p></div>   
+            <div class="article-more-link">
+                <a href="/2020/10/12/reactor-proactor/#more">查看更多</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-cppcon2020-Back-to-basics-The-structure-of-a-Program" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/c/">c++</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/c/">c++</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/">
+            <time datetime="2020-10-09T07:15:54.000Z" itemprop="datePublished">2020-10-09</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/cppcon2020-Back-to-basics-The-structure-of-a-Program.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/cppcon2020-Back-to-basics-The-structure-of-a-Program.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/cppcon2020-Back-to-basics-The-structure-of-a-Program.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/">cppcon2020 Back to basics: The structure of a Program</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p></p><h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+<p>
+                
+            
+        
+        
+            </p></blockquote></div>   
+            <div class="article-more-link">
+                <a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/#more">查看更多</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-cppcon2020-Back-to-basics-The-Abstract-Machine" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/c/">c++</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/c/">c++</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">
+            <time datetime="2020-10-09T02:53:25.000Z" itemprop="datePublished">2020-10-09</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/cppcon2020-Back-to-basics-The-Abstract-Machine.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/cppcon2020-Back-to-basics-The-Abstract-Machine.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/cppcon2020-Back-to-basics-The-Abstract-Machine.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">cppcon2020 Back to basics: The Abstract Machine</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p></p><h3 id="什么是-C-Abstract-Machine"><a href="#什么是-C-Abstract-Machine" class="headerlink" title="什么是 C++ Abstract Machine"></a>什么是 C++ Abstract Machine</h3><p>“The C++ Abstract machine is a portable abstraction of your operating system, kernel and hardware. The abstract machine is the intermediary between your c++ program and the system that it is run on.”</p>
+<p>C++ defines how programs work in terms of an abstract machine deliberately defined to be “close to the hardware”.</p>
+<p>When we write c++ code, we are writing to the c++ abstract machine.</p>
+<p><img src="\images\image-20201009111642176.png" alt=""></p>
+<h3 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h3><p>Memory</p>
+<p>
+                
+            
+        
+        
+            </p></div>   
+            <div class="article-more-link">
+                <a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/#more">查看更多</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-在知乎上删除掉的保研经验" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
