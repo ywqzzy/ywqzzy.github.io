@@ -166,11 +166,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                44
+                46
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                13
+                14
                 <span>标签</span>
             </div>
         </div>
@@ -265,11 +265,20 @@
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
                             &nbsp;
+                            yfs
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/27/yfs-源码剖析（1）-锁服务/">yfs-源码剖析（1）--锁服务</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
                             保研
                         </a>
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/09/15/在知乎上删除掉的保研经验/">在知乎上删掉的保研经历</a></li>  </ul> 
                     </li> 
-                     <li class="file"><a href="/2019/04/27/词法分析/">词法分析</a></li>  <li class="file"><a href="/2020/10/16/range-based-for-statement/">Range-based for statement</a></li>  <li class="file"><a href="/2020/10/19/实现简单的固定线程数的线程池/">实现简单的固定线程数的线程池</a></li>  <li class="file"><a href="/2020/10/19/实现时间轮/">实现时间轮</a></li>  </ul> 
+                     <li class="file"><a href="/2019/04/27/词法分析/">词法分析</a></li>  <li class="file"><a href="/2020/10/16/range-based-for-statement/">Range-based for statement</a></li>  <li class="file"><a href="/2020/10/19/实现简单的固定线程数的线程池/">实现简单的固定线程数的线程池</a></li>  <li class="file"><a href="/2020/10/19/实现时间轮/">实现时间轮</a></li>  <li class="file"><a href="/2020/10/27/yfs-源码剖析（2）-基本文件服务/">yfs-源码剖析（2）--基本文件服务</a></li>  </ul> 
     </div>
     <script>
         $(document).ready(function() {
@@ -341,6 +350,195 @@
 </aside>
             
             <section id="main">
+        <article id="post-写一个-move-aware-class" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/c/">c++</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/c-c-11/">c++ c++11</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/10/16/写一个-move-aware-class/">
+            <time datetime="2020-10-16T09:19:55.000Z" itemprop="datePublished">2020-10-16</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/写一个-move-aware-class.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/写一个-move-aware-class.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/写一个-move-aware-class.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/10/16/写一个-move-aware-class/">写一个 Move aware class</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+            
+        
+        
+            <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyString</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">size_t</span> DCtor;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">size_t</span> Ctor;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">size_t</span> CCtor;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">size_t</span> CAsgn;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">size_t</span> MCtor;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">size_t</span> Dtor;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">char</span>* _data;</span><br><span class="line">    <span class="keyword">size_t</span> _len;</span><br><span class="line">    <span class="keyword">void</span> _init_data(<span class="keyword">const</span> <span class="keyword">char</span> *s) &#123;</span><br><span class="line">        _data = <span class="keyword">new</span> <span class="keyword">char</span>[_len + <span class="number">1</span>];</span><br><span class="line">        <span class="built_in">memcpy</span>(_data, s, _len);</span><br><span class="line">        _data[_len] = <span class="string">'\0'</span>;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// default ctor</span></span><br><span class="line">    MyString(): _data(<span class="literal">NULL</span>), _len(<span class="number">0</span>) &#123;</span><br><span class="line">        ++DCtor;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ctor</span></span><br><span class="line">    MyString(<span class="keyword">const</span> <span class="keyword">char</span>* p): _len(<span class="built_in">strlen</span>(p)) &#123;</span><br><span class="line">        ++Ctor;</span><br><span class="line">        _init_data(p);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// copy ctor</span></span><br><span class="line">    MyString(<span class="keyword">const</span> Mystring&amp; str):_len(str._len) &#123;</span><br><span class="line">        ++CCtor;</span><br><span class="line">        _init_data(str._data);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// move ctor</span></span><br><span class="line">    MyString(MyString&amp;&amp; str) <span class="keyword">noexcept</span></span><br><span class="line">        :_data(str._data), _len(str._len) &#123;</span><br><span class="line">        ++MCtor;</span><br><span class="line">        str._len = <span class="number">0</span>;</span><br><span class="line">        str._data = <span class="literal">NULL</span>;<span class="comment">// IMPORTANT</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// copy assignment</span></span><br><span class="line">    MyString&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> MyString&amp; str) &#123;</span><br><span class="line">        ++CAsgn;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span> != &amp;str) &#123;  <span class="comment">// 自我赋值检查</span></span><br><span class="line">            <span class="keyword">if</span>(_data) <span class="keyword">delete</span> _data;</span><br><span class="line">            _len = str._len;</span><br><span class="line">            _init_data(str._data);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// move assignment</span></span><br><span class="line">    MyString&amp; <span class="keyword">operator</span>=(MyString&amp;&amp; str) <span class="keyword">noexcept</span>&#123;</span><br><span class="line">        ++MAsgn;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">this</span> != &amp;str) &#123;  <span class="comment">// 自我赋值检查</span></span><br><span class="line">            <span class="keyword">if</span>(_data) <span class="keyword">delete</span> _data;</span><br><span class="line">            _len = str._len;</span><br><span class="line">            _data = str._data;</span><br><span class="line">            str._len = <span class="number">0</span>;</span><br><span class="line">            str._data = <span class="literal">NULL</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// dtor</span></span><br><span class="line">    <span class="keyword">virtual</span> ~MyString() &#123;  </span><br><span class="line">        ++Dtor;</span><br><span class="line">        <span class="keyword">if</span>(_data) <span class="keyword">delete</span> _data;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// operator&lt;</span></span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> MyString&amp; rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">string</span>(<span class="keyword">this</span>-&gt;data) &lt; <span class="built_in">string</span>(rhs._data);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// operator==</span></span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>==(<span class="keyword">const</span> MyString&amp; rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">string</span>(<span class="keyword">this</span>-&gt;data) == <span class="built_in">string</span>(rhs._data); </span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="function"><span class="keyword">char</span>* <span class="title">get</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123; <span class="keyword">return</span> _data; &#125; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">size_t</span> MyString::DCtor = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">size_t</span> MyString::Ctor = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">size_t</span> MyString::CCtor = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">size_t</span> MyString::CAsgn = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">size_t</span> MyString::MCtor = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">size_t</span> MyString::Dtor = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">size_t</span> MyString::MAsgn = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">namespace</span> <span class="built_in">std</span> &#123;</span><br><span class="line"><span class="keyword">template</span>&lt;&gt;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">hash</span>&lt;MyString&gt; &#123;</span> <span class="comment">// for unordered containers</span></span><br><span class="line">    <span class="keyword">size_t</span> <span class="keyword">operator</span>() (<span class="keyword">const</span> MyString&amp; s) <span class="keyword">const</span> <span class="keyword">noexcept</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> hash&lt;<span class="built_in">string</span>&gt;()(<span class="built_in">string</span>(s.get()));</span><br><span class="line">        <span class="comment">// 借用现成的 hash&lt;string&gt;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-Rvalue-references" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/c/">c++</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/c-c-11/">c++ c++11</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/10/16/Rvalue-references/">
+            <time datetime="2020-10-16T08:30:54.000Z" itemprop="datePublished">2020-10-16</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/Rvalue-references.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/Rvalue-references.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/Rvalue-references.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/10/16/Rvalue-references/">Rvalue references</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p></p><h3 id="Rvalue-references"><a href="#Rvalue-references" class="headerlink" title="Rvalue-references"></a>Rvalue-references</h3><p>Rvalue references are a new reference type introduced in C++0x that help solve the problem of unnecessary coping and enable perfect forwarding. When the right-hand side of  an assignment is an rvalue, then the left-hand side object can steal resources from the right-hand side object rather than performing a seperate allocation, thus enabling move semantics.</p>
+<p>Lvalue: 可以出现于 operator = 左侧者</p>
+<p>Rvalue: 只能出现于 operator  = 右侧者</p>
+<p><img src="\images/image-20201016163813510.png" alt=""></p>
+<p>只要在内存中有确定存储空间的都是左值。</p>
+<p>
+                
+            
+        
+        
+            </p></div>   
+            <div class="article-more-link">
+                <a href="/2020/10/16/Rvalue-references/#more">查看更多</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-lambda" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
@@ -1095,214 +1293,6 @@
             </p></div>   
             <div class="article-more-link">
                 <a href="/2020/10/15/uniform-initialization/#more">查看更多</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-同步-IO-和异步-IO" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/io/">io</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/io/">io</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/12/同步-IO-和异步-IO/">
-            <time datetime="2020-10-12T09:05:08.000Z" itemprop="datePublished">2020-10-12</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/同步-IO-和异步-IO.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/同步-IO-和异步-IO.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/同步-IO-和异步-IO.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2020/10/12/同步-IO-和异步-IO/">同步 IO 和异步 IO</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p></p><p>Linux 系统中，所有的设备读写都可以看做文件的读写来操作，对文件的读写一般要经过内核态和用户态的切换，</p>
-<p><strong>正因为有切换才导致了 IO 有同步和异步的说法</strong>。</p>
-<p>通常来讲 IO 可以分成两种：</p>
-<ul>
-<li>来自网络的 IO</li>
-<p>
-                
-            
-        
-        
-            </p></ul></div>   
-            <div class="article-more-link">
-                <a href="/2020/10/12/同步-IO-和异步-IO/#more">查看更多</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-reactor-proactor" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/io/">io</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/io-网络编程/">io 网络编程</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/12/reactor-proactor/">
-            <time datetime="2020-10-12T08:56:09.000Z" itemprop="datePublished">2020-10-12</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/reactor-proactor.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/reactor-proactor.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/reactor-proactor.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2020/10/12/reactor-proactor/">reactor &amp; proactor</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p></p><h3 id="标准定义"><a href="#标准定义" class="headerlink" title="标准定义"></a>标准定义</h3><p>两种I/O多路复用模式：Reactor 和 Proactor</p>
-<p>一般地,I/O多路复用机制都依赖于一个事件<strong>多路分离器(Event Demultiplexer)</strong>。分离器对象可将来自事件源的I/O事件分离出来，并分发到对应的 <strong>read/write 事件处理器(Event Handler)</strong>。开发人员预先注册需要处理的事件及其事件处理器（或回调函数）；事件分离器负责将请求事件传递给事件处理器。</p>
-<p><strong>两个与事件分离器有关的模式是Reactor和Proactor。Reactor 模式采用同步 IO，而 Proactor 采用异步 IO。</strong></p>
-<p><strong>在 Reactor 中，</strong>事件分离器负责等待文件描述符或 socket 为读写操作准备就绪，然后将就绪事件传递给对应的处理器，最后由处理器负责完成实际的读写工作。</p>
-<p><strong>而在 Proactor 模式中，</strong>处理器–或者兼任处理器的事件分离器，只负责发起异步读写操作。IO 操作本身由操作系统来完成。传递给操作系统的参数需要包括用户定义的数据缓冲区地址和数据大小，操作系统才能从中得到写出操作所需数据，或写入从 socket 读到的数据。事件分离器捕获 IO 操作完成事件，然后将事件传递给对应处理器。比如，在 windows 上，处理器发起一个异步 IO 操作，再由事件分离器等待 IOCompletion 事件。典型的异步模式实现，都建立在操作系统支持异步 API 的基础之上，我们将这种实现称为“系统级”异步或“真”异步，因为应用程序完全依赖操作系统执行真正的IO工作。</p>
-<p>
-                
-            
-        
-        
-            </p></div>   
-            <div class="article-more-link">
-                <a href="/2020/10/12/reactor-proactor/#more">查看更多</a>
             </div>
         
         <footer class="article-footer">

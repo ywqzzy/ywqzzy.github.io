@@ -9,18 +9,18 @@
         <meta name="keywords" content="c++ muduo">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="1234567891011121314151617181920212223242526272829303132333435#ifndef MUDUO_BASE_EXCEPTION_H#define MUDUO_BASE_EXCEPTION_H#include &quot;muduo/base/Types.h&quot;#include &amp;lt;exception&amp;gt;namespace muduo&amp;#123;cla">
+    <meta name="description" content="12 参考资料">
 <meta name="keywords" content="c++ muduo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="muduo Thread">
 <meta property="og:url" content="http://ywqzzy.github.io/2020/10/23/muduo-Thread/index.html">
 <meta property="og:site_name" content="zzywq">
-<meta property="og:description" content="1234567891011121314151617181920212223242526272829303132333435#ifndef MUDUO_BASE_EXCEPTION_H#define MUDUO_BASE_EXCEPTION_H#include &quot;muduo/base/Types.h&quot;#include &amp;lt;exception&amp;gt;namespace muduo&amp;#123;cla">
+<meta property="og:description" content="12 参考资料">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-27T08:20:53.337Z">
+<meta property="og:updated_time" content="2020-10-27T09:34:50.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="muduo Thread">
-<meta name="twitter:description" content="1234567891011121314151617181920212223242526272829303132333435#ifndef MUDUO_BASE_EXCEPTION_H#define MUDUO_BASE_EXCEPTION_H#include &quot;muduo/base/Types.h&quot;#include &amp;lt;exception&amp;gt;namespace muduo&amp;#123;cla">
+<meta name="twitter:description" content="12 参考资料">
     
 
     
@@ -168,11 +168,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                44
+                46
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                13
+                14
                 <span>标签</span>
             </div>
         </div>
@@ -267,11 +267,20 @@
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
                             &nbsp;
+                            yfs
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/27/yfs-源码剖析（1）-锁服务/">yfs-源码剖析（1）--锁服务</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
                             保研
                         </a>
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/09/15/在知乎上删除掉的保研经验/">在知乎上删掉的保研经历</a></li>  </ul> 
                     </li> 
-                     <li class="file"><a href="/2019/04/27/词法分析/">词法分析</a></li>  <li class="file"><a href="/2020/10/16/range-based-for-statement/">Range-based for statement</a></li>  <li class="file"><a href="/2020/10/19/实现简单的固定线程数的线程池/">实现简单的固定线程数的线程池</a></li>  <li class="file"><a href="/2020/10/19/实现时间轮/">实现时间轮</a></li>  </ul> 
+                     <li class="file"><a href="/2019/04/27/词法分析/">词法分析</a></li>  <li class="file"><a href="/2020/10/16/range-based-for-statement/">Range-based for statement</a></li>  <li class="file"><a href="/2020/10/19/实现简单的固定线程数的线程池/">实现简单的固定线程数的线程池</a></li>  <li class="file"><a href="/2020/10/19/实现时间轮/">实现时间轮</a></li>  <li class="file"><a href="/2020/10/27/yfs-源码剖析（2）-基本文件服务/">yfs-源码剖析（2）--基本文件服务</a></li>  </ul> 
     </div>
     <script>
         $(document).ready(function() {
@@ -408,8 +417,7 @@
             
         
         
-            <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> MUDUO_BASE_EXCEPTION_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MUDUO_BASE_EXCEPTION_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"muduo/base/Types.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;exception&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">namespace</span> muduo</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Exception</span> :</span> <span class="keyword">public</span> <span class="built_in">std</span>::exception</span><br><span class="line">&#123;</span><br><span class="line"> <span class="keyword">public</span>:</span><br><span class="line">  Exception(<span class="built_in">string</span> what);</span><br><span class="line">  ~Exception() <span class="keyword">noexcept</span> override = <span class="keyword">default</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// default copy-ctor and operator= are okay.</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">const</span> <span class="keyword">char</span>* <span class="title">what</span><span class="params">()</span> <span class="keyword">const</span> <span class="keyword">noexcept</span> override</span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> message_.c_str();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">const</span> <span class="keyword">char</span>* <span class="title">stackTrace</span><span class="params">()</span> <span class="keyword">const</span> <span class="keyword">noexcept</span></span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> stack_.c_str();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">private</span>:</span><br><span class="line">  <span class="built_in">string</span> message_;</span><br><span class="line">  <span class="built_in">string</span> stack_;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">&#125;  <span class="comment">// namespace muduo</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span>  <span class="comment">// MUDUO_BASE_EXCEPTION_H</span></span></span><br></pre></td></tr></table></figure>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+            <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
 <ul>
 <li><a href=""></a></li>

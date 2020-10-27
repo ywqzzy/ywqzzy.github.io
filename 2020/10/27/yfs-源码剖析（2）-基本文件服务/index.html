@@ -3,22 +3,23 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>归档 | zzywq</title>
+    <title>yfs-源码剖析（2）--基本文件服务 | zzywq</title>
     
     
-        <meta name="keywords" content="zzywq">
+        <meta name="keywords" content="yfs-源码剖析（2）--基本文件服务">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="coding dream">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zzywq">
-<meta property="og:url" content="http://ywqzzy.github.io/archives/index.html">
+    <meta name="description" content="参考资料">
+<meta property="og:type" content="article">
+<meta property="og:title" content="yfs-源码剖析（2）--基本文件服务">
+<meta property="og:url" content="http://ywqzzy.github.io/2020/10/27/yfs-源码剖析（2）-基本文件服务/index.html">
 <meta property="og:site_name" content="zzywq">
-<meta property="og:description" content="coding dream">
+<meta property="og:description" content="参考资料">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-10-27T12:59:07.936Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zzywq">
-<meta name="twitter:description" content="coding dream">
+<meta name="twitter:title" content="yfs-源码剖析（2）--基本文件服务">
+<meta name="twitter:description" content="参考资料">
     
 
     
@@ -278,7 +279,7 @@
                         </a>
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/09/15/在知乎上删除掉的保研经验/">在知乎上删掉的保研经历</a></li>  </ul> 
                     </li> 
-                     <li class="file"><a href="/2019/04/27/词法分析/">词法分析</a></li>  <li class="file"><a href="/2020/10/16/range-based-for-statement/">Range-based for statement</a></li>  <li class="file"><a href="/2020/10/19/实现简单的固定线程数的线程池/">实现简单的固定线程数的线程池</a></li>  <li class="file"><a href="/2020/10/19/实现时间轮/">实现时间轮</a></li>  <li class="file"><a href="/2020/10/27/yfs-源码剖析（2）-基本文件服务/">yfs-源码剖析（2）--基本文件服务</a></li>  </ul> 
+                     <li class="file"><a href="/2019/04/27/词法分析/">词法分析</a></li>  <li class="file"><a href="/2020/10/16/range-based-for-statement/">Range-based for statement</a></li>  <li class="file"><a href="/2020/10/19/实现简单的固定线程数的线程池/">实现简单的固定线程数的线程池</a></li>  <li class="file"><a href="/2020/10/19/实现时间轮/">实现时间轮</a></li>  <li class="file active"><a href="/2020/10/27/yfs-源码剖析（2）-基本文件服务/">yfs-源码剖析（2）--基本文件服务</a></li>  </ul> 
     </div>
     <script>
         $(document).ready(function() {
@@ -349,31 +350,16 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><div class="timeline timeline-wrap">
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar-o"></i></span>
-                <h1 class="title"><a href="/archives/2020/">2020</a></h1>
-            </div>
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar"></i></span>
-                <h1 class="title"><a href="/archives/2020/10/">2020-10</a><span class="archive-list-count">10</span></h1>
-            </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-yfs-源码剖析（2）-基本文件服务" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2020/10/27/yfs-源码剖析（2）-基本文件服务/">yfs-源码剖析（2）--基本文件服务</a>
-        </h1>
-    
-
-                
-                <div class="article-meta">
-                    
+                    <div class="article-meta">
+                        
+                        
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
         <a href="/2020/10/27/yfs-源码剖析（2）-基本文件服务/">
@@ -382,360 +368,84 @@
     </div>
 
 
-                    
-                    
-                </div>
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/yfs-源码剖析（2）-基本文件服务.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/yfs-源码剖析（2）-基本文件服务.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/yfs-源码剖析（2）-基本文件服务.md"> History </a>
+                            </div>
+                        
+                    </div>
                 
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2020/10/27/yfs-源码剖析（1）-锁服务/">yfs-源码剖析（1）--锁服务</a>
+        <h1 class="article-title" itemprop="name">
+            yfs-源码剖析（2）--基本文件服务
         </h1>
     
 
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/27/yfs-源码剖析（1）-锁服务/">
-            <time datetime="2020-10-27T12:31:14.000Z" itemprop="datePublished">2020-10-27</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/yfs/">yfs</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c-分布式-yfs/">c++ 分布式 yfs</a>
-    </div>
-
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">1.</span> <span class="toc-text">参考资料</span></a></li></ol>
                 </div>
-                
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2020/10/27/muduo-GzipFile/">muduo GzipFile</a>
-        </h1>
-    
+            
+        
+        
+            <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+</blockquote>
 
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/27/muduo-GzipFile/">
-            <time datetime="2020-10-27T09:30:16.000Z" itemprop="datePublished">2020-10-27</time>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+    
+        <a href="/2020/10/27/yfs-源码剖析（1）-锁服务/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">yfs-源码剖析（1）--锁服务</div>
         </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/muduo/">muduo</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c-muduo/">c++ muduo</a>
-    </div>
-
-                </div>
-                
-            </div>
-        </div>
     
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
+</nav>
+
+
+
+
+
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2020/10/27/muduo-ProcessInfo/">muduo ProcessInfo</a>
-        </h1>
     
 
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/27/muduo-ProcessInfo/">
-            <time datetime="2020-10-27T09:08:47.000Z" itemprop="datePublished">2020-10-27</time>
-        </a>
-    </div>
 
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/muduo/">muduo</a>
-    </div>
 
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c-muduo/">c++ muduo</a>
-    </div>
-
-                </div>
-                
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2020/10/27/muduo-atomic/">muduo atomic</a>
-        </h1>
-    
-
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/27/muduo-atomic/">
-            <time datetime="2020-10-27T09:03:53.000Z" itemprop="datePublished">2020-10-27</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/muduo/">muduo</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c-多线程-muduo/">c++ 多线程 muduo</a>
-    </div>
-
-                </div>
-                
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2020/10/27/muduo-date/">muduo date</a>
-        </h1>
-    
-
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/27/muduo-date/">
-            <time datetime="2020-10-27T08:54:44.000Z" itemprop="datePublished">2020-10-27</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/muduo/">muduo</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c-muduo/">c++ muduo</a>
-    </div>
-
-                </div>
-                
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2020/10/27/muduo-FileUtil/">muduo FileUtil</a>
-        </h1>
-    
-
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/27/muduo-FileUtil/">
-            <time datetime="2020-10-27T08:29:03.000Z" itemprop="datePublished">2020-10-27</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/muduo/">muduo</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c-muduo/">c++ muduo</a>
-    </div>
-
-                </div>
-                
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2020/10/27/muduo-CurrentThread/">muduo CurrentThread</a>
-        </h1>
-    
-
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/27/muduo-CurrentThread/">
-            <time datetime="2020-10-27T08:23:48.000Z" itemprop="datePublished">2020-10-27</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/muduo/">muduo</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c-muduo/">c++ muduo</a>
-    </div>
-
-                </div>
-                
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2020/10/27/muduo-exception/">muduo exception</a>
-        </h1>
-    
-
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/27/muduo-exception/">
-            <time datetime="2020-10-27T08:19:21.000Z" itemprop="datePublished">2020-10-27</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/muduo/">muduo</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c-muduo/">c++ muduo</a>
-    </div>
-
-                </div>
-                
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2020/10/27/muduo-Timestamp/">muduo Timestamp </a>
-        </h1>
-    
-
-                
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/27/muduo-Timestamp/">
-            <time datetime="2020-10-27T07:15:12.000Z" itemprop="datePublished">2020-10-27</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/muduo/">muduo</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c-muduo/">c++ muduo</a>
-    </div>
-
-                </div>
-                
-            </div>
-        </div>
-    
-</div>
-
-    <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/">下一页 &raquo;</a>
-    </nav>
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
 </section>
         </div>
         <footer id="footer">
