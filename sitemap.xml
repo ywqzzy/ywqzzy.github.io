@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ywqzzy.github.io/2020/10/27/muduo-exception/</loc>
+    
+    <lastmod>2020-10-27</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ywqzzy.github.io/2020/10/23/muduo-Thread/</loc>
+    
+    <lastmod>2020-10-27</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ywqzzy.github.io/2020/10/27/muduo-Timestamp/</loc>
     
     <lastmod>2020-10-27</lastmod>
@@ -17,13 +31,6 @@
   
   <url>
     <loc>http://ywqzzy.github.io/2020/10/22/muduo-BoundedBlockingQueue/</loc>
-    
-    <lastmod>2020-10-23</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://ywqzzy.github.io/2020/10/23/muduo-Thread/</loc>
     
     <lastmod>2020-10-23</lastmod>
     
@@ -291,13 +298,6 @@
 
   
   <url>
-    <loc>http://ywqzzy.github.io/tags/c/</loc>
-    <lastmod>2020-10-27</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://ywqzzy.github.io/tags/c-c-11/</loc>
     <lastmod>2020-10-27</lastmod>
     <changefreq>daily</changefreq>
@@ -305,7 +305,21 @@
   </url>
   
   <url>
+    <loc>http://ywqzzy.github.io/tags/c/</loc>
+    <lastmod>2020-10-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://ywqzzy.github.io/tags/leetcode-%E9%93%BE%E8%A1%A8-%E6%8E%92%E5%BA%8F/</loc>
+    <lastmod>2020-10-27</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://ywqzzy.github.io/tags/c-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
     <lastmod>2020-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -326,13 +340,6 @@
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/tags/c-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
-    <lastmod>2020-10-27</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://ywqzzy.github.io/tags/io-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2020-10-27</lastmod>
     <changefreq>daily</changefreq>
@@ -347,14 +354,14 @@
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/tags/c-c-11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+    <loc>http://ywqzzy.github.io/tags/%E4%BF%9D%E7%A0%94/</loc>
     <lastmod>2020-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/tags/%E4%BF%9D%E7%A0%94/</loc>
+    <loc>http://ywqzzy.github.io/tags/c-c-11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
     <lastmod>2020-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -391,14 +398,14 @@
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/categories/muduo/</loc>
+    <loc>http://ywqzzy.github.io/categories/c-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
     <lastmod>2020-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/categories/c-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+    <loc>http://ywqzzy.github.io/categories/muduo/</loc>
     <lastmod>2020-10-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
