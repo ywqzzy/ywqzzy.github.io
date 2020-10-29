@@ -3,24 +3,24 @@
 <head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
     
-    <title>智能指针 | zzywq</title>
+    <title>yfs-源码剖析（4）--Caching locks | zzywq</title>
     
     
-        <meta name="keywords" content="c++ c++11">
+        <meta name="keywords" content="c++ yfs 分布式">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485template&amp;lt;class T&amp;gt;class SharedPoin">
-<meta name="keywords" content="c++ c++11">
+    <meta name="description" content="参考资料">
+<meta name="keywords" content="c++ yfs 分布式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="智能指针">
-<meta property="og:url" content="http://ywqzzy.github.io/2020/10/18/智能指针/index.html">
+<meta property="og:title" content="yfs-源码剖析（4）--Caching locks">
+<meta property="og:url" content="http://ywqzzy.github.io/2020/10/29/yfs-源码剖析（4）-Caching-locks/index.html">
 <meta property="og:site_name" content="zzywq">
-<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485template&amp;lt;class T&amp;gt;class SharedPoin">
+<meta property="og:description" content="参考资料">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-18T14:12:06.220Z">
+<meta property="og:updated_time" content="2020-10-29T06:53:50.052Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="智能指针">
-<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485template&amp;lt;class T&amp;gt;class SharedPoin">
+<meta name="twitter:title" content="yfs-源码剖析（4）--Caching locks">
+<meta name="twitter:description" content="参考资料">
     
 
     
@@ -218,13 +218,13 @@
         
         
          <ul class="unstyled" id="tree"> 
-                    <li class="directory open">
+                    <li class="directory">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder-open"></i>
+                            <i class="fa fa-folder"></i>
                             &nbsp;
                             c++
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">cppcon2020 Back to basics: The Abstract Machine</a></li>  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/">cppcon2020 Back to basics: The structure of a Program</a></li>  <li class="file"><a href="/2020/10/15/uniform-initialization/">uniform initialization</a></li>  <li class="file"><a href="/2020/10/15/Variadic-Templates/">Variadic Templates</a></li>  <li class="file"><a href="/2020/10/16/explicit关键字/">explicit关键字</a></li>  <li class="file"><a href="/2020/10/16/Type-Alias/">Type Alias & using</a></li>  <li class="file"><a href="/2020/10/16/noexcept/">noexcept</a></li>  <li class="file"><a href="/2020/10/16/decltype/">decltype</a></li>  <li class="file"><a href="/2020/10/16/lambda/">lambda</a></li>  <li class="file"><a href="/2020/10/16/Rvalue-references/">Rvalue references</a></li>  <li class="file"><a href="/2020/10/16/写一个-move-aware-class/">写一个 Move aware class</a></li>  <li class="file"><a href="/2020/10/18/Singleton-c/">Singleton--C++</a></li>  <li class="file active"><a href="/2020/10/18/智能指针/">智能指针</a></li>  <li class="file"><a href="/2020/10/18/RAII/">RAII</a></li>  <li class="file"><a href="/2020/10/18/pImpl/">pImpl</a></li>  <li class="file"><a href="/2020/10/18/对象池/">对象池</a></li>  <li class="file"><a href="/2020/10/19/Noncopyable/">Noncopyable</a></li>  <li class="file"><a href="/2020/10/19/实现string类/">实现string类</a></li>  <li class="file"><a href="/2020/10/19/c-11计时器/">C++11 计时器</a></li>  <li class="file"><a href="/2020/10/19/实现数据库连接池/">实现数据库连接池</a></li>  <li class="file"><a href="/2020/10/20/std-bind-std-function/">std:function&std:bind&</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-Abstract-Machine/">cppcon2020 Back to basics: The Abstract Machine</a></li>  <li class="file"><a href="/2020/10/09/cppcon2020-Back-to-basics-The-structure-of-a-Program/">cppcon2020 Back to basics: The structure of a Program</a></li>  <li class="file"><a href="/2020/10/15/uniform-initialization/">uniform initialization</a></li>  <li class="file"><a href="/2020/10/15/Variadic-Templates/">Variadic Templates</a></li>  <li class="file"><a href="/2020/10/16/explicit关键字/">explicit关键字</a></li>  <li class="file"><a href="/2020/10/16/Type-Alias/">Type Alias & using</a></li>  <li class="file"><a href="/2020/10/16/noexcept/">noexcept</a></li>  <li class="file"><a href="/2020/10/16/decltype/">decltype</a></li>  <li class="file"><a href="/2020/10/16/lambda/">lambda</a></li>  <li class="file"><a href="/2020/10/16/Rvalue-references/">Rvalue references</a></li>  <li class="file"><a href="/2020/10/16/写一个-move-aware-class/">写一个 Move aware class</a></li>  <li class="file"><a href="/2020/10/18/Singleton-c/">Singleton--C++</a></li>  <li class="file"><a href="/2020/10/18/智能指针/">智能指针</a></li>  <li class="file"><a href="/2020/10/18/RAII/">RAII</a></li>  <li class="file"><a href="/2020/10/18/pImpl/">pImpl</a></li>  <li class="file"><a href="/2020/10/18/对象池/">对象池</a></li>  <li class="file"><a href="/2020/10/19/Noncopyable/">Noncopyable</a></li>  <li class="file"><a href="/2020/10/19/实现string类/">实现string类</a></li>  <li class="file"><a href="/2020/10/19/c-11计时器/">C++11 计时器</a></li>  <li class="file"><a href="/2020/10/19/实现数据库连接池/">实现数据库连接池</a></li>  <li class="file"><a href="/2020/10/20/std-bind-std-function/">std:function&std:bind&</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -263,13 +263,13 @@
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/21/muduo封装MutexLock-MutexLockGuard-Condition/">muduo封装MutexLock MutexLockGuard Condition</a></li>  <li class="file"><a href="/2020/10/22/muduo-BoundedBlockingQueue/">muduo BoundedBlockingQueue</a></li>  <li class="file"><a href="/2020/10/23/muduo-Thread/">muduo Thread</a></li>  <li class="file"><a href="/2020/10/27/muduo-Timestamp/">muduo Timestamp </a></li>  <li class="file"><a href="/2020/10/27/muduo-exception/">muduo exception</a></li>  <li class="file"><a href="/2020/10/27/muduo-CurrentThread/">muduo CurrentThread</a></li>  <li class="file"><a href="/2020/10/27/muduo-FileUtil/">muduo FileUtil</a></li>  <li class="file"><a href="/2020/10/27/muduo-date/">muduo date</a></li>  <li class="file"><a href="/2020/10/27/muduo-atomic/">muduo atomic</a></li>  <li class="file"><a href="/2020/10/27/muduo-ProcessInfo/">muduo ProcessInfo</a></li>  <li class="file"><a href="/2020/10/27/muduo-GzipFile/">muduo GzipFile</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             yfs
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/27/yfs-源码剖析（1）-锁服务/">yfs-源码剖析（1）--锁服务</a></li>  <li class="file"><a href="/2020/10/27/yfs-源码剖析（2）-基本文件服务/">yfs-源码剖析（2）--基本文件服务1</a></li>  <li class="file"><a href="/2020/10/29/yfs-源码剖析（3）-基本文件服务2/">yfs-源码剖析（3）--基本文件服务2</a></li>  <li class="file"><a href="/2020/10/29/yfs-源码剖析（4）-Caching-locks/">yfs-源码剖析（4）--Caching locks</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/27/yfs-源码剖析（1）-锁服务/">yfs-源码剖析（1）--锁服务</a></li>  <li class="file"><a href="/2020/10/27/yfs-源码剖析（2）-基本文件服务/">yfs-源码剖析（2）--基本文件服务1</a></li>  <li class="file"><a href="/2020/10/29/yfs-源码剖析（3）-基本文件服务2/">yfs-源码剖析（3）--基本文件服务2</a></li>  <li class="file active"><a href="/2020/10/29/yfs-源码剖析（4）-Caching-locks/">yfs-源码剖析（4）--Caching locks</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -360,7 +360,7 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="post-智能指针" class="article article-type-post" itemscope="" itemprop="blogPost">
+            <section id="main"><article id="post-yfs-源码剖析（4）-Caching-locks" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -370,20 +370,20 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/c/">c++</a>
+        <a class="article-category-link" href="/categories/yfs/">yfs</a>
     </div>
 
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c-c-11/">c++ c++11</a>
+        <a class="tag-link" href="/tags/c-yfs-分布式/">c++ yfs 分布式</a>
     </div>
 
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2020/10/18/智能指针/">
-            <time datetime="2020-10-18T14:01:41.000Z" itemprop="datePublished">2020-10-18</time>
+        <a href="/2020/10/29/yfs-源码剖析（4）-Caching-locks/">
+            <time datetime="2020-10-29T04:16:56.000Z" itemprop="datePublished">2020-10-29</time>
         </a>
     </div>
 
@@ -394,13 +394,13 @@
                         
                         
                             <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/智能指针.md"> Source </a>
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/yfs-源码剖析（4）-Caching-locks.md"> Source </a>
                             </div>
                             <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/智能指针.md"> Edit </a>
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/yfs-源码剖析（4）-Caching-locks.md"> Edit </a>
                             </div>
                             <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/智能指针.md"> History </a>
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/yfs-源码剖析（4）-Caching-locks.md"> History </a>
                             </div>
                         
                     </div>
@@ -408,7 +408,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            智能指针
+            yfs-源码剖析（4）--Caching locks
         </h1>
     
 
@@ -421,12 +421,17 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">文章目录</strong>
-                    
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#参考资料"><span class="toc-number">1.</span> <span class="toc-text">参考资料</span></a></li></ol>
                 </div>
             
         
         
-            <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span>&lt;<span class="class"><span class="keyword">class</span> <span class="title">T</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">SharedPointer</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    SharedPointer():m_refCount(<span class="literal">nullptr</span>), m_pointer(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    SharedPointer(T* adoptTarget):m_refCount(<span class="literal">nullptr</span>), m_pointer(adoptTarget) &#123;</span><br><span class="line">        addReference();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    SharedPointer(<span class="keyword">const</span> SharedPointer&lt;T&gt;&amp; copy):m_refCount(copy.m_refCount), m_pointer(copy.m_pointer) &#123;</span><br><span class="line">        addReference();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">virtual</span> ~SharedPointer() &#123;</span><br><span class="line">        removeReference();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//赋值操作</span></span><br><span class="line">    <span class="comment">//当左值被赋值时，表明它不再指向所指的资源，故引用计数减一</span></span><br><span class="line">    <span class="comment">//之后，它指向了新的资源，所以对应这个资源的引用计数加一</span></span><br><span class="line">    SharedPointer&lt;T&gt;&amp; <span class="keyword">operator</span>=(<span class="keyword">const</span> SharedPointer&lt;T&gt;&amp; that) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> != &amp;that) &#123;</span><br><span class="line">            removeReference();</span><br><span class="line">            <span class="keyword">this</span>-&gt;m_pointer = that.m_pointer;</span><br><span class="line">            <span class="keyword">this</span>-&gt;m_refCount = that.m_refCount;</span><br><span class="line">            addReference();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//判断是否指向同一个资源</span></span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>==(<span class="keyword">const</span> SharedPointer&lt;T&gt;&amp; other) &#123;</span><br><span class="line">        <span class="keyword">return</span> m_pointer == other.m_pointer;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>!=(<span class="keyword">const</span> SharedPointer&lt;T&gt;&amp; other) &#123;</span><br><span class="line">        <span class="keyword">return</span> !<span class="keyword">operator</span>==(other);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//指针解引用</span></span><br><span class="line">    T&amp; <span class="keyword">operator</span>*() <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> *m_pointer;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//调用所知对象的公共成员</span></span><br><span class="line">    T* <span class="keyword">operator</span>-&gt;() <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> m_pointer;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//获取引用计数个数</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">GetReferenceCount</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (m_refCount) &#123;</span><br><span class="line">            <span class="keyword">return</span> *m_refCount;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> <span class="keyword">protected</span>:</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//当为nullpter时，创建引用计数资源，并初始化为1</span></span><br><span class="line">    <span class="comment">//否则，引用计数加1。</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">addReference</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (m_refCount) &#123;</span><br><span class="line">            (*m_refCount)++;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            m_refCount = <span class="keyword">new</span> <span class="keyword">int</span>(<span class="number">0</span>);</span><br><span class="line">            *m_refCount = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">removeReference</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(m_refCount) &#123;</span><br><span class="line">            (*m_refCount)--;</span><br><span class="line">            <span class="keyword">if</span>(*m_refCount == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">delete</span> m_refCount;</span><br><span class="line">                <span class="keyword">delete</span> m_pointer;</span><br><span class="line">                m_refCount = <span class="number">0</span>;</span><br><span class="line">                m_pointer = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="keyword">int</span> *m_refCount;</span><br><span class="line">    T *m_pointer;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+            <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><blockquote>
+<ul>
+<li><a href=""></a></li>
+<li><a href=""></a></li>
+</ul>
+</blockquote>
 
             </div>
         
@@ -439,19 +444,19 @@
     
 <nav id="article-nav">
     
-        <a href="/2020/10/18/RAII/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2020/10/29/SimpleEpollServer源码阅读/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">上一篇</strong>
             <div class="article-nav-title">
                 
-                    RAII
+                    SimpleEpollServer源码阅读
                 
             </div>
         </a>
     
     
-        <a href="/2020/10/18/Singleton-c/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2020/10/29/yfs-源码剖析（3）-基本文件服务2/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
-            <div class="article-nav-title">Singleton--C++</div>
+            <div class="article-nav-title">yfs-源码剖析（3）--基本文件服务2</div>
         </a>
     
 </nav>
