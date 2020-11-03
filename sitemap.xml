@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://ywqzzy.github.io/2020/11/03/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88-move-sementic/</loc>
+    
+    <lastmod>2020-11-03</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://ywqzzy.github.io/2020/11/03/c-%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/</loc>
+    
+    <lastmod>2020-11-03</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://ywqzzy.github.io/about/index.html</loc>
     
     <lastmod>2020-11-03</lastmod>
@@ -403,14 +417,14 @@
 
   
   <url>
-    <loc>http://ywqzzy.github.io/tags/c-c-11/</loc>
+    <loc>http://ywqzzy.github.io/tags/c-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B-liso/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/tags/c-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B-liso/</loc>
+    <loc>http://ywqzzy.github.io/tags/c-c-11/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -424,7 +438,21 @@
   </url>
   
   <url>
+    <loc>http://ywqzzy.github.io/tags/c-%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86-RAII/</loc>
+    <lastmod>2020-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://ywqzzy.github.io/tags/leetcode-%E9%93%BE%E8%A1%A8-%E6%8E%92%E5%BA%8F/</loc>
+    <lastmod>2020-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://ywqzzy.github.io/tags/c-muduo-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -445,14 +473,14 @@
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/tags/c-muduo-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+    <loc>http://ywqzzy.github.io/tags/c-%E5%A4%9A%E7%BA%BF%E7%A8%8B-muduo/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/tags/c-%E5%A4%9A%E7%BA%BF%E7%A8%8B-muduo/</loc>
+    <loc>http://ywqzzy.github.io/tags/io-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -473,14 +501,7 @@
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/tags/io-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2020-11-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://ywqzzy.github.io/tags/c-c-11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
+    <loc>http://ywqzzy.github.io/tags/io/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -494,7 +515,7 @@
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/tags/io/</loc>
+    <loc>http://ywqzzy.github.io/tags/c-c-11-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -502,6 +523,13 @@
   
   <url>
     <loc>http://ywqzzy.github.io/tags/c-%E6%95%B0%E6%8D%AE%E5%BA%93%E8%BF%9E%E6%8E%A5%E6%B1%A0/</loc>
+    <lastmod>2020-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://ywqzzy.github.io/tags/c-%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -531,14 +559,14 @@
 
   
   <url>
-    <loc>http://ywqzzy.github.io/categories/c/</loc>
+    <loc>http://ywqzzy.github.io/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/categories/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
+    <loc>http://ywqzzy.github.io/categories/c/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -552,13 +580,6 @@
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/categories/c-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
-    <lastmod>2020-11-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://ywqzzy.github.io/categories/muduo/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
@@ -566,7 +587,7 @@
   </url>
   
   <url>
-    <loc>http://ywqzzy.github.io/categories/yfs/</loc>
+    <loc>http://ywqzzy.github.io/categories/c-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -574,6 +595,13 @@
   
   <url>
     <loc>http://ywqzzy.github.io/categories/io/</loc>
+    <lastmod>2020-11-03</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://ywqzzy.github.io/categories/yfs/</loc>
     <lastmod>2020-11-03</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
