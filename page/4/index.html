@@ -166,11 +166,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                51
+                53
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                17
+                18
                 <span>标签</span>
             </div>
         </div>
@@ -285,7 +285,7 @@
                             &nbsp;
                             网络编程
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/29/SimpleEpollServer源码阅读/">SimpleEpollServer源码阅读</a></li>  <li class="file"><a href="/2020/10/29/Liso-1-echo-server/">Liso(1) echo server</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/2020/10/29/SimpleEpollServer源码阅读/">SimpleEpollServer源码阅读</a></li>  <li class="file"><a href="/2020/10/29/Liso-1-echo-server/">Liso(1) echo server</a></li>  <li class="file"><a href="/2020/10/29/Liso-2-httpServer/">Liso(2) httpServer</a></li>  <li class="file"><a href="/2020/10/29/springsnail源码分析/">springsnail源码分析</a></li>  </ul> 
                     </li> 
                      <li class="file"><a href="/2019/04/27/词法分析/">词法分析</a></li>  <li class="file"><a href="/2020/10/16/range-based-for-statement/">Range-based for statement</a></li>  <li class="file"><a href="/2020/10/19/实现简单的固定线程数的线程池/">实现简单的固定线程数的线程池</a></li>  <li class="file"><a href="/2020/10/19/实现时间轮/">实现时间轮</a></li>  <li class="file"><a href="/2020/10/29/网络编程通用结构体/">网络编程通用结构体</a></li>  </ul> 
     </div>
@@ -359,6 +359,214 @@
 </aside>
             
             <section id="main">
+        <article id="post-实现string类" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/c/">c++</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/c-c-11/">c++ c++11</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/10/19/实现string类/">
+            <time datetime="2020-10-19T07:24:46.000Z" itemprop="datePublished">2020-10-19</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/实现string类.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/实现string类.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/实现string类.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/10/19/实现string类/">实现string类</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">String</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    String()</span><br><span class="line">        :data_(<span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">1</span>])</span><br><span class="line">    &#123;</span><br><span class="line">        *data_ = <span class="string">'\0'</span>;        </span><br><span class="line">    &#125;</span><br><span class="line">    String(<span class="keyword">const</span> <span class="keyword">char</span>&amp; str) </span><br><span class="line">        :data_(<span class="keyword">new</span> <span class="keyword">char</span>[<span class="built_in">strlen</span>(str) + <span class="number">1</span>])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">strcpy</span>(data_, str);</span><br><span class="line">    &#125;</span><br><span class="line">    String(<span class="keyword">const</span> String&amp; rhs) </span><br><span class="line">        :data_(<span class="keyword">new</span> <span class="keyword">char</span>[rhs.size() + <span class="number">1</span>])</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">strcpy</span>(data_, rhs.c_str());</span><br><span class="line">    &#125;</span><br><span class="line">    ~String()</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">delete</span>[] data_;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/* traditional</span></span><br><span class="line"><span class="comment">    String&amp; operator=(const String&amp; rhs) </span></span><br><span class="line"><span class="comment">    &#123;</span></span><br><span class="line"><span class="comment">        String tmp(rhs);</span></span><br><span class="line"><span class="comment">        swap(tmp);</span></span><br><span class="line"><span class="comment">        return *this</span></span><br><span class="line"><span class="comment">    &#125;*/</span></span><br><span class="line">    </span><br><span class="line">    String&amp; <span class="keyword">operator</span>=(String rhs)</span><br><span class="line">    &#123;</span><br><span class="line">        swap(rhs);</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">        <span class="comment">// C++ 11</span></span><br><span class="line">    String(String&amp;&amp; rhs)</span><br><span class="line">      : data_(rhs.data_)</span><br><span class="line">    &#123;</span><br><span class="line">    	rhs.data_ = <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    String&amp; <span class="keyword">operator</span>=(String&amp;&amp; rhs)</span><br><span class="line">  	&#123;</span><br><span class="line">    	swap(rhs);</span><br><span class="line">    	<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">  	&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">size_t</span> size() <span class="keyword">const</span></span><br><span class="line">  	&#123;</span><br><span class="line">    	<span class="keyword">return</span> <span class="built_in">strlen</span>(data_);</span><br><span class="line">  	&#125;</span><br><span class="line">    </span><br><span class="line">  	<span class="function"><span class="keyword">const</span> <span class="keyword">char</span>* <span class="title">c_str</span><span class="params">()</span> <span class="keyword">const</span></span></span><br><span class="line"><span class="function">  	</span>&#123;</span><br><span class="line">    	<span class="keyword">return</span> data_;</span><br><span class="line">  	&#125;</span><br><span class="line">  	</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(String&amp; rhs)</span></span></span><br><span class="line"><span class="function">  	</span>&#123;</span><br><span class="line">    	<span class="built_in">std</span>::swap(data_, rhs.data_);</span><br><span class="line">  	&#125;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">  	<span class="keyword">char</span>* data_;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String&amp; <span class="keyword">operator</span>=(String rhs) <span class="comment">// yes, pass-by-value</span></span><br><span class="line">&#123;</span><br><span class="line">	swap(rhs);</span><br><span class="line">	<span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</p><p>使用swap的原因是，这个String类涉及到内存分配操作，这个操作可能会抛出异常；<br>上面的实现分3步：</p>
+<ol>
+<li>把“源对象”拷贝到参数rhs里</li>
+<p>
+                
+            
+        
+        
+            </p></ol></div>   
+            <div class="article-more-link">
+                <a href="/2020/10/19/实现string类/#more">查看更多</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
+        <article id="post-Noncopyable" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/c/">c++</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/c-c-11/">c++ c++11</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2020/10/19/Noncopyable/">
+            <time datetime="2020-10-19T07:04:25.000Z" itemprop="datePublished">2020-10-19</time>
+        </a>
+    </div>
+
+
+                        
+                            <i class="fa fa-bar-chart"></i>
+                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
+                        
+                        
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/Noncopyable.md"> Source </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/Noncopyable.md"> Edit </a>
+                            </div>
+                            <div class="article-meta-button">
+                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/Noncopyable.md"> History </a>
+                            </div>
+                        
+                    </div>
+                
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2020/10/19/Noncopyable/">Noncopyable</a>
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                    
+                    
+                
+                
+                    
+                    <p></p><p>在 Muduo 中，有一个 noncopyable 类，继承了该类的派生类不能被拷贝，只能被移动。涉及拷贝的函数有两个：拷贝构造函数和拷贝复制操作符。将这两个方法声明为不可访问或者删除，就可以达到不可拷贝的效果。</p>
+<h2 id="将函数声明为-private"><a href="#将函数声明为-private" class="headerlink" title="将函数声明为 private"></a>将函数声明为 private</h2><p>将拷贝构造函数和拷贝复制操作符声明为 private，能阻止编译器创建这两个函数，同时阻止用户调用他们，从而达到阻止拷贝的效果。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">noncopyable</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">  noncopyable() &#123;&#125;</span><br><span class="line">  ~noncopyable() &#123;&#125;</span><br><span class="line"><span class="keyword">private</span>:<span class="comment">// emphasize the following members are private</span></span><br><span class="line">  noncopyable( <span class="keyword">const</span> noncopyable&amp; );</span><br><span class="line">  noncopyable&amp; <span class="keyword">operator</span>=( <span class="keyword">const</span> noncopyable&amp; );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>使用方法如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">foo</span>:</span> <span class="keyword">private</span> noncopyable&#123;&#125;;</span><br></pre></td></tr></table></figure>
+<p>
+                
+            
+        
+        
+            </p></div>   
+            <div class="article-more-link">
+                <a href="/2020/10/19/Noncopyable/#more">查看更多</a>
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+
+
+
+
+    
         <article id="post-对象池" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
@@ -1140,192 +1348,6 @@
             </p></div>   
             <div class="article-more-link">
                 <a href="/2020/10/16/lambda/#more">查看更多</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-decltype" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/c/">c++</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c-c-11/">c++ c++11</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/16/decltype/">
-            <time datetime="2020-10-16T03:43:06.000Z" itemprop="datePublished">2020-10-16</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/decltype.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/decltype.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/decltype.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2020/10/16/decltype/">decltype</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-            
-        
-        
-            <p>Defines  a type equivalent to the type of an expression.</p>
-<p>By using the decltype keyword, you can let the compiler find out the type of an expression, this is the realization of the often requested typepf feature.</p>
-<p>One application of decltype is to declare return types; Another is to use it in metaprogramming or to pass the type of a lambda.</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. declare return types</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</span><br><span class="line"><span class="keyword">decltype</span>(x + y) add(T1 x, T2 y); <span class="comment">// 不行</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</span><br><span class="line">auto add(T1 x, T2 y) -&gt; decltype(x + y);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. meta programming</span></span><br><span class="line"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test_decltype</span><span class="params">(T obj)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">float</span>&gt;::value_type elem1;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="built_in">string</span>, <span class="keyword">float</span>&gt; coll;</span><br><span class="line">    <span class="keyword">decltype</span>(coll)::value_type elem2;</span><br><span class="line">    </span><br><span class="line">    typedef typename decltype(obj)::iterator iType; // =&gt; typedef typename T::iterator iType</span><br><span class="line">    <span class="comment">// test_decltype(complex&lt;int&gt;()) 编译失败</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">decltype</span>(obj) anotherObj(obj);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. pass the type of lambda</span></span><br><span class="line"><span class="keyword">auto</span> cmp = [](<span class="keyword">const</span> Person&amp; p1, <span class="keyword">const</span> Person&amp; p2) &#123;</span><br><span class="line">    <span class="keyword">return</span> p1.lastname() &lt; p2.lastname() || (p1.lastname() == p2.lastname() &amp;&amp; p1.firstname() &lt; p2.firstname()); </span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">std</span>::<span class="built_in">set</span>&lt;Person, <span class="keyword">decltype</span>(cmp)&gt; coll(cmp);</span><br></pre></td></tr></table></figure>
-
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="post-noexcept" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/c/">c++</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/c-c-11/">c++ c++11</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2020/10/16/noexcept/">
-            <time datetime="2020-10-16T03:21:18.000Z" itemprop="datePublished">2020-10-16</time>
-        </a>
-    </div>
-
-
-                        
-                            <i class="fa fa-bar-chart"></i>
-                            <span id="busuanzi_container_site_pv"><span id="busuanzi_value_page_pv"></span></span>    
-                        
-                        
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/raw/writing/source/_posts/noexcept.md"> Source </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/edit/writing/source/_posts/noexcept.md"> Edit </a>
-                            </div>
-                            <div class="article-meta-button">
-                                <a href="https://github.com/zzywq/Wiki-site/commits/writing/source/_posts/noexcept.md"> History </a>
-                            </div>
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2020/10/16/noexcept/">noexcept</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-            
-        
-        
-            <p><img src="\images/image-20201016113005483.png" alt=""></p>
-<p><img src="\images/image-20201016113301024.png" alt=""></p>
-
             </div>
         
         <footer class="article-footer">
